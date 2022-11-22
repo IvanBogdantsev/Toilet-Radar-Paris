@@ -11,6 +11,8 @@
 		4E1C3071292BB6FD00F5859D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1C3070292BB6FD00F5859D /* RxCocoa */; };
 		4E1C3073292BB6FD00F5859D /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1C3072292BB6FD00F5859D /* RxRelay */; };
 		4E1C3075292BB6FD00F5859D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1C3074292BB6FD00F5859D /* RxSwift */; };
+		4E4546FB292D730A0068070A /* Point.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4546FA292D730A0068070A /* Point.swift */; };
+		4E4896EA292D464000E1C6AE /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4E4896E9292D464000E1C6AE /* Alamofire */; };
 		4E8DC018292B9648009A7B25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8DC017292B9648009A7B25 /* AppDelegate.swift */; };
 		4E8DC01A292B9648009A7B25 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8DC019292B9648009A7B25 /* SceneDelegate.swift */; };
 		4E8DC01C292B9648009A7B25 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8DC01B292B9648009A7B25 /* ViewController.swift */; };
@@ -21,6 +23,7 @@
 
 /* Begin PBXFileReference section */
 		4E08982F292BDAB300451846 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4E4546FA292D730A0068070A /* Point.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Point.swift; sourceTree = "<group>"; };
 		4E8DC014292B9648009A7B25 /* Parilet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parilet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E8DC017292B9648009A7B25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E8DC019292B9648009A7B25 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -35,6 +38,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4E4896EA292D464000E1C6AE /* Alamofire in Frameworks */,
 				4E1C3075292BB6FD00F5859D /* RxSwift in Frameworks */,
 				4E1C3073292BB6FD00F5859D /* RxRelay in Frameworks */,
 				4EB27E0B292BBA7500A9938C /* MapboxMaps in Frameworks */,
@@ -105,15 +109,15 @@
 		4E8DC016292B9648009A7B25 /* Parilet */ = {
 			isa = PBXGroup;
 			children = (
-				4E089833292BDD1D00451846 /* Network */,
-				4E089832292BDCF900451846 /* Resources */,
-				4E089831292BDC7300451846 /* SupportingFiles */,
-				4E08982E292BDA9B00451846 /* Constants */,
-				4E08982C292BDA5E00451846 /* Application */,
-				4E8DC02E292B969C009A7B25 /* ViewModel */,
 				4E8DC02D292B9695009A7B25 /* Model */,
 				4E8DC02C292B968B009A7B25 /* View */,
+				4E8DC02E292B969C009A7B25 /* ViewModel */,
 				4E8DC02B292B967C009A7B25 /* ViewController */,
+				4E089833292BDD1D00451846 /* Network */,
+				4E08982E292BDA9B00451846 /* Constants */,
+				4E08982C292BDA5E00451846 /* Application */,
+				4E089832292BDCF900451846 /* Resources */,
+				4E089831292BDC7300451846 /* SupportingFiles */,
 			);
 			path = Parilet;
 			sourceTree = "<group>";
@@ -136,6 +140,7 @@
 		4E8DC02D292B9695009A7B25 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4E4546FA292D730A0068070A /* Point.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -168,6 +173,7 @@
 				4E1C3072292BB6FD00F5859D /* RxRelay */,
 				4E1C3074292BB6FD00F5859D /* RxSwift */,
 				4EB27E0A292BBA7500A9938C /* MapboxMaps */,
+				4E4896E9292D464000E1C6AE /* Alamofire */,
 			);
 			productName = Parilet;
 			productReference = 4E8DC014292B9648009A7B25 /* Parilet.app */;
@@ -200,6 +206,7 @@
 			packageReferences = (
 				4E1C306F292BB6FD00F5859D /* XCRemoteSwiftPackageReference "RxSwift" */,
 				4EB27E09292BBA7500A9938C /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
+				4E4896E8292D464000E1C6AE /* XCRemoteSwiftPackageReference "Alamofire" */,
 			);
 			productRefGroup = 4E8DC015292B9648009A7B25 /* Products */;
 			projectDirPath = "";
@@ -228,6 +235,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E8DC01C292B9648009A7B25 /* ViewController.swift in Sources */,
+				4E4546FB292D730A0068070A /* Point.swift in Sources */,
 				4E8DC018292B9648009A7B25 /* AppDelegate.swift in Sources */,
 				4E8DC01A292B9648009A7B25 /* SceneDelegate.swift in Sources */,
 				4E089830292BDAB300451846 /* Constants.swift in Sources */,
@@ -448,6 +456,14 @@
 				kind = branch;
 			};
 		};
+		4E4896E8292D464000E1C6AE /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		4EB27E09292BBA7500A9938C /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mapbox/mapbox-maps-ios.git";
@@ -473,6 +489,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E1C306F292BB6FD00F5859D /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		4E4896E9292D464000E1C6AE /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E4896E8292D464000E1C6AE /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
 		};
 		4EB27E0A292BBA7500A9938C /* MapboxMaps */ = {
 			isa = XCSwiftPackageProductDependency;
