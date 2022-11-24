@@ -12,11 +12,9 @@ enum APIRequest: URLRequestConvertible {
     
     case getDataset
     
-    func asURLRequest() throws -> URLRequest {
+    internal func asURLRequest() throws -> URLRequest {
         let url = try NetworkingConstants.url.asURL()
-        
         var urlRequest = URLRequest(url: url)
-        
         urlRequest.httpMethod = method.rawValue
         
         return urlRequest
