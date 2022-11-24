@@ -8,6 +8,7 @@
 import UIKit
 import MapboxMaps
 import RxSwift
+import Alamofire
  
 class ViewController: UIViewController {
     
@@ -26,5 +27,5 @@ class ViewController: UIViewController {
         mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         self.view.addSubview(mapView)
     }
-    
+        
 }
