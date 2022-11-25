@@ -5,15 +5,11 @@
 //  Created by Vanya Bogdantsev on 22.11.2022.
 //
 
-import Foundation
-
-// MARK: - Dataset
 struct Dataset: Codable {
     let nhits: Int
     let records: [Record]
 }
 
-// MARK: - Record
 struct Record: Codable {
     let recordid: String
     let fields: Fields
@@ -25,7 +21,6 @@ struct Record: Codable {
     }
 }
 
-// MARK: - Fields
 struct Fields: Codable {
     let accesPmr: String?
     let type: String

@@ -5,7 +5,6 @@
 //  Created by Vanya Bogdantsev on 23.11.2022.
 //
 
-import Foundation
 import Alamofire
 import RxSwift
 
@@ -14,16 +13,16 @@ protocol APIClientProtocol {
     static func getDataset() -> Observable<RequestedType>
 }
 
-class APIClient<RequestedType: Codable> : APIClientProtocol {
-        
+class APIClient<RequestedType: Codable>: APIClientProtocol {
+
     static func getDataset() -> Observable<RequestedType> {
         return request(APIRequest.getDataset)
     }
-    
+
     private static func request<T: Codable> (_ apiRequest: URLRequestConvertible) -> Observable<T> {
         return Observable<T>.create { observer in
             let request = AF.request(apiRequest).responseDecodable { (response: DataResponse<T, AFError>) in
-                
+
                 switch response.result {
                 case .success(let dataset):
                     observer.onNext(dataset)
@@ -36,7 +35,7 @@ class APIClient<RequestedType: Codable> : APIClientProtocol {
                 request.cancel()
             }
         }
-        
+
     }
-    
+
 }
