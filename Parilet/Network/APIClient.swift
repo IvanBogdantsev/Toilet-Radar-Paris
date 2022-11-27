@@ -22,7 +22,7 @@ class APIClient<RequestedType: Codable>: APIClientProtocol {
     private static func request<T: Codable> (_ apiRequest: URLRequestConvertible) -> Observable<T> {
         return Observable<T>.create { observer in
             let request = AF.request(apiRequest).responseDecodable { (response: DataResponse<T, AFError>) in
-
+                
                 switch response.result {
                 case .success(let dataset):
                     observer.onNext(dataset)

@@ -14,9 +14,8 @@ class MapViewController: UIViewController {
 
     private var mapView: MapView!
     private var annotationManager: PointAnnotationManager!
-    lazy private var disposeBag: DisposeBag = {
-        return DisposeBag()
-    }()
+    private let viewModel = MapViewModel()
+    private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +23,7 @@ class MapViewController: UIViewController {
         setUpMapView()
         setUpAnnotationManager()
         setUpBindings()
+        viewModel.viewDidLoad()
     }
 
     private func setUpMapView() {
@@ -39,13 +39,8 @@ class MapViewController: UIViewController {
     }
 
     private func setUpBindings() {
-
+        viewModel.pointAnnotations
+            .drive(annotationManager.rx.annotations)
+            .disposed(by: disposeBag)
     }
-
 }
-
-/*
- Observable.just([PointAnnotation( point: Point(LocationCoordinate2D(latitude: 48.862221666357485,
- longitude: 2.344254327997302))), PointAnnotation( point: Point(LocationCoordinate2D(latitude:
- 48.862221666357485, longitude: 2.344254327997302)))]).bind(to: annotationManager.rx.annotations)
- */

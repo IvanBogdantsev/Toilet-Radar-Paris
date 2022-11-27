@@ -12,3 +12,7 @@ struct MapBoxConstants {
 struct NetworkingConstants {
     static let url = "https://opendata.paris.fr/api/records/1.0/search/?dataset=sanisettesparis&q=&rows=1000"
 }
+
+enum UserInfo: String {
+    case accesPmr, type, adresse, arrondissement, horaire
+}
