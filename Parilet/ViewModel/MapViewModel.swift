@@ -11,6 +11,7 @@ import MapboxMaps
 
 protocol MapViewModelProtocol {
     func viewDidLoad()
+    var pointAnnotations: Driver<[PointAnnotation]> { get }
 }
 
 class MapViewModel: MapViewModelProtocol {
@@ -25,17 +26,34 @@ class MapViewModel: MapViewModelProtocol {
 
     func viewDidLoad() {
         APIClient<Dataset>.getDataset()
-            .subscribe(onNext: { dataset in
+            .map { dataset in
                 var objs: [PointAnnotation] = []
-                dataset.records.forEach {
-                    var pa = PointAnnotation(with: $0)
+                dataset.records.forEach { record in
+                    var pa = PointAnnotation(with: record)
                     pa.image = .init(image: UIImage.pin, name: "red_pin")
                     pa.iconAnchor = .bottom
                     objs.append(pa)
                 }
-                self.annotations.accept(objs)
+                return objs
+            }
+            .subscribe(onNext: { annotations in
+                self.annotations.accept(annotations)
             })
             .disposed(by: disposeBag)
     }
 
 }
+
+
+/*
+ .subscribe(onNext: { dataset in
+     var objs: [PointAnnotation] = []
+     dataset.records.forEach {
+         var pa = PointAnnotation(with: $0)
+         pa.image = .init(image: UIImage.pin, name: "red_pin")
+         pa.iconAnchor = .bottom
+         objs.append(pa)
+     }
+     self.annotations.accept(objs)
+ })
+ */

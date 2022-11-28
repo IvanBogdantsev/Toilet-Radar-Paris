@@ -14,7 +14,7 @@ class MapViewController: UIViewController {
 
     private var mapView: MapView!
     private var annotationManager: PointAnnotationManager!
-    private let viewModel = MapViewModel()
+    private let viewModel: MapViewModelProtocol = MapViewModel()
     private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
