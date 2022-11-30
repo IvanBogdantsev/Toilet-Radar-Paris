@@ -43,17 +43,3 @@ class MapViewModel: MapViewModelProtocol {
     }
 
 }
-
-
-/*
- .subscribe(onNext: { dataset in
-     var objs: [PointAnnotation] = []
-     dataset.records.forEach {
-         var pa = PointAnnotation(with: $0)
-         pa.image = .init(image: UIImage.pin, name: "red_pin")
-         pa.iconAnchor = .bottom
-         objs.append(pa)
-     }
-     self.annotations.accept(objs)
- })
- */

@@ -43,4 +43,5 @@ class MapViewController: UIViewController {
             .drive(annotationManager.rx.annotations)
             .disposed(by: disposeBag)
     }
+    
 }
