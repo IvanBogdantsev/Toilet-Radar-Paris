@@ -23,7 +23,6 @@ class MapViewController: UIViewController {
         setUpMapView()
         setUpAnnotationManager()
         setUpBindings()
-        viewModel.viewDidLoad()
     }
 
     private func setUpMapView() {
@@ -42,6 +41,12 @@ class MapViewController: UIViewController {
         viewModel.pointAnnotations
             .drive(annotationManager.rx.annotations)
             .disposed(by: disposeBag)
+        annotationManager.rx.didDetectTappedAnnotations
+            .subscribe {
+                print($0)
+            }
+            .disposed(by: disposeBag)
+        viewModel.viewDidLoad()
     }
     
 }

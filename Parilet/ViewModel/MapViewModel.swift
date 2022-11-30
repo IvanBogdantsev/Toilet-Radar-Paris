@@ -36,8 +36,11 @@ class MapViewModel: MapViewModelProtocol {
                 }
                 return objs
             }
-            .subscribe(onNext: { annotations in
-                self.annotations.accept(annotations)
+            .subscribe( onSuccess: { dataset in
+                self.annotations.accept(dataset)
+            },
+            onFailure: { error in
+                print(error)
             })
             .disposed(by: disposeBag)
     }
