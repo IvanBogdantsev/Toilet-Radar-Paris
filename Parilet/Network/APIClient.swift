@@ -37,7 +37,6 @@ class APIClient<RequestedType: Codable>: APIClientProtocol {
                 request.cancel()
             }
         }
-
     }
 
 }

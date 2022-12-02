@@ -29,7 +29,7 @@ class MapViewModel: MapViewModelProtocol {
             .map { dataset in
                 var objs: [PointAnnotation] = []
                 dataset.records.forEach { record in
-                    var pa = PointAnnotation(with: record)
+                    var pa = PointAnnotation.init(with: record)
                     pa.image = .init(image: UIImage.pin, name: "red_pin")
                     pa.iconAnchor = .bottom
                     objs.append(pa)

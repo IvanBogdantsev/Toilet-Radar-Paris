@@ -11,9 +11,8 @@ import RxSwift
 import RxCocoa
 
 class MapViewController: UIViewController {
-
-    private var mapView: MapView!
-    private var annotationManager: PointAnnotationManager!
+    
+    private var mapView: Map!
     private let viewModel: MapViewModelProtocol = MapViewModel()
     private let disposeBag = DisposeBag()
 
@@ -21,31 +20,25 @@ class MapViewController: UIViewController {
         super.viewDidLoad()
 
         setUpMapView()
-        setUpAnnotationManager()
         setUpBindings()
     }
 
     private func setUpMapView() {
-        let myResourceOptions = ResourceOptions(accessToken: MapBoxConstants.accesToken)
-        let myMapInitOptions = MapInitOptions(resourceOptions: myResourceOptions)
-        mapView = MapView(frame: view.bounds, mapInitOptions: myMapInitOptions)
-        mapView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        mapView = Map(frame: view.bounds)
         self.view.addSubview(mapView)
-    }
-
-    private func setUpAnnotationManager() {
-        annotationManager = mapView.annotations.makePointAnnotationManager()
     }
 
     private func setUpBindings() {
         viewModel.pointAnnotations
-            .drive(annotationManager.rx.annotations)
+            .drive(mapView.bindableAnnotations)
             .disposed(by: disposeBag)
-        annotationManager.rx.didDetectTappedAnnotations
+        
+        mapView.rxAnnotationsDelegate.didDetectTappedAnnotations
             .subscribe {
                 print($0)
             }
             .disposed(by: disposeBag)
+        
         viewModel.viewDidLoad()
     }
     
