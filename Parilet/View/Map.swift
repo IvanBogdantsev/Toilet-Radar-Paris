@@ -10,11 +10,13 @@ import RxSwift
 
 final class Map: MapView {
     
+    typealias Annotations = [PointAnnotation]
+    
     lazy var annotationManager: PointAnnotationManager = {
        self.annotations.makePointAnnotationManager()
     }()
     
-    var bindableAnnotations: Binder<[PointAnnotation]> {
+    var bindableAnnotations: Binder<Annotations> {
         annotationManager.rx.annotations
     }
     

@@ -37,8 +37,6 @@ class RxAnnotationManagerDelegateProxy: DelegateProxy<PointAnnotationManager, An
     
 }
 
-typealias RxObservable = RxSwift.Observable
-
 extension Reactive where Base: PointAnnotationManager {
     var delegate: RxAnnotationManagerDelegateProxy {
         return RxAnnotationManagerDelegateProxy.proxy(for: base)

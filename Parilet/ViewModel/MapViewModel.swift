@@ -16,25 +16,20 @@ protocol MapViewModelProtocol {
 
 class MapViewModel: MapViewModelProtocol {
     
-    var pointAnnotations: Driver<[PointAnnotation]> {
+    typealias Annotations = [PointAnnotation]
+    
+    var pointAnnotations: Driver<Annotations> {
         return annotations
             .asDriver(onErrorJustReturn: [])
             .skip(1)
     }
-    private let annotations = BehaviorRelay<[PointAnnotation]>(value: [])
+    private let annotations = BehaviorRelay<Annotations>(value: [])
     private let disposeBag = DisposeBag()
 
     func viewDidLoad() {
         APIClient<Dataset>.getDataset()
             .map { dataset in
-                var objs: [PointAnnotation] = []
-                dataset.records.forEach { record in
-                    var pa = PointAnnotation.init(with: record)
-                    pa.image = .init(image: UIImage.pin, name: "red_pin")
-                    pa.iconAnchor = .bottom
-                    objs.append(pa)
-                }
-                return objs
+                self.annotationsFrom(dataset.records)
             }
             .subscribe( onSuccess: { dataset in
                 self.annotations.accept(dataset)
@@ -45,4 +40,17 @@ class MapViewModel: MapViewModelProtocol {
             .disposed(by: disposeBag)
     }
 
+}
+
+private extension MapViewModel {
+    func annotationsFrom(_ records: [Record]) -> Annotations {
+        var objs: Annotations = []
+        records.forEach { record in
+            var pa = PointAnnotation.init(with: record)
+            pa.image = .init(image: UIImage.pin, name: "red_pin")
+            pa.iconAnchor = .bottom
+            objs.append(pa)
+        }
+        return objs
+    }
 }

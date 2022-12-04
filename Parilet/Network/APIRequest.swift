@@ -9,9 +9,11 @@ import Foundation
 import Alamofire
 
 enum APIRequest: URLRequestConvertible {
-
     case getDataset
+}
 
+extension APIRequest {
+    
     internal func asURLRequest() throws -> URLRequest {
         let url = try NetworkingConstants.url.asURL()
         var urlRequest = URLRequest(url: url)
