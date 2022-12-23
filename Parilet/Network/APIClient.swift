@@ -11,23 +11,22 @@ import Foundation
 
 protocol APIClientProtocol {
     associatedtype RequestedType
-    static func getDataset() -> Single<RequestedType>
+    func getData() -> Single<RequestedType>
 }
 
-class APIClient<RequestedType: Codable>: APIClientProtocol {
+final class APIClient<RequestedType: Codable>: APIClientProtocol {
 
-    static func getDataset() -> Single<RequestedType> {
+    func getData() -> Single<RequestedType> {
         return request(APIRequest.getDataset)
             .asSingle()
     }
 
-    private static func request<T: Codable> (_ apiRequest: URLRequestConvertible) -> Observable<T> {
+    private func request<T: Codable> (_ apiRequest: URLRequestConvertible) -> Observable<T> {
         return Observable<T>.create { observer in
             let request = AF.request(apiRequest).responseDecodable { (response: DataResponse<T, AFError>) in
-
                 switch response.result {
-                case .success(let dataset):
-                    observer.onNext(dataset)
+                case .success(let result):
+                    observer.onNext(result)
                     observer.onCompleted()
                 case .failure(let error):
                     observer.onError(error)

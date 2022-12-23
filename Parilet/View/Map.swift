@@ -7,12 +7,18 @@
 
 import MapboxMaps
 import RxSwift
+import  RxCocoa
 
-final class Map: MapView {
-    
+protocol MapViewProtocol: UIView {
     typealias Annotations = [PointAnnotation]
-    
-    lazy var annotationManager: PointAnnotationManager = {
+
+    var bindableAnnotations: Binder<Annotations> { get }
+    var didDetectTappedAnnotations: ControlEvent<Annotation> { get }
+}
+
+final class Map: MapView, MapViewProtocol {
+        
+    private lazy var annotationManager: PointAnnotationManager = {
        self.annotations.makePointAnnotationManager()
     }()
     
@@ -20,14 +26,14 @@ final class Map: MapView {
         annotationManager.rx.annotations
     }
     
-    var rxAnnotationsDelegate: Reactive<PointAnnotationManager> {
-        annotationManager.rx
+    var didDetectTappedAnnotations: ControlEvent<Annotation> {
+        annotationManager.rx.didDetectTappedAnnotations
     }
     
     init(frame: CGRect) {
-        let myResourceOptions = ResourceOptions(accessToken: MapBoxConstants.accesToken)
-        let myMapInitOptions = MapInitOptions(resourceOptions: myResourceOptions)
-        super.init(frame: frame, mapInitOptions: myMapInitOptions)
+        let initOptions = MapInitOptions(resourceOptions: MapBoxConstants.resourceOptions,
+                                          cameraOptions: MapBoxConstants.cameraOptions)
+        super.init(frame: frame, mapInitOptions: initOptions)
         self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
     
@@ -36,3 +42,4 @@ final class Map: MapView {
     }
     
 }
+

@@ -7,13 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4E089830292BDAB300451846 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E08982F292BDAB300451846 /* Constants.swift */; };
 		4E1AC6F8292ECA9B00872C5C /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1AC6F7292ECA9B00872C5C /* APIRequest.swift */; };
 		4E1AC6FA292ECE7400872C5C /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E1AC6F9292ECE7400872C5C /* APIClient.swift */; };
 		4E1C3071292BB6FD00F5859D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1C3070292BB6FD00F5859D /* RxCocoa */; };
 		4E1C3073292BB6FD00F5859D /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1C3072292BB6FD00F5859D /* RxRelay */; };
 		4E1C3075292BB6FD00F5859D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1C3074292BB6FD00F5859D /* RxSwift */; };
-		4E4546FB292D730A0068070A /* Dataset.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4546FA292D730A0068070A /* Dataset.swift */; };
+		4E3D346B295612360083BF05 /* MapBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D346A295612360083BF05 /* MapBox.swift */; };
+		4E3D346D2956125D0083BF05 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D346C2956125D0083BF05 /* Network.swift */; };
+		4E4546FB292D730A0068070A /* SanisetteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4546FA292D730A0068070A /* SanisetteData.swift */; };
 		4E4896EA292D464000E1C6AE /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4E4896E9292D464000E1C6AE /* Alamofire */; };
 		4E5FA03F292F836500FDEFC7 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FA03E292F836500FDEFC7 /* MapViewModel.swift */; };
 		4E78498E29310E3500AD17B8 /* RxAnnotationManagerDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78498D29310E3500AD17B8 /* RxAnnotationManagerDelegateProxy.swift */; };
@@ -29,10 +30,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4E08982F292BDAB300451846 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4E1AC6F7292ECA9B00872C5C /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		4E1AC6F9292ECE7400872C5C /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		4E4546FA292D730A0068070A /* Dataset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dataset.swift; sourceTree = "<group>"; };
+		4E3D346A295612360083BF05 /* MapBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBox.swift; sourceTree = "<group>"; };
+		4E3D346C2956125D0083BF05 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
+		4E4546FA292D730A0068070A /* SanisetteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanisetteData.swift; sourceTree = "<group>"; };
 		4E5FA03E292F836500FDEFC7 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		4E78498D29310E3500AD17B8 /* RxAnnotationManagerDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxAnnotationManagerDelegateProxy.swift; sourceTree = "<group>"; };
 		4E8DC014292B9648009A7B25 /* Parilet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parilet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,7 +77,8 @@
 		4E08982E292BDA9B00451846 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				4E08982F292BDAB300451846 /* Constants.swift */,
+				4E3D346A295612360083BF05 /* MapBox.swift */,
+				4E3D346C2956125D0083BF05 /* Network.swift */,
 			);
 			path = Constants;
 			sourceTree = "<group>";
@@ -167,7 +170,7 @@
 		4E8DC02D292B9695009A7B25 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				4E4546FA292D730A0068070A /* Dataset.swift */,
+				4E4546FA292D730A0068070A /* SanisetteData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -274,14 +277,15 @@
 				4E8DC01C292B9648009A7B25 /* MapViewController.swift in Sources */,
 				4ECD49892933C7190027D763 /* UIImage.swift in Sources */,
 				4E1AC6FA292ECE7400872C5C /* APIClient.swift in Sources */,
+				4E3D346B295612360083BF05 /* MapBox.swift in Sources */,
 				4E78498E29310E3500AD17B8 /* RxAnnotationManagerDelegateProxy.swift in Sources */,
-				4E4546FB292D730A0068070A /* Dataset.swift in Sources */,
+				4E4546FB292D730A0068070A /* SanisetteData.swift in Sources */,
 				4E1AC6F8292ECA9B00872C5C /* APIRequest.swift in Sources */,
 				4E8DC018292B9648009A7B25 /* AppDelegate.swift in Sources */,
 				4E8DC01A292B9648009A7B25 /* SceneDelegate.swift in Sources */,
-				4E089830292BDAB300451846 /* Constants.swift in Sources */,
 				4E5FA03F292F836500FDEFC7 /* MapViewModel.swift in Sources */,
 				4EC130532938DB7000CF4110 /* Map.swift in Sources */,
+				4E3D346D2956125D0083BF05 /* Network.swift in Sources */,
 				4ECD49872933B3510027D763 /* PointAnnotation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
