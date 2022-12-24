@@ -10,50 +10,91 @@ import RxCocoa
 import MapboxMaps
 
 protocol MapViewModelType {
+    associatedtype Input
+    associatedtype Output
+    
+    var input: Input { get }
+    var output: Output { get }
     
     typealias Annotations = [PointAnnotation]
     typealias Records = [Record]
-    
-    func viewDidLoad()
-    var pointAnnotations: Driver<Annotations> { get }
 }
 
 final class MapViewModel: MapViewModelType {
     
-    private let apiClient = APIClient<SanisetteData>()
-    private let annotations = BehaviorRelay<Annotations>(value: [])
-    private let disposeBag = DisposeBag()
-    
-    var pointAnnotations: Driver<Annotations> {
-        return annotations
-            .asDriver(onErrorJustReturn: [])
-            .skip(1)
+    struct Input {
+        //...
     }
-
-    func viewDidLoad() {
-        apiClient.getData()
+    
+    struct Output {
+        let mapAnnotations: Driver<Annotations>
+    }
+    
+    private let sanisetteApiClient = APIClient<SanisetteData>()
+    let input: Input
+    let output: Output
+    
+    init() {
+        //...input init
+        let mapAnnotations = sanisetteApiClient.getData()
             .map { data in
-                self.convertIntoAnnotations(from: data.records)
+                data.records.map { PointAnnotation(withRecord: $0) }
             }
-            .subscribe( onSuccess: { annotations in
-                self.annotations.accept(annotations)
-            },
-            onFailure: { error in
-                print(error)
-            })
-            .disposed(by: disposeBag)
+            .asDriver(onErrorJustReturn: [])
+        
+        input = Input()
+        output = Output(mapAnnotations: mapAnnotations)
     }
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 private extension MapViewModel {
     func convertIntoAnnotations(from records: Records) -> Annotations {
-        var objs: Annotations = []
-        records.forEach { record in
-            var pa = PointAnnotation.init(withRecord: record)
-            pa.image = .init(image: UIImage.pin, name: "red_pin")
-            objs.append(pa)
-        }
-        return objs
+        records.map { PointAnnotation(withRecord: $0) }
     }
 }
+
+
+/*
+ private let apiClient = APIClient<SanisetteData>()
+ private let annotations = BehaviorRelay<Annotations>(value: [])
+ private let disposeBag = DisposeBag()
+ 
+ var pointAnnotations: Driver<Annotations> {
+     return annotations
+         .asDriver(onErrorJustReturn: [])
+         .skip(1)
+ }
+
+ func viewDidLoad() {
+     apiClient.getData()
+         .map { data in
+             self.convertIntoAnnotations(from: data.records)
+         }
+         .subscribe( onSuccess: { annotations in
+             self.annotations.accept(annotations)
+         },
+         onFailure: { error in
+             print(error)
+         })
+         .disposed(by: disposeBag)
+ }
+ */

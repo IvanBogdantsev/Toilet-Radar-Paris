@@ -7,7 +7,7 @@
 
 import MapboxMaps
 import RxSwift
-import  RxCocoa
+import RxCocoa
 
 protocol MapViewProtocol: UIView {
     typealias Annotations = [PointAnnotation]

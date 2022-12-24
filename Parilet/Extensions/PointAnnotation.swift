@@ -19,5 +19,7 @@ extension PointAnnotation {
                          UserInfo.arrondissement.rawValue : record.fields.arrondissement ?? "??",
                          UserInfo.type.rawValue : record.fields.type ?? "??",
                          UserInfo.adresse.rawValue : record.fields.adresse ?? "??"]
+        self.image = .init(image: UIImage.pin, name: MapBoxConstants.imageName)
+        self.iconImage = MapBoxConstants.imageName
     }
 }

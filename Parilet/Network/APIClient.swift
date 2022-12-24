@@ -26,8 +26,8 @@ final class APIClient<RequestedType: Codable>: APIClientProtocol {
             let request = AF.request(apiRequest).responseDecodable { (response: DataResponse<T, AFError>) in
                 switch response.result {
                 case .success(let result):
-                    observer.onNext(result)
-                    observer.onCompleted()
+                        observer.onNext(result)
+                        observer.onCompleted()
                 case .failure(let error):
                     observer.onError(error)
                 }
