@@ -15,7 +15,7 @@ extension PointAnnotationManager: HasDelegate {
     public typealias Delegate = AnnotationInteractionDelegate
 }
 
-class RxAnnotationManagerDelegateProxy: DelegateProxy<PointAnnotationManager, AnnotationInteractionDelegate>, DelegateProxyType, AnnotationInteractionDelegate {
+final class RxAnnotationManagerDelegateProxy: DelegateProxy<PointAnnotationManager, AnnotationInteractionDelegate>, DelegateProxyType, AnnotationInteractionDelegate {
     
     internal func annotationManager(_ manager: MapboxMaps.AnnotationManager, didDetectTappedAnnotations annotations: [MapboxMaps.Annotation]) {
         didDetectTappedAnnotations.onNext(annotations[0])

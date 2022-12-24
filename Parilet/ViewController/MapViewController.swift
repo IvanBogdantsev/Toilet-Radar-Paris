@@ -10,36 +10,33 @@ import MapboxMaps
 import RxSwift
 import RxCocoa
 
-class MapViewController: UIViewController {
+final class MapViewController: UIViewController {
     
-    private var mapView: Map!
-    private let viewModel: MapViewModelProtocol = MapViewModel()
+    private var mapView: MapViewProtocol!
+    private var viewModel = MapViewModel()
     private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setUpMapView()
-        setUpBindings()
+        bindViewModelOutputs()
+        bindViewModelInputs()
     }
 
     private func setUpMapView() {
         mapView = Map(frame: view.bounds)
-        self.view.addSubview(mapView)
+        view.addSubview(mapView)
     }
-
-    private func setUpBindings() {
-        viewModel.pointAnnotations
+    
+    private func bindViewModelOutputs() {
+        viewModel.output.mapAnnotations
             .drive(mapView.bindableAnnotations)
             .disposed(by: disposeBag)
+    }
+    
+    private func bindViewModelInputs() {
         
-        mapView.rxAnnotationsDelegate.didDetectTappedAnnotations
-            .subscribe {
-                print($0)
-            }
-            .disposed(by: disposeBag)
-        
-        viewModel.viewDidLoad()
     }
     
 }

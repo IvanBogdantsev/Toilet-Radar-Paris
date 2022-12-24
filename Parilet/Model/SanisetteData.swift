@@ -5,15 +5,15 @@
 //  Created by Vanya Bogdantsev on 22.11.2022.
 //
 
-struct Dataset: Codable {
+struct SanisetteData: Codable {
     let nhits: Int
     let records: [Record]
 }
 
 struct Record: Codable {
-    let recordid: String
+    let recordid: String?
     let fields: Fields
-    let recordTimestamp: String
+    let recordTimestamp: String?
 
     enum CodingKeys: String, CodingKey {
         case recordid, fields
@@ -23,9 +23,9 @@ struct Record: Codable {
 
 struct Fields: Codable {
     let accesPmr: String?
-    let type: String
+    let type: String?
     let geoPoint2D: [Double]
-    let adresse: String
+    let adresse: String?
     let arrondissement, horaire: String?
 
     enum CodingKeys: String, CodingKey {
