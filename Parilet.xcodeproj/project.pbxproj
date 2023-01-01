@@ -13,7 +13,7 @@
 		4E1C3073292BB6FD00F5859D /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1C3072292BB6FD00F5859D /* RxRelay */; };
 		4E1C3075292BB6FD00F5859D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1C3074292BB6FD00F5859D /* RxSwift */; };
 		4E2977A52958A79F00FC7965 /* MapboxDirections in Frameworks */ = {isa = PBXBuildFile; productRef = 4E2977A42958A79F00FC7965 /* MapboxDirections */; };
-		4E3D346B295612360083BF05 /* MapBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D346A295612360083BF05 /* MapBox.swift */; };
+		4E3D346B295612360083BF05 /* Mapbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D346A295612360083BF05 /* Mapbox.swift */; };
 		4E3D346D2956125D0083BF05 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D346C2956125D0083BF05 /* Network.swift */; };
 		4E4546FB292D730A0068070A /* SanisetteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4546FA292D730A0068070A /* SanisetteData.swift */; };
 		4E4896EA292D464000E1C6AE /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4E4896E9292D464000E1C6AE /* Alamofire */; };
@@ -34,7 +34,7 @@
 /* Begin PBXFileReference section */
 		4E1AC6F7292ECA9B00872C5C /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		4E1AC6F9292ECE7400872C5C /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
-		4E3D346A295612360083BF05 /* MapBox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapBox.swift; sourceTree = "<group>"; };
+		4E3D346A295612360083BF05 /* Mapbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapbox.swift; sourceTree = "<group>"; };
 		4E3D346C2956125D0083BF05 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		4E4546FA292D730A0068070A /* SanisetteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanisetteData.swift; sourceTree = "<group>"; };
 		4E5FA03E292F836500FDEFC7 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -81,7 +81,7 @@
 		4E08982E292BDA9B00451846 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				4E3D346A295612360083BF05 /* MapBox.swift */,
+				4E3D346A295612360083BF05 /* Mapbox.swift */,
 				4E3D346C2956125D0083BF05 /* Network.swift */,
 			);
 			path = Constants;
@@ -300,7 +300,7 @@
 				4E8DC01C292B9648009A7B25 /* MapViewController.swift in Sources */,
 				4ECD49892933C7190027D763 /* UIImage.swift in Sources */,
 				4E1AC6FA292ECE7400872C5C /* APIClient.swift in Sources */,
-				4E3D346B295612360083BF05 /* MapBox.swift in Sources */,
+				4E3D346B295612360083BF05 /* Mapbox.swift in Sources */,
 				4E78498E29310E3500AD17B8 /* RxAnnotationManager.swift in Sources */,
 				4E4546FB292D730A0068070A /* SanisetteData.swift in Sources */,
 				4E1AC6F8292ECA9B00872C5C /* APIRequest.swift in Sources */,

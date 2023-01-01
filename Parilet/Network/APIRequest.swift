@@ -9,7 +9,7 @@ import Foundation
 import Alamofire
 
 enum APIRequest: URLRequestConvertible {
-    case getDataset
+    case getData
 }
 
 extension APIRequest {
@@ -24,7 +24,7 @@ extension APIRequest {
 
     private var method: HTTPMethod {
         switch self {
-        case .getDataset:
+        case .getData:
             return .get
         }
     }

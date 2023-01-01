@@ -27,4 +27,3 @@ struct MapBoxConstants {
 enum UserInfo: String {
     case accesPmr, type, adresse, arrondissement, horaire
 }
-

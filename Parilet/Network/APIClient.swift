@@ -17,7 +17,7 @@ protocol APIClientProtocol {
 final class APIClient<RequestedType: Codable>: APIClientProtocol {
 
     func getData() -> Single<RequestedType> {
-        return request(APIRequest.getDataset)
+        return request(APIRequest.getData)
             .asSingle()
     }
 
