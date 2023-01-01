@@ -14,7 +14,9 @@ struct MapBoxConstants {
         ResourceOptions(accessToken: Self.accesToken)
     }()
     static let cameraOptions: CameraOptions = {
-        CameraOptions(center: CLLocationCoordinate2D(latitude: 48.8566, longitude: 2.3522), zoom: 10)
+        CameraOptions(center: CLLocationCoordinate2D(latitude: 48.8566,
+                                                     longitude: 2.3522),
+                                                     zoom: 10)
     }()
     
     init() {

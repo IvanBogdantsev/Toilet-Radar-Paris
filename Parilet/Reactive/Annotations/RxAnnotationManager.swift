@@ -21,29 +21,24 @@ final class RxAnnotationManagerDelegateProxy: DelegateProxy<PointAnnotationManag
         didDetectTappedAnnotations.onNext(annotations[0])
     }
     
-    fileprivate let didDetectTappedAnnotations =
-    PublishSubject<Annotation>()
+    fileprivate let didDetectTappedAnnotations = PublishSubject<Annotation>()
     
     init(parentObject: PointAnnotationManager) {
-            super.init(
-                parentObject: parentObject,
-                delegateProxy: RxAnnotationManagerDelegateProxy.self
-            )
-        }
+        super.init(parentObject: parentObject,
+                   delegateProxy: RxAnnotationManagerDelegateProxy.self)
+    }
     
     public static func registerKnownImplementations() {
-            self.register { RxAnnotationManagerDelegateProxy(parentObject: $0) }
-        }
+        self.register { RxAnnotationManagerDelegateProxy(parentObject: $0) }
+    }
     
 }
 
 extension Reactive where Base: PointAnnotationManager {
-    var delegate: RxAnnotationManagerDelegateProxy {
+    fileprivate var delegate: RxAnnotationManagerDelegateProxy {
         return RxAnnotationManagerDelegateProxy.proxy(for: base)
     }
     var didDetectTappedAnnotations: ControlEvent<Annotation> {
         return ControlEvent(events: delegate.didDetectTappedAnnotations)
     }
 }
-
-

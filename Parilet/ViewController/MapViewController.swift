@@ -12,16 +12,17 @@ import RxCocoa
 
 final class MapViewController: UIViewController {
     
-    private var mapView: MapViewProtocol!
-    private var viewModel = MapViewModel()
+    private var mapView: MapViewType!
+    private var viewModel: MapViewModel!
     private let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setUpMapView()
-        bindViewModelOutputs()
+        setUpViewModel()
         bindViewModelInputs()
+        bindViewModelOutputs()
     }
 
     private func setUpMapView() {
@@ -29,14 +30,26 @@ final class MapViewController: UIViewController {
         view.addSubview(mapView)
     }
     
+    private func setUpViewModel() {
+        viewModel = MapViewModel(location: mapView.location)
+    }
+    
+    private func bindViewModelInputs() {
+        mapView.didDetectTappedAnnotations
+            .subscribe(onNext: {
+                self.viewModel.input.annotationPickedByUser.accept($0)
+            })
+            .disposed(by: disposeBag)
+    }
+    
     private func bindViewModelOutputs() {
         viewModel.output.mapAnnotations
             .drive(mapView.bindableAnnotations)
             .disposed(by: disposeBag)
-    }
-    
-    private func bindViewModelInputs() {
         
+        viewModel.output.route
+            .drive()
+            .disposed(by: disposeBag)
     }
-    
+
 }

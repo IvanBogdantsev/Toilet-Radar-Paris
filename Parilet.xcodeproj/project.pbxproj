@@ -12,17 +12,19 @@
 		4E1C3071292BB6FD00F5859D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1C3070292BB6FD00F5859D /* RxCocoa */; };
 		4E1C3073292BB6FD00F5859D /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1C3072292BB6FD00F5859D /* RxRelay */; };
 		4E1C3075292BB6FD00F5859D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1C3074292BB6FD00F5859D /* RxSwift */; };
+		4E2977A52958A79F00FC7965 /* MapboxDirections in Frameworks */ = {isa = PBXBuildFile; productRef = 4E2977A42958A79F00FC7965 /* MapboxDirections */; };
 		4E3D346B295612360083BF05 /* MapBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D346A295612360083BF05 /* MapBox.swift */; };
 		4E3D346D2956125D0083BF05 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D346C2956125D0083BF05 /* Network.swift */; };
 		4E4546FB292D730A0068070A /* SanisetteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4546FA292D730A0068070A /* SanisetteData.swift */; };
 		4E4896EA292D464000E1C6AE /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4E4896E9292D464000E1C6AE /* Alamofire */; };
 		4E5FA03F292F836500FDEFC7 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FA03E292F836500FDEFC7 /* MapViewModel.swift */; };
-		4E78498E29310E3500AD17B8 /* RxAnnotationManagerDelegateProxy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78498D29310E3500AD17B8 /* RxAnnotationManagerDelegateProxy.swift */; };
+		4E78498E29310E3500AD17B8 /* RxAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78498D29310E3500AD17B8 /* RxAnnotationManager.swift */; };
 		4E8DC018292B9648009A7B25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8DC017292B9648009A7B25 /* AppDelegate.swift */; };
 		4E8DC01A292B9648009A7B25 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8DC019292B9648009A7B25 /* SceneDelegate.swift */; };
 		4E8DC01C292B9648009A7B25 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8DC01B292B9648009A7B25 /* MapViewController.swift */; };
 		4E8DC021292B9648009A7B25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E8DC020292B9648009A7B25 /* Assets.xcassets */; };
 		4E8DC024292B9648009A7B25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E8DC022292B9648009A7B25 /* LaunchScreen.storyboard */; };
+		4EA60376295E2ECF00E1499F /* RxLocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA60375295E2ECF00E1499F /* RxLocationProvider.swift */; };
 		4EB27E0B292BBA7500A9938C /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB27E0A292BBA7500A9938C /* MapboxMaps */; };
 		4EC130532938DB7000CF4110 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC130522938DB7000CF4110 /* Map.swift */; };
 		4ECD49872933B3510027D763 /* PointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD49862933B3510027D763 /* PointAnnotation.swift */; };
@@ -36,14 +38,15 @@
 		4E3D346C2956125D0083BF05 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		4E4546FA292D730A0068070A /* SanisetteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanisetteData.swift; sourceTree = "<group>"; };
 		4E5FA03E292F836500FDEFC7 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
-		4E78498D29310E3500AD17B8 /* RxAnnotationManagerDelegateProxy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxAnnotationManagerDelegateProxy.swift; sourceTree = "<group>"; };
+		4E78498D29310E3500AD17B8 /* RxAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxAnnotationManager.swift; sourceTree = "<group>"; };
 		4E8DC014292B9648009A7B25 /* Parilet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parilet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E8DC017292B9648009A7B25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E8DC019292B9648009A7B25 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4E8DC01B292B9648009A7B25 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4E8DC020292B9648009A7B25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4E8DC023292B9648009A7B25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		4E8DC025292B9648009A7B25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = Parilet/SupportingFiles/Info.plist; sourceTree = SOURCE_ROOT; };
+		4E8DC025292B9648009A7B25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = Parilet/SupportingFiles/Info.plist; sourceTree = SOURCE_ROOT; };
+		4EA60375295E2ECF00E1499F /* RxLocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxLocationProvider.swift; sourceTree = "<group>"; };
 		4EC130522938DB7000CF4110 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		4ECD49862933B3510027D763 /* PointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointAnnotation.swift; sourceTree = "<group>"; };
 		4ECD49882933C7190027D763 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -55,6 +58,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E4896EA292D464000E1C6AE /* Alamofire in Frameworks */,
+				4E2977A52958A79F00FC7965 /* MapboxDirections in Frameworks */,
 				4E1C3075292BB6FD00F5859D /* RxSwift in Frameworks */,
 				4E1C3073292BB6FD00F5859D /* RxRelay in Frameworks */,
 				4EB27E0B292BBA7500A9938C /* MapboxMaps in Frameworks */,
@@ -112,7 +116,8 @@
 		4E78498C29310E2000AD17B8 /* Reactive */ = {
 			isa = PBXGroup;
 			children = (
-				4E78498D29310E3500AD17B8 /* RxAnnotationManagerDelegateProxy.swift */,
+				4EA60374295E2EBA00E1499F /* Location */,
+				4EA60373295E2E9B00E1499F /* Annotations */,
 			);
 			path = Reactive;
 			sourceTree = "<group>";
@@ -183,6 +188,22 @@
 			path = ViewModel;
 			sourceTree = "<group>";
 		};
+		4EA60373295E2E9B00E1499F /* Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				4E78498D29310E3500AD17B8 /* RxAnnotationManager.swift */,
+			);
+			path = Annotations;
+			sourceTree = "<group>";
+		};
+		4EA60374295E2EBA00E1499F /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				4EA60375295E2ECF00E1499F /* RxLocationProvider.swift */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
 		4ED76F112930A1F200B0F1CA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +235,7 @@
 				4E1C3074292BB6FD00F5859D /* RxSwift */,
 				4EB27E0A292BBA7500A9938C /* MapboxMaps */,
 				4E4896E9292D464000E1C6AE /* Alamofire */,
+				4E2977A42958A79F00FC7965 /* MapboxDirections */,
 			);
 			productName = Parilet;
 			productReference = 4E8DC014292B9648009A7B25 /* Parilet.app */;
@@ -247,6 +269,7 @@
 				4E1C306F292BB6FD00F5859D /* XCRemoteSwiftPackageReference "RxSwift" */,
 				4EB27E09292BBA7500A9938C /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
 				4E4896E8292D464000E1C6AE /* XCRemoteSwiftPackageReference "Alamofire" */,
+				4E2977A32958A79F00FC7965 /* XCRemoteSwiftPackageReference "mapbox-directions-swift" */,
 			);
 			productRefGroup = 4E8DC015292B9648009A7B25 /* Products */;
 			projectDirPath = "";
@@ -278,7 +301,7 @@
 				4ECD49892933C7190027D763 /* UIImage.swift in Sources */,
 				4E1AC6FA292ECE7400872C5C /* APIClient.swift in Sources */,
 				4E3D346B295612360083BF05 /* MapBox.swift in Sources */,
-				4E78498E29310E3500AD17B8 /* RxAnnotationManagerDelegateProxy.swift in Sources */,
+				4E78498E29310E3500AD17B8 /* RxAnnotationManager.swift in Sources */,
 				4E4546FB292D730A0068070A /* SanisetteData.swift in Sources */,
 				4E1AC6F8292ECA9B00872C5C /* APIRequest.swift in Sources */,
 				4E8DC018292B9648009A7B25 /* AppDelegate.swift in Sources */,
@@ -287,6 +310,7 @@
 				4EC130532938DB7000CF4110 /* Map.swift in Sources */,
 				4E3D346D2956125D0083BF05 /* Network.swift in Sources */,
 				4ECD49872933B3510027D763 /* PointAnnotation.swift in Sources */,
+				4EA60376295E2ECF00E1499F /* RxLocationProvider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,10 +452,12 @@
 				DEVELOPMENT_TEAM = 5ZYV4X786K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Parilet/SupportingFiles/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -455,10 +481,12 @@
 				DEVELOPMENT_TEAM = 5ZYV4X786K;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Parilet/SupportingFiles/Info.plist;
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -504,6 +532,14 @@
 				kind = branch;
 			};
 		};
+		4E2977A32958A79F00FC7965 /* XCRemoteSwiftPackageReference "mapbox-directions-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mapbox/mapbox-directions-swift.git";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		4E4896E8292D464000E1C6AE /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -537,6 +573,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E1C306F292BB6FD00F5859D /* XCRemoteSwiftPackageReference "RxSwift" */;
 			productName = RxSwift;
+		};
+		4E2977A42958A79F00FC7965 /* MapboxDirections */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E2977A32958A79F00FC7965 /* XCRemoteSwiftPackageReference "mapbox-directions-swift" */;
+			productName = MapboxDirections;
 		};
 		4E4896E9292D464000E1C6AE /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

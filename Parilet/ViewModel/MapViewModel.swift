@@ -23,78 +23,41 @@ protocol MapViewModelType {
 final class MapViewModel: MapViewModelType {
     
     struct Input {
-        //...
+        let annotationPickedByUser: PublishRelay<Annotation>
     }
-    
+
     struct Output {
         let mapAnnotations: Driver<Annotations>
+        let route: Driver<()>
     }
     
-    private let sanisetteApiClient = APIClient<SanisetteData>()
     let input: Input
     let output: Output
     
-    init() {
-        //...input init
+    private let annotationPickedByUser = PublishRelay<Annotation>()
+        
+    private let sanisetteApiClient = APIClient<SanisetteData>()
+    private let locationManager: LocationManager
+    private let rxLocationProviderDelegate = RxLocationProviderDelegate()
+    
+    init(location: LocationManager) {
+        locationManager = location
+        locationManager.locationProvider.setDelegate(rxLocationProviderDelegate)
+        
         let mapAnnotations = sanisetteApiClient.getData()
             .map { data in
                 data.records.map { PointAnnotation(withRecord: $0) }
             }
             .asDriver(onErrorJustReturn: [])
         
-        input = Input()
-        output = Output(mapAnnotations: mapAnnotations)
+        let route = annotationPickedByUser
+            .withLatestFrom(rxLocationProviderDelegate.latestLocation) { pickedAnnotation, latestLocation in
+                print(pickedAnnotation, latestLocation)
+            }
+            .asDriver(onErrorJustReturn: ())
+        
+        input = Input(annotationPickedByUser: annotationPickedByUser)
+        output = Output(mapAnnotations: mapAnnotations, route: route)
     }
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-private extension MapViewModel {
-    func convertIntoAnnotations(from records: Records) -> Annotations {
-        records.map { PointAnnotation(withRecord: $0) }
-    }
-}
-
-
-/*
- private let apiClient = APIClient<SanisetteData>()
- private let annotations = BehaviorRelay<Annotations>(value: [])
- private let disposeBag = DisposeBag()
- 
- var pointAnnotations: Driver<Annotations> {
-     return annotations
-         .asDriver(onErrorJustReturn: [])
-         .skip(1)
- }
-
- func viewDidLoad() {
-     apiClient.getData()
-         .map { data in
-             self.convertIntoAnnotations(from: data.records)
-         }
-         .subscribe( onSuccess: { annotations in
-             self.annotations.accept(annotations)
-         },
-         onFailure: { error in
-             print(error)
-         })
-         .disposed(by: disposeBag)
- }
- */
