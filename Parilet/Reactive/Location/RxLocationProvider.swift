@@ -9,6 +9,7 @@ import MapboxMaps
 import RxSwift
 import RxCocoa
 
+/// dead class
 final class RxLocationProviderDelegate: LocationProviderDelegate {
     
     let latestLocation = PublishRelay<CLLocationCoordinate2D>()
@@ -16,7 +17,7 @@ final class RxLocationProviderDelegate: LocationProviderDelegate {
     func locationProvider(_ provider: MapboxMaps.LocationProvider, didUpdateLocations locations: [CLLocation]) {
         latestLocation.accept(locations[0].coordinate)
     }
-    /// unused:
+    
     func locationProvider(_ provider: MapboxMaps.LocationProvider, didUpdateHeading newHeading: CLHeading) {}
     
     func locationProvider(_ provider: MapboxMaps.LocationProvider, didFailWithError error: Error) {}

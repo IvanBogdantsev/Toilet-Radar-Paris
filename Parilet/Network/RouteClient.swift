@@ -9,16 +9,16 @@ import MapboxDirections
 import MapboxMaps
 import RxSwift
 
-fileprivate typealias RxObservable = RxSwift.Observable /// Resolves conflict between 'RxSwift.Observable' and 'Mapbox.Observable'
-
 final class RouteClient {
+    
+    /// Resolves conflict between 'RxSwift.Observable' and 'Mapbox.Observable'
+    typealias RxObservable = RxSwift.Observable
     
     private var routeOptions: RouteOptions!
     
-    func getRoute(origin: LocationCoordinate2D, destination: LocationCoordinate2D) -> Single<RouteResponse> {
+    func getRoute(origin: LocationCoordinate2D, destination: LocationCoordinate2D) -> RxObservable<RouteResponse> {
         routeOptions = RouteOptions(coordinates: [origin, destination], profileIdentifier: .walking)
         return calculateRoute(with: routeOptions)
-            .asSingle()
     }
     
     private func calculateRoute(with options: RouteOptions) -> RxObservable<RouteResponse> {

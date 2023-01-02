@@ -35,11 +35,10 @@ final class Map: MapView, MapViewType {
                                           cameraOptions: MapBoxConstants.cameraOptions)
         super.init(frame: frame, mapInitOptions: initOptions)
         self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        /// configuring a 2-dimensional puck with heading indicator
+        // configuring a 2-dimensional puck with heading indicator
         let conf = Puck2DConfiguration.makeDefault(showBearing: true)
         location.options.puckType = .puck2D(conf)
-        location.options.puckBearingSource = .heading
-        location.options.activityType = .fitness /// implies walking activities
+        location.options.activityType = .fitness // implies walking activities
     }
     
     @available(iOSApplicationExtension, unavailable) required init?(coder: NSCoder) {

@@ -48,7 +48,9 @@ final class MapViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.output.route
-            .drive()
+            .drive {
+                print($0)
+            }
             .disposed(by: disposeBag)
     }
 
