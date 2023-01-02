@@ -7,7 +7,6 @@
 
 import Alamofire
 import RxSwift
-import Foundation
 
 protocol APIClientProtocol {
     associatedtype RequestedType
@@ -17,7 +16,7 @@ protocol APIClientProtocol {
 final class APIClient<RequestedType: Codable>: APIClientProtocol {
 
     func getData() -> Single<RequestedType> {
-        return request(APIRequest.getData)
+        request(APIRequest.getData)
             .asSingle()
     }
 

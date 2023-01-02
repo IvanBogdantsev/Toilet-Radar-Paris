@@ -1,0 +1,41 @@
+//
+//  RouteClient.swift
+//  Parilet
+//
+//  Created by Vanya Bogdantsev on 02.01.2023.
+//
+
+import MapboxDirections
+import MapboxMaps
+import RxSwift
+
+fileprivate typealias RxObservable = RxSwift.Observable /// Resolves conflict between 'RxSwift.Observable' and 'Mapbox.Observable'
+
+final class RouteClient {
+    
+    private var routeOptions: RouteOptions!
+    
+    func getRoute(origin: LocationCoordinate2D, destination: LocationCoordinate2D) -> Single<RouteResponse> {
+        routeOptions = RouteOptions(coordinates: [origin, destination], profileIdentifier: .walking)
+        return calculateRoute(with: routeOptions)
+            .asSingle()
+    }
+    
+    private func calculateRoute(with options: RouteOptions) -> RxObservable<RouteResponse> {
+        return RxObservable<RouteResponse>.create { observer in
+            let task = Directions.shared.calculate(options) { _, result in
+                switch result {
+                case .success(let response):
+                    observer.onNext(response)
+                    observer.onCompleted()
+                case .failure(let error):
+                    observer.onError(error)
+                }
+            }
+            return Disposables.create {
+                task.cancel()
+            }
+        }
+    }
+    
+}

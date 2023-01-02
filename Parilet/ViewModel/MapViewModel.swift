@@ -5,9 +5,9 @@
 //  Created by Vanya Bogdantsev on 24.11.2022.
 //
 
+import MapboxMaps
 import RxSwift
 import RxCocoa
-import MapboxMaps
 
 protocol MapViewModelType {
     associatedtype Input
@@ -25,7 +25,7 @@ final class MapViewModel: MapViewModelType {
     struct Input {
         let annotationPickedByUser: PublishRelay<Annotation>
     }
-
+    
     struct Output {
         let mapAnnotations: Driver<Annotations>
         let route: Driver<()>
@@ -35,8 +35,9 @@ final class MapViewModel: MapViewModelType {
     let output: Output
     
     private let annotationPickedByUser = PublishRelay<Annotation>()
-        
+    
     private let sanisetteApiClient = APIClient<SanisetteData>()
+    private let routeClient = RouteClient()
     private let locationManager: LocationManager
     private let rxLocationProviderDelegate = RxLocationProviderDelegate()
     
@@ -59,5 +60,5 @@ final class MapViewModel: MapViewModelType {
         input = Input(annotationPickedByUser: annotationPickedByUser)
         output = Output(mapAnnotations: mapAnnotations, route: route)
     }
-
+    
 }

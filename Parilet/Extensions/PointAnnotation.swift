@@ -23,3 +23,9 @@ extension PointAnnotation {
         self.iconImage = MapBoxConstants.imageName
     }
 }
+
+extension PointAnnotation {
+    var coordinates: LocationCoordinate2D {
+        point.coordinates
+    }
+}

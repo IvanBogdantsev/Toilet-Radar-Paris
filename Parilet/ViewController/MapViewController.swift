@@ -5,10 +5,10 @@
 //  Created by Vanya Bogdantsev on 21.11.2022.
 //
 
-import UIKit
 import MapboxMaps
 import RxSwift
 import RxCocoa
+import UIKit
 
 final class MapViewController: UIViewController {
     
