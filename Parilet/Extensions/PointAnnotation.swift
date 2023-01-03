@@ -9,11 +9,11 @@ import MapboxMaps
 
 extension PointAnnotation {
     init(withRecord record: Record) {
-        let lat = record.fields.geoPoint2D.first ?? Double()
-        let lon = record.fields.geoPoint2D.last ?? Double()
+        let latitude = record.fields.geoPoint2D.first ?? Double()
+        let longitude = record.fields.geoPoint2D.last ?? Double()
         self.init(id: record.recordid ?? "",
-                  coordinate: CLLocationCoordinate2D(latitude: lat,
-                                                     longitude: lon))
+                  coordinate: CLLocationCoordinate2D(latitude: latitude,
+                                                     longitude: longitude))
         self.userInfo = [UserInfo.accesPmr.rawValue : record.fields.accesPmr ?? "??",
                          UserInfo.horaire.rawValue : record.fields.horaire ?? "??",
                          UserInfo.arrondissement.rawValue : record.fields.arrondissement ?? "??",
@@ -25,7 +25,7 @@ extension PointAnnotation {
 }
 
 extension PointAnnotation {
-    var coordinates: LocationCoordinate2D {
+    var coordinate: LocationCoordinate2D {
         point.coordinates
     }
 }

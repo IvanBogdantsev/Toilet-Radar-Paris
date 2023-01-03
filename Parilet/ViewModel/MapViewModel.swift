@@ -51,8 +51,8 @@ final class MapViewModel: MapViewModelType {
             .asDriver(onErrorJustReturn: [])
         
         let route = annotationPickedByUser
-            .flatMap {
-                self.routeClient.getRoute(origin: ($0 as! PointAnnotation).coordinates,
+            .flatMap { annotationPickedByUser in
+                self.routeClient.getRoute(origin: (annotationPickedByUser as! PointAnnotation).coordinate,
                                           destination: self.locationManager.latestLocation!.coordinate)
             }
             .asDriver(onErrorDriveWith: .never())

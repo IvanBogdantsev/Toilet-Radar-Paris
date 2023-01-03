@@ -11,7 +11,7 @@ import RxSwift
 
 final class RouteClient {
     
-    /// Resolves conflict between 'RxSwift.Observable' and 'Mapbox.Observable'
+    /// Regular RxSwift Observable. Resolves conflict between 'RxSwift.Observable' and 'Mapbox.Observable'
     typealias RxObservable = RxSwift.Observable
     
     private var routeOptions: RouteOptions!

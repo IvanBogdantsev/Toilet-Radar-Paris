@@ -36,8 +36,8 @@ final class MapViewController: UIViewController {
     
     private func bindViewModelInputs() {
         mapView.didDetectTappedAnnotations
-            .subscribe(onNext: {
-                self.viewModel.input.annotationPickedByUser.accept($0)
+            .subscribe(onNext: { annotationPickedByUser in
+                self.viewModel.input.annotationPickedByUser.accept(annotationPickedByUser)
             })
             .disposed(by: disposeBag)
     }
