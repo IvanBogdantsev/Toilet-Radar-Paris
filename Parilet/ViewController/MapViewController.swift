@@ -15,7 +15,7 @@ final class MapViewController: UIViewController {
     private var mapView: MapViewType!
     private var viewModel: MapViewModel!
     private let disposeBag = DisposeBag()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,7 +24,7 @@ final class MapViewController: UIViewController {
         bindViewModelInputs()
         bindViewModelOutputs()
     }
-
+    
     private func setUpMapView() {
         mapView = Map(frame: view.bounds)
         view.addSubview(mapView)
@@ -35,7 +35,7 @@ final class MapViewController: UIViewController {
     }
     
     private func bindViewModelInputs() {
-        mapView.didDetectTappedAnnotations
+        mapView.didDetectTappedAnnotation
             .subscribe(onNext: { annotationPickedByUser in
                 self.viewModel.input.annotationPickedByUser.accept(annotationPickedByUser)
             })
@@ -44,14 +44,12 @@ final class MapViewController: UIViewController {
     
     private func bindViewModelOutputs() {
         viewModel.output.mapAnnotations
-            .drive(mapView.bindableAnnotations)
+            .drive(mapView.bindablePointAnnotations)
             .disposed(by: disposeBag)
         
         viewModel.output.route
-            .drive {
-                print($0)
-            }
+            .drive(mapView.bindablePolylineAnnotations)
             .disposed(by: disposeBag)
     }
-
+    
 }

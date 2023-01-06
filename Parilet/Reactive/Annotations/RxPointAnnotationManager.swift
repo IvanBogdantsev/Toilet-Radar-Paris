@@ -18,10 +18,11 @@ extension PointAnnotationManager: HasDelegate {
 final class RxAnnotationManagerDelegateProxy: DelegateProxy<PointAnnotationManager, AnnotationInteractionDelegate>, DelegateProxyType, AnnotationInteractionDelegate {
     
     internal func annotationManager(_ manager: MapboxMaps.AnnotationManager, didDetectTappedAnnotations annotations: [MapboxMaps.Annotation]) {
-        didDetectTappedAnnotations.onNext(annotations[0])
+        guard let pointAnnotation = annotations.first as? PointAnnotation else { return }
+        didDetectTappedAnnotations.onNext(pointAnnotation)
     }
     
-    fileprivate let didDetectTappedAnnotations = PublishSubject<Annotation>()
+    fileprivate let didDetectTappedAnnotations = PublishSubject<PointAnnotation>()
     
     init(parentObject: PointAnnotationManager) {
         super.init(parentObject: parentObject,
@@ -38,7 +39,7 @@ extension Reactive where Base: PointAnnotationManager {
     fileprivate var delegate: RxAnnotationManagerDelegateProxy {
         return RxAnnotationManagerDelegateProxy.proxy(for: base)
     }
-    var didDetectTappedAnnotations: ControlEvent<Annotation> {
+    var didDetectTappedAnnotation: ControlEvent<PointAnnotation> {
         return ControlEvent(events: delegate.didDetectTappedAnnotations)
     }
 }

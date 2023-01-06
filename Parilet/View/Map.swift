@@ -10,24 +10,34 @@ import RxSwift
 import RxCocoa
 
 protocol MapViewType: MapView {// изменить на UIView по завершению настройки
-    typealias Annotations = [PointAnnotation]
+    typealias PointAnnotations = [PointAnnotation]
+    typealias PolylineAnnotations = [PolylineAnnotation]
 
-    var bindableAnnotations: Binder<Annotations> { get }
-    var didDetectTappedAnnotations: ControlEvent<Annotation> { get }
+    var bindablePointAnnotations: Binder<PointAnnotations> { get }
+    var bindablePolylineAnnotations: Binder<PolylineAnnotations> { get }
+    var didDetectTappedAnnotation: ControlEvent<PointAnnotation> { get }
 }
 
 final class Map: MapView, MapViewType {
         
-    private lazy var annotationManager: PointAnnotationManager = {
+    private lazy var pointAnnotationManager: PointAnnotationManager = {
         annotations.makePointAnnotationManager()
     }()
     
-    var bindableAnnotations: Binder<Annotations> {
-        annotationManager.rx.annotations
+    private lazy var polylineAnnotationManager: PolylineAnnotationManager = {
+        annotations.makePolylineAnnotationManager()
+    }()
+    
+    var bindablePointAnnotations: Binder<PointAnnotations> {
+        pointAnnotationManager.rx.annotations
     }
     
-    var didDetectTappedAnnotations: ControlEvent<Annotation> {
-        annotationManager.rx.didDetectTappedAnnotations
+    var bindablePolylineAnnotations: Binder<PolylineAnnotations> {
+        polylineAnnotationManager.rx.annotations
+    }
+    
+    var didDetectTappedAnnotation: ControlEvent<PointAnnotation> {
+        pointAnnotationManager.rx.didDetectTappedAnnotation
     }
     
     init(frame: CGRect) {
@@ -36,8 +46,8 @@ final class Map: MapView, MapViewType {
         super.init(frame: frame, mapInitOptions: initOptions)
         self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         // configuring a 2-dimensional puck with heading indicator
-        let conf = Puck2DConfiguration.makeDefault(showBearing: true)
-        location.options.puckType = .puck2D(conf)
+        let puckConfiguration = Puck2DConfiguration.makeDefault(showBearing: true)
+        location.options.puckType = .puck2D(puckConfiguration)
         location.options.activityType = .fitness // implies walking activities
     }
     

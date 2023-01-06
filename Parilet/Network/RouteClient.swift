@@ -11,13 +11,14 @@ import RxSwift
 
 final class RouteClient {
     
-    /// Regular RxSwift Observable. Resolves conflict between 'RxSwift.Observable' and 'Mapbox.Observable'
+    /// Typealias that resolves conflict between 'RxSwift.Observable' and 'Mapbox.Observable'
     typealias RxObservable = RxSwift.Observable
     
     private var routeOptions: RouteOptions!
     
     func getRoute(origin: LocationCoordinate2D, destination: LocationCoordinate2D) -> RxObservable<RouteResponse> {
         routeOptions = RouteOptions(coordinates: [origin, destination], profileIdentifier: .walking)
+        routeOptions.routeShapeResolution = .full
         return calculateRoute(with: routeOptions)
     }
     

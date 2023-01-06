@@ -17,25 +17,26 @@ protocol MapViewModelType {
     var input: Input! { get }
     var output: Output! { get }
     
-    typealias Annotations = [PointAnnotation]
+    typealias PointAnnotations = [PointAnnotation]
+    typealias PolylineAnnotations = [PolylineAnnotation]
     typealias Records = [Record]
 }
 
 final class MapViewModel: MapViewModelType {
     
     struct Input {
-        let annotationPickedByUser: PublishRelay<Annotation>
+        let annotationPickedByUser: PublishRelay<PointAnnotation>
     }
     
     struct Output {
-        let mapAnnotations: Driver<Annotations>
-        let route: Driver<RouteResponse>
+        let mapAnnotations: Driver<PointAnnotations>
+        let route: Driver<PolylineAnnotations>
     }
     
     var input: Input!
     var output: Output!
     
-    private let annotationPickedByUser = PublishRelay<Annotation>()
+    private let annotationPickedByUser = PublishRelay<PointAnnotation>()
     
     private let sanisetteApiClient = APIClient<SanisetteData>()
     private let routeClient = RouteClient()
@@ -51,11 +52,14 @@ final class MapViewModel: MapViewModelType {
             .asDriver(onErrorJustReturn: [])
         
         let route = annotationPickedByUser
+            .distinctUntilChanged {$0.id == $1.id}
             .flatMap { annotationPickedByUser in
-                self.routeClient.getRoute(origin: (annotationPickedByUser as! PointAnnotation).coordinate,
-                                          destination: self.locationManager.latestLocation!.coordinate)
+                self.routeClient.getRoute(origin: annotationPickedByUser.coordinate, destination: self.locationManager.latestLocation!.coordinate) // разобраться как обойтись без форс-анврапа
             }
-            .asDriver(onErrorDriveWith: .never())
+            .map { routeResponse in
+                [PolylineAnnotation(with: routeResponse)!] // разобраться как обрабатывать нил с драйвом
+            }
+            .asDriver(onErrorJustReturn: [])
         
         input = Input(annotationPickedByUser: annotationPickedByUser)
         output = Output(mapAnnotations: mapAnnotations, route: route)
