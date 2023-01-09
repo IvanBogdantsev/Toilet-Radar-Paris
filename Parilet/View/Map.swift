@@ -10,12 +10,13 @@ import RxSwift
 import RxCocoa
 
 protocol MapViewType: MapView {// изменить на UIView по завершению настройки
-    typealias PointAnnotations = [PointAnnotation]
-    typealias PolylineAnnotations = [PolylineAnnotation]
-
     var bindablePointAnnotations: Binder<PointAnnotations> { get }
     var bindablePolylineAnnotations: Binder<PolylineAnnotations> { get }
     var didDetectTappedAnnotation: ControlEvent<PointAnnotation> { get }
+    /// an array of PointAnnotations
+    typealias PointAnnotations = [PointAnnotation]
+    /// an array of PolylineAnnotations
+    typealias PolylineAnnotations = [PolylineAnnotation]
 }
 
 final class Map: MapView, MapViewType {
@@ -25,7 +26,9 @@ final class Map: MapView, MapViewType {
     }()
     
     private lazy var polylineAnnotationManager: PolylineAnnotationManager = {
-        annotations.makePolylineAnnotationManager()
+        let polylineAnnotationManager = annotations.makePolylineAnnotationManager()
+        polylineAnnotationManager.lineCap = .round
+        return polylineAnnotationManager
     }()
     
     var bindablePointAnnotations: Binder<PointAnnotations> {

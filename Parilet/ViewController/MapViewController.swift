@@ -50,6 +50,10 @@ final class MapViewController: UIViewController {
         viewModel.output.route
             .drive(mapView.bindablePolylineAnnotations)
             .disposed(by: disposeBag)
+        
+        viewModel.output.error
+            .drive { print($0) }
+            .disposed(by: disposeBag)
     }
     
 }

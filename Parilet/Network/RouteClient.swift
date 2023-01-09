@@ -10,7 +10,6 @@ import MapboxMaps
 import RxSwift
 
 final class RouteClient {
-    
     /// Typealias that resolves conflict between 'RxSwift.Observable' and 'Mapbox.Observable'
     typealias RxObservable = RxSwift.Observable
     

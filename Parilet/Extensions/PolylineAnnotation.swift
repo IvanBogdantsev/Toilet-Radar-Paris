@@ -9,11 +9,14 @@ import MapboxMaps
 import MapboxDirections
 
 extension PolylineAnnotation {
-    init?(with routeResponse: RouteResponse) {
+    /// Creates an instance of PolylineAnnotation.
+    ///  - Parameter routeResponse: Returned by the Mapbox Directions API RouteResponce.
+    ///  - Returns: An instance of PolylineAnnotation, or nil if routeResponse shape property contains nil.
+    init?(withRouteResponse routeResponse: RouteResponse) {
         guard let lineString = routeResponse.routes?.first?.shape else { return nil }
         self.init(lineString: lineString)
-        self.lineColor = StyleColor(UIColor.darkGray) // subject to change
-        self.lineWidth = 5 // subject to change
+        self.lineColor = StyleColor(UIColor.darkGray) 
+        self.lineWidth = 5
         self.lineJoin = .round
     }
 }

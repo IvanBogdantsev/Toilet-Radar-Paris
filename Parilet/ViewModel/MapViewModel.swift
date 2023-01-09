@@ -16,10 +16,10 @@ protocol MapViewModelType {
     
     var input: Input! { get }
     var output: Output! { get }
-    
+    /// an array of PointAnnotations. Used to populate the map with annotations.
     typealias PointAnnotations = [PointAnnotation]
+    /// an array of PolylineAnnotations. Used to construct polyline one the map.
     typealias PolylineAnnotations = [PolylineAnnotation]
-    typealias Records = [Record]
 }
 
 final class MapViewModel: MapViewModelType {
@@ -31,6 +31,7 @@ final class MapViewModel: MapViewModelType {
     struct Output {
         let mapAnnotations: Driver<PointAnnotations>
         let route: Driver<PolylineAnnotations>
+        let error: Driver<String>
     }
     
     var input: Input!
@@ -44,25 +45,36 @@ final class MapViewModel: MapViewModelType {
     
     init(location: LocationManager) {
         locationManager = location
+        let errorRouter = ErrorRouter()
         
         let mapAnnotations = sanisetteApiClient.getData()
             .map { data in
                 data.records.map { PointAnnotation(withRecord: $0) }
             }
-            .asDriver(onErrorJustReturn: [])
+            .asDriver(onErrorDriveWith: .empty())
         
         let route = annotationPickedByUser
-            .distinctUntilChanged {$0.id == $1.id}
+            .distinctUntilChanged { $0.id == $1.id }
             .flatMap { annotationPickedByUser in
-                self.routeClient.getRoute(origin: annotationPickedByUser.coordinate, destination: self.locationManager.latestLocation!.coordinate) // разобраться как обойтись без форс-анврапа
+                self.routeClient.getRoute(origin: annotationPickedByUser.coordinate,
+                                          destination: self.locationManager.latestLocation!.coordinate) 
+                .rerouteError(errorRouter)
+                .map { routeResponse in
+                    PolylineAnnotation(withRouteResponse: routeResponse)
+                }
+                .compactMap { $0 }
+                .map { [$0] }
             }
-            .map { routeResponse in
-                [PolylineAnnotation(with: routeResponse)!] // разобраться как обрабатывать нил с драйвом
+            .asDriver(onErrorDriveWith: .empty())
+        
+        let error = errorRouter.error
+            .map { error in
+                error.localizedDescription
             }
-            .asDriver(onErrorJustReturn: [])
+            .asDriver(onErrorDriveWith: .empty())
         
         input = Input(annotationPickedByUser: annotationPickedByUser)
-        output = Output(mapAnnotations: mapAnnotations, route: route)
+        output = Output(mapAnnotations: mapAnnotations, route: route, error: error)
     }
     
 }

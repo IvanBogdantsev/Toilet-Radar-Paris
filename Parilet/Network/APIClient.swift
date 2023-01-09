@@ -10,14 +10,13 @@ import RxSwift
 
 protocol APIClientProtocol {
     associatedtype RequestedType
-    func getData() -> Single<RequestedType>
+    func getData() -> Observable<RequestedType>
 }
 
 final class APIClient<RequestedType: Codable>: APIClientProtocol {
 
-    func getData() -> Single<RequestedType> {
+    func getData() -> Observable<RequestedType> {
         request(APIRequest.getData)
-            .asSingle()
     }
 
     private func request<T: Codable> (_ apiRequest: URLRequestConvertible) -> Observable<T> {

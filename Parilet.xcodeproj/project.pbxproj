@@ -31,6 +31,7 @@
 		4EC130532938DB7000CF4110 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC130522938DB7000CF4110 /* Map.swift */; };
 		4ECD49872933B3510027D763 /* PointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD49862933B3510027D763 /* PointAnnotation.swift */; };
 		4ECD49892933C7190027D763 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD49882933C7190027D763 /* UIImage.swift */; };
+		4EF3524B296AFCAB004ADB83 /* ErrorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF3524A296AFCAB004ADB83 /* ErrorRouter.swift */; };
 		4EFFCD6B296264C900FD2BCC /* RouteClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFFCD6A296264C900FD2BCC /* RouteClient.swift */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		4EC130522938DB7000CF4110 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		4ECD49862933B3510027D763 /* PointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointAnnotation.swift; sourceTree = "<group>"; };
 		4ECD49882933C7190027D763 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		4EF3524A296AFCAB004ADB83 /* ErrorRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorRouter.swift; sourceTree = "<group>"; };
 		4EFFCD6A296264C900FD2BCC /* RouteClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,13 +122,13 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		4E78498C29310E2000AD17B8 /* Reactive */ = {
+		4E78498C29310E2000AD17B8 /* ReactiveExtensions */ = {
 			isa = PBXGroup;
 			children = (
 				4EA60374295E2EBA00E1499F /* Location */,
 				4EA60373295E2E9B00E1499F /* Annotations */,
 			);
-			path = Reactive;
+			path = ReactiveExtensions;
 			sourceTree = "<group>";
 		};
 		4E8DC00B292B9648009A7B25 = {
@@ -148,7 +150,8 @@
 		4E8DC016292B9648009A7B25 /* Parilet */ = {
 			isa = PBXGroup;
 			children = (
-				4E78498C29310E2000AD17B8 /* Reactive */,
+				4EF35249296AFC96004ADB83 /* ReactiveUtilities */,
+				4E78498C29310E2000AD17B8 /* ReactiveExtensions */,
 				4ED76F112930A1F200B0F1CA /* Extensions */,
 				4E8DC02D292B9695009A7B25 /* Model */,
 				4E8DC02C292B968B009A7B25 /* View */,
@@ -220,6 +223,14 @@
 				4ECD49882933C7190027D763 /* UIImage.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4EF35249296AFC96004ADB83 /* ReactiveUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				4EF3524A296AFCAB004ADB83 /* ErrorRouter.swift */,
+			);
+			path = ReactiveUtilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -313,6 +324,7 @@
 				4E78498E29310E3500AD17B8 /* RxPointAnnotationManager.swift in Sources */,
 				4E4546FB292D730A0068070A /* SanisetteData.swift in Sources */,
 				4E1AC6F8292ECA9B00872C5C /* APIRequest.swift in Sources */,
+				4EF3524B296AFCAB004ADB83 /* ErrorRouter.swift in Sources */,
 				4E8DC018292B9648009A7B25 /* AppDelegate.swift in Sources */,
 				4E9018F7296843B3000893DD /* RxPolylineAnnotationManager.swift in Sources */,
 				4E8DC01A292B9648009A7B25 /* SceneDelegate.swift in Sources */,

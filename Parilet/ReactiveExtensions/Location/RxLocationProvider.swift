@@ -8,6 +8,7 @@
 import MapboxMaps
 import RxSwift
 import RxCocoa
+import CoreLocation
 
 /// dead class
 final class RxLocationProviderDelegate: LocationProviderDelegate {

@@ -6,6 +6,7 @@
 //
 
 import MapboxMaps
+import CoreLocation
 
 struct MapBoxConstants {
     static let accesToken = "pk.eyJ1IjoieXZhbmIiLCJhIjoiY2xhcXl6eTg5MDFrdzQwb3Z6OTAxeG9vcyJ9.f9bFprti9yDDWP1MigBL9Q"
@@ -18,7 +19,7 @@ struct MapBoxConstants {
                                                      longitude: 2.3522),
                                                      zoom: 10)
     }()
-    
+
     init() {
         fatalError("\(String(describing: type(of: self))) cannot be constructed")
     }
