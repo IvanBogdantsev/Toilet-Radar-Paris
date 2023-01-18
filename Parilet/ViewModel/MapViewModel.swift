@@ -29,6 +29,7 @@ final class MapViewModel: MapViewModelType {
     }
     
     struct Output {
+        let customLocationProvider: Single<LocationProvider>
         let mapAnnotations: Driver<PointAnnotations>
         let route: Driver<PolylineAnnotations>
         let error: Driver<String>
@@ -41,13 +42,17 @@ final class MapViewModel: MapViewModelType {
     
     private let sanisetteApiClient = APIClient<SanisetteData>()
     private let routeClient = RouteClient()
-    private let locationManager: LocationManager
+    private let locationProvider: ThisAppLocationProvider!
     
-    init(location: LocationManager) {
-        locationManager = location
+    init() {
+        locationProvider = ThisAppLocationProvider()
         let errorRouter = ErrorRouter()
         
+        let customLocationProvider = locationProvider.observableSelf
+        
         let mapAnnotations = sanisetteApiClient.getData()
+            .rerouteError(errorRouter)
+            .observe(on: ConcurrentDispatchQueueScheduler(qos: .userInteractive))
             .map { data in
                 data.records.map { PointAnnotation(withRecord: $0) }
             }
@@ -55,15 +60,16 @@ final class MapViewModel: MapViewModelType {
         
         let route = annotationPickedByUser
             .distinctUntilChanged { $0.id == $1.id }
-            .flatMap { annotationPickedByUser in
-                self.routeClient.getRoute(origin: annotationPickedByUser.coordinate,
-                                          destination: self.locationManager.latestLocation!.coordinate) 
-                .rerouteError(errorRouter)
-                .map { routeResponse in
-                    PolylineAnnotation(withRouteResponse: routeResponse)
-                }
-                .compactMap { $0 }
-                .map { [$0] }
+            .withLatestFrom(locationProvider.didUpdateLatestLocation) { ($0, $1) }
+            .flatMap { annotation, location in
+                self.routeClient.getRoute(origin: annotation.coordinate, destination: location.coordinate)
+                    .rerouteError(errorRouter)
+                    .observe(on: ConcurrentDispatchQueueScheduler(qos: .userInteractive))
+                    .map { routeResponse in
+                        PolylineAnnotation(withRouteResponse: routeResponse)
+                    }
+                    .compactMap { $0 }
+                    .map { [$0] }
             }
             .asDriver(onErrorDriveWith: .empty())
         
@@ -74,7 +80,10 @@ final class MapViewModel: MapViewModelType {
             .asDriver(onErrorDriveWith: .empty())
         
         input = Input(annotationPickedByUser: annotationPickedByUser)
-        output = Output(mapAnnotations: mapAnnotations, route: route, error: error)
+        output = Output(customLocationProvider: customLocationProvider,
+                        mapAnnotations: mapAnnotations,
+                        route: route,
+                        error: error)
     }
     
 }

@@ -17,6 +17,7 @@
 		4E3D346D2956125D0083BF05 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D346C2956125D0083BF05 /* Network.swift */; };
 		4E4546FB292D730A0068070A /* SanisetteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4546FA292D730A0068070A /* SanisetteData.swift */; };
 		4E4896EA292D464000E1C6AE /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4E4896E9292D464000E1C6AE /* Alamofire */; };
+		4E5AE96D2972BAE7006488FF /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5AE96C2972BAE7006488FF /* LocationProvider.swift */; };
 		4E5FA03F292F836500FDEFC7 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FA03E292F836500FDEFC7 /* MapViewModel.swift */; };
 		4E78498E29310E3500AD17B8 /* RxPointAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78498D29310E3500AD17B8 /* RxPointAnnotationManager.swift */; };
 		4E8DC018292B9648009A7B25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8DC017292B9648009A7B25 /* AppDelegate.swift */; };
@@ -26,7 +27,6 @@
 		4E8DC024292B9648009A7B25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E8DC022292B9648009A7B25 /* LaunchScreen.storyboard */; };
 		4E9018F529683C73000893DD /* PolylineAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9018F429683C73000893DD /* PolylineAnnotation.swift */; };
 		4E9018F7296843B3000893DD /* RxPolylineAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9018F6296843B3000893DD /* RxPolylineAnnotationManager.swift */; };
-		4EA60376295E2ECF00E1499F /* RxLocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA60375295E2ECF00E1499F /* RxLocationProvider.swift */; };
 		4EB27E0B292BBA7500A9938C /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB27E0A292BBA7500A9938C /* MapboxMaps */; };
 		4EC130532938DB7000CF4110 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC130522938DB7000CF4110 /* Map.swift */; };
 		4ECD49872933B3510027D763 /* PointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD49862933B3510027D763 /* PointAnnotation.swift */; };
@@ -41,6 +41,7 @@
 		4E3D346A295612360083BF05 /* Mapbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapbox.swift; sourceTree = "<group>"; };
 		4E3D346C2956125D0083BF05 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		4E4546FA292D730A0068070A /* SanisetteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanisetteData.swift; sourceTree = "<group>"; };
+		4E5AE96C2972BAE7006488FF /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 		4E5FA03E292F836500FDEFC7 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		4E78498D29310E3500AD17B8 /* RxPointAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxPointAnnotationManager.swift; sourceTree = "<group>"; };
 		4E8DC014292B9648009A7B25 /* Parilet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parilet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,7 +53,6 @@
 		4E8DC025292B9648009A7B25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = Parilet/SupportingFiles/Info.plist; sourceTree = SOURCE_ROOT; };
 		4E9018F429683C73000893DD /* PolylineAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolylineAnnotation.swift; sourceTree = "<group>"; };
 		4E9018F6296843B3000893DD /* RxPolylineAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxPolylineAnnotationManager.swift; sourceTree = "<group>"; };
-		4EA60375295E2ECF00E1499F /* RxLocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxLocationProvider.swift; sourceTree = "<group>"; };
 		4EC130522938DB7000CF4110 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		4ECD49862933B3510027D763 /* PointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointAnnotation.swift; sourceTree = "<group>"; };
 		4ECD49882933C7190027D763 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
@@ -122,10 +122,17 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
+		4E5AE96B2972BAB6006488FF /* LocationProvider */ = {
+			isa = PBXGroup;
+			children = (
+				4E5AE96C2972BAE7006488FF /* LocationProvider.swift */,
+			);
+			path = LocationProvider;
+			sourceTree = "<group>";
+		};
 		4E78498C29310E2000AD17B8 /* ReactiveExtensions */ = {
 			isa = PBXGroup;
 			children = (
-				4EA60374295E2EBA00E1499F /* Location */,
 				4EA60373295E2E9B00E1499F /* Annotations */,
 			);
 			path = ReactiveExtensions;
@@ -150,6 +157,7 @@
 		4E8DC016292B9648009A7B25 /* Parilet */ = {
 			isa = PBXGroup;
 			children = (
+				4E5AE96B2972BAB6006488FF /* LocationProvider */,
 				4EF35249296AFC96004ADB83 /* ReactiveUtilities */,
 				4E78498C29310E2000AD17B8 /* ReactiveExtensions */,
 				4ED76F112930A1F200B0F1CA /* Extensions */,
@@ -205,14 +213,6 @@
 				4E9018F6296843B3000893DD /* RxPolylineAnnotationManager.swift */,
 			);
 			path = Annotations;
-			sourceTree = "<group>";
-		};
-		4EA60374295E2EBA00E1499F /* Location */ = {
-			isa = PBXGroup;
-			children = (
-				4EA60375295E2ECF00E1499F /* RxLocationProvider.swift */,
-			);
-			path = Location;
 			sourceTree = "<group>";
 		};
 		4ED76F112930A1F200B0F1CA /* Extensions */ = {
@@ -319,6 +319,7 @@
 			files = (
 				4E8DC01C292B9648009A7B25 /* MapViewController.swift in Sources */,
 				4ECD49892933C7190027D763 /* UIImage.swift in Sources */,
+				4E5AE96D2972BAE7006488FF /* LocationProvider.swift in Sources */,
 				4E1AC6FA292ECE7400872C5C /* APIClient.swift in Sources */,
 				4E3D346B295612360083BF05 /* Mapbox.swift in Sources */,
 				4E78498E29310E3500AD17B8 /* RxPointAnnotationManager.swift in Sources */,
@@ -333,7 +334,6 @@
 				4EC130532938DB7000CF4110 /* Map.swift in Sources */,
 				4E3D346D2956125D0083BF05 /* Network.swift in Sources */,
 				4ECD49872933B3510027D763 /* PointAnnotation.swift in Sources */,
-				4EA60376295E2ECF00E1499F /* RxLocationProvider.swift in Sources */,
 				4EFFCD6B296264C900FD2BCC /* RouteClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -480,7 +480,8 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -509,7 +510,8 @@
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

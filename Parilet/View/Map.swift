@@ -13,6 +13,7 @@ protocol MapViewType: MapView {// изменить на UIView по заверш
     var bindablePointAnnotations: Binder<PointAnnotations> { get }
     var bindablePolylineAnnotations: Binder<PolylineAnnotations> { get }
     var didDetectTappedAnnotation: ControlEvent<PointAnnotation> { get }
+    func overrideLocationProvider(withCustomLocationProvider provider: LocationProvider)
     /// an array of PointAnnotations
     typealias PointAnnotations = [PointAnnotation]
     /// an array of PolylineAnnotations
@@ -41,6 +42,10 @@ final class Map: MapView, MapViewType {
     
     var didDetectTappedAnnotation: ControlEvent<PointAnnotation> {
         pointAnnotationManager.rx.didDetectTappedAnnotation
+    }
+    
+    func overrideLocationProvider(withCustomLocationProvider provider: LocationProvider) {
+        location.overrideLocationProvider(with: provider)
     }
     
     init(frame: CGRect) {
