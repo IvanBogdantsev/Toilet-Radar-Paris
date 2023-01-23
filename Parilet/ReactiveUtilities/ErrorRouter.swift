@@ -5,7 +5,7 @@
 // Created by Daniel Tartgaglia on 19 Dec 2020.
 // Copyright © 2023 Daniel Tartaglia. MIT License.
 //
-// Credit: https://github.com/danielt1263
+// Credit https://github.com/danielt1263
 
 import Foundation
 import RxSwift

@@ -56,7 +56,6 @@ final class Map: MapView, MapViewType {
         // configuring a 2-dimensional puck with heading indicator
         let puckConfiguration = Puck2DConfiguration.makeDefault(showBearing: true)
         location.options.puckType = .puck2D(puckConfiguration)
-        location.options.activityType = .fitness // implies walking activities
     }
     
     @available(iOSApplicationExtension, unavailable) required init?(coder: NSCoder) {

@@ -9,9 +9,14 @@ import MapboxMaps
 import CoreLocation
 import RxSwift
 
-final class ThisAppLocationProvider: NSObject {
+protocol LocationProviderType: LocationProvider {
+    var observableSelf: Single<LocationProvider> { get }
+    var didUpdateLatestLocation: PublishSubject<CLLocation> { get }
     /// Typealias that resolves conflict between 'RxSwift.Observable' and 'Mapbox.Observable'
     typealias RxObservable = RxSwift.Observable
+}
+
+final class ThisAppLocationProvider: NSObject, LocationProviderType {
     
     private var locationProvider: CLLocationManager
     
@@ -50,7 +55,7 @@ final class ThisAppLocationProvider: NSObject {
     
 }
 
-extension ThisAppLocationProvider: LocationProvider {
+extension ThisAppLocationProvider {
 
     var locationProviderOptions: LocationOptions {
         get { privateLocationProviderOptions }

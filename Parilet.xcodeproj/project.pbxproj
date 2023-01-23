@@ -18,6 +18,7 @@
 		4E4546FB292D730A0068070A /* SanisetteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4546FA292D730A0068070A /* SanisetteData.swift */; };
 		4E4896EA292D464000E1C6AE /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4E4896E9292D464000E1C6AE /* Alamofire */; };
 		4E5AE96D2972BAE7006488FF /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5AE96C2972BAE7006488FF /* LocationProvider.swift */; };
+		4E5ED8CA2978BF980055E000 /* LocationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5ED8C92978BF980055E000 /* LocationOptions.swift */; };
 		4E5FA03F292F836500FDEFC7 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FA03E292F836500FDEFC7 /* MapViewModel.swift */; };
 		4E78498E29310E3500AD17B8 /* RxPointAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78498D29310E3500AD17B8 /* RxPointAnnotationManager.swift */; };
 		4E8DC018292B9648009A7B25 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8DC017292B9648009A7B25 /* AppDelegate.swift */; };
@@ -42,6 +43,7 @@
 		4E3D346C2956125D0083BF05 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		4E4546FA292D730A0068070A /* SanisetteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanisetteData.swift; sourceTree = "<group>"; };
 		4E5AE96C2972BAE7006488FF /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
+		4E5ED8C92978BF980055E000 /* LocationOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationOptions.swift; sourceTree = "<group>"; };
 		4E5FA03E292F836500FDEFC7 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		4E78498D29310E3500AD17B8 /* RxPointAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxPointAnnotationManager.swift; sourceTree = "<group>"; };
 		4E8DC014292B9648009A7B25 /* Parilet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parilet.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,6 +132,25 @@
 			path = LocationProvider;
 			sourceTree = "<group>";
 		};
+		4E5ED8C72978B21A0055E000 /* Mapbox */ = {
+			isa = PBXGroup;
+			children = (
+				4E5ED8C82978BF690055E000 /* Extensions */,
+				4E5AE96B2972BAB6006488FF /* LocationProvider */,
+			);
+			path = Mapbox;
+			sourceTree = "<group>";
+		};
+		4E5ED8C82978BF690055E000 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				4E9018F429683C73000893DD /* PolylineAnnotation.swift */,
+				4ECD49862933B3510027D763 /* PointAnnotation.swift */,
+				4E5ED8C92978BF980055E000 /* LocationOptions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		4E78498C29310E2000AD17B8 /* ReactiveExtensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -157,7 +178,7 @@
 		4E8DC016292B9648009A7B25 /* Parilet */ = {
 			isa = PBXGroup;
 			children = (
-				4E5AE96B2972BAB6006488FF /* LocationProvider */,
+				4E5ED8C72978B21A0055E000 /* Mapbox */,
 				4EF35249296AFC96004ADB83 /* ReactiveUtilities */,
 				4E78498C29310E2000AD17B8 /* ReactiveExtensions */,
 				4ED76F112930A1F200B0F1CA /* Extensions */,
@@ -218,8 +239,6 @@
 		4ED76F112930A1F200B0F1CA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				4E9018F429683C73000893DD /* PolylineAnnotation.swift */,
-				4ECD49862933B3510027D763 /* PointAnnotation.swift */,
 				4ECD49882933C7190027D763 /* UIImage.swift */,
 			);
 			path = Extensions;
@@ -334,6 +353,7 @@
 				4EC130532938DB7000CF4110 /* Map.swift in Sources */,
 				4E3D346D2956125D0083BF05 /* Network.swift in Sources */,
 				4ECD49872933B3510027D763 /* PointAnnotation.swift in Sources */,
+				4E5ED8CA2978BF980055E000 /* LocationOptions.swift in Sources */,
 				4EFFCD6B296264C900FD2BCC /* RouteClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,7 +502,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -512,7 +532,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

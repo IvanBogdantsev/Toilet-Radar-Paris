@@ -42,11 +42,14 @@ final class MapViewModel: MapViewModelType {
     
     private let sanisetteApiClient = APIClient<SanisetteData>()
     private let routeClient = RouteClient()
-    private let locationProvider: ThisAppLocationProvider!
+    private var locationProvider: LocationProviderType = ThisAppLocationProvider()
     
     init() {
-        locationProvider = ThisAppLocationProvider()
         let errorRouter = ErrorRouter()
+        let locationOptions = LocationOptions(distanceFilter: kCLDistanceFilterNone,
+                                              desiredAccuracy: kCLLocationAccuracyBest,
+                                              activityType: .fitness)
+        locationProvider.locationProviderOptions = locationOptions
         
         let customLocationProvider = locationProvider.observableSelf
         
