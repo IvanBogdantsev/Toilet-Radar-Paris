@@ -46,7 +46,7 @@ final class MapViewModel: MapViewModelType {
     
     init() {
         let errorRouter = ErrorRouter()
-        let locationOptions = LocationOptions(distanceFilter: kCLDistanceFilterNone,
+        let locationOptions = LocationOptions(distanceFilter: kCLHeadingFilterNone,
                                               desiredAccuracy: kCLLocationAccuracyBest,
                                               activityType: .fitness)
         locationProvider.locationProviderOptions = locationOptions

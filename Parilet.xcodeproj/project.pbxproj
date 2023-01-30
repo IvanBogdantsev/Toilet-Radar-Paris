@@ -17,6 +17,9 @@
 		4E3D346D2956125D0083BF05 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D346C2956125D0083BF05 /* Network.swift */; };
 		4E4546FB292D730A0068070A /* SanisetteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4546FA292D730A0068070A /* SanisetteData.swift */; };
 		4E4896EA292D464000E1C6AE /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4E4896E9292D464000E1C6AE /* Alamofire */; };
+		4E52EF512983534F0021C9F4 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E52EF502983534F0021C9F4 /* UIView.swift */; };
+		4E58E7F72982E4CA005050CD /* BottomSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58E7F52982E4CA005050CD /* BottomSheetViewController.swift */; };
+		4E58E7F82982E4CA005050CD /* BottomSheetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4E58E7F62982E4CA005050CD /* BottomSheetViewController.xib */; };
 		4E5AE96D2972BAE7006488FF /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5AE96C2972BAE7006488FF /* LocationProvider.swift */; };
 		4E5ED8CA2978BF980055E000 /* LocationOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5ED8C92978BF980055E000 /* LocationOptions.swift */; };
 		4E5FA03F292F836500FDEFC7 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FA03E292F836500FDEFC7 /* MapViewModel.swift */; };
@@ -42,6 +45,9 @@
 		4E3D346A295612360083BF05 /* Mapbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapbox.swift; sourceTree = "<group>"; };
 		4E3D346C2956125D0083BF05 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		4E4546FA292D730A0068070A /* SanisetteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanisetteData.swift; sourceTree = "<group>"; };
+		4E52EF502983534F0021C9F4 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		4E58E7F52982E4CA005050CD /* BottomSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomSheetViewController.swift; sourceTree = "<group>"; tabWidth = 5; };
+		4E58E7F62982E4CA005050CD /* BottomSheetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BottomSheetViewController.xib; sourceTree = "<group>"; };
 		4E5AE96C2972BAE7006488FF /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 		4E5ED8C92978BF980055E000 /* LocationOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationOptions.swift; sourceTree = "<group>"; };
 		4E5FA03E292F836500FDEFC7 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
@@ -151,6 +157,23 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		4E71142E297F40F000D7E462 /* Bottom Sheet */ = {
+			isa = PBXGroup;
+			children = (
+				4E71142F297F41A700D7E462 /* Presentation */,
+			);
+			path = "Bottom Sheet";
+			sourceTree = "<group>";
+		};
+		4E71142F297F41A700D7E462 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				4E58E7F52982E4CA005050CD /* BottomSheetViewController.swift */,
+				4E58E7F62982E4CA005050CD /* BottomSheetViewController.xib */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
 		4E78498C29310E2000AD17B8 /* ReactiveExtensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -178,6 +201,7 @@
 		4E8DC016292B9648009A7B25 /* Parilet */ = {
 			isa = PBXGroup;
 			children = (
+				4E71142E297F40F000D7E462 /* Bottom Sheet */,
 				4E5ED8C72978B21A0055E000 /* Mapbox */,
 				4EF35249296AFC96004ADB83 /* ReactiveUtilities */,
 				4E78498C29310E2000AD17B8 /* ReactiveExtensions */,
@@ -240,6 +264,7 @@
 			isa = PBXGroup;
 			children = (
 				4ECD49882933C7190027D763 /* UIImage.swift */,
+				4E52EF502983534F0021C9F4 /* UIView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -326,6 +351,7 @@
 			files = (
 				4E8DC024292B9648009A7B25 /* LaunchScreen.storyboard in Resources */,
 				4E8DC021292B9648009A7B25 /* Assets.xcassets in Resources */,
+				4E58E7F82982E4CA005050CD /* BottomSheetViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -337,6 +363,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4E8DC01C292B9648009A7B25 /* MapViewController.swift in Sources */,
+				4E58E7F72982E4CA005050CD /* BottomSheetViewController.swift in Sources */,
 				4ECD49892933C7190027D763 /* UIImage.swift in Sources */,
 				4E5AE96D2972BAE7006488FF /* LocationProvider.swift in Sources */,
 				4E1AC6FA292ECE7400872C5C /* APIClient.swift in Sources */,
@@ -345,6 +372,7 @@
 				4E4546FB292D730A0068070A /* SanisetteData.swift in Sources */,
 				4E1AC6F8292ECA9B00872C5C /* APIRequest.swift in Sources */,
 				4EF3524B296AFCAB004ADB83 /* ErrorRouter.swift in Sources */,
+				4E52EF512983534F0021C9F4 /* UIView.swift in Sources */,
 				4E8DC018292B9648009A7B25 /* AppDelegate.swift in Sources */,
 				4E9018F7296843B3000893DD /* RxPolylineAnnotationManager.swift in Sources */,
 				4E8DC01A292B9648009A7B25 /* SceneDelegate.swift in Sources */,
@@ -491,6 +519,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5ZYV4X786K;
@@ -510,6 +539,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "-.Parilet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -521,6 +551,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5ZYV4X786K;
@@ -540,6 +571,7 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "-.Parilet";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

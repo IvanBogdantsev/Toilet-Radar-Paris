@@ -10,18 +10,36 @@ import RxSwift
 import RxCocoa
 import UIKit
 
-final class MapViewController: UIViewController {
+private protocol Parentable: AnyObject {
+    func adopt(child: Childable)
+}
+
+extension Parentable where Self: UIViewController {
+    fileprivate func adopt(child: Childable) {
+        guard let child = child as? UIViewController else { return }
+        addChild(child)
+        view.addSubview(child.view)
+        child.didMove(toParent: self)
+    }
+}
+
+final class MapViewController: UIViewController, Parentable {
     
     private var mapView: MapViewType!
     private var viewModel = MapViewModel()
     private let disposeBag = DisposeBag()
+    private let bottomSheetVC: Childable = BottomSheetViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setUpMapView()
         bindViewModelInputs()
         bindViewModelOutputs()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        adopt(child: bottomSheetVC)
     }
     
     private func setUpMapView() {
