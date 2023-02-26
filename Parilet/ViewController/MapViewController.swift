@@ -10,25 +10,12 @@ import RxSwift
 import RxCocoa
 import UIKit
 
-private protocol Parentable: AnyObject {
-    func adopt(child: Childable)
-}
-
-extension Parentable where Self: UIViewController {
-    fileprivate func adopt(child: Childable) {
-        guard let child = child as? UIViewController else { return }
-        addChild(child)
-        view.addSubview(child.view)
-        child.didMove(toParent: self)
-    }
-}
-
-final class MapViewController: UIViewController, Parentable {
+final class MapViewController: UIViewController {
     
     private var mapView: MapViewType!
     private var viewModel = MapViewModel()
     private let disposeBag = DisposeBag()
-    private let bottomSheetVC: Childable = BottomSheetViewController()
+    private let destinationBanner = BottomBannerViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +26,7 @@ final class MapViewController: UIViewController, Parentable {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        adopt(child: bottomSheetVC)
+        embed(destinationBanner, in: view)
     }
     
     private func setUpMapView() {
@@ -63,14 +50,17 @@ final class MapViewController: UIViewController, Parentable {
             .disposed(by: disposeBag)
         
         viewModel.output.mapAnnotations
+            .asDriver(onErrorDriveWith: .empty())
             .drive(mapView.bindablePointAnnotations)
             .disposed(by: disposeBag)
         
         viewModel.output.route
+            .asDriver(onErrorDriveWith: .empty())
             .drive(mapView.bindablePolylineAnnotations)
             .disposed(by: disposeBag)
         
         viewModel.output.error
+            .asDriver(onErrorDriveWith: .empty())
             .drive { print($0) }
             .disposed(by: disposeBag)
     }

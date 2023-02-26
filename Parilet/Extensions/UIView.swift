@@ -13,3 +13,36 @@ extension UIView {
         self.animate(withDuration: 0.3, delay: .nan, options: [.curveEaseOut], animations: animations)
     }
 }
+
+extension UIView {
+    /// prepares view for layout 
+    class func forAutoLayout<ViewType: UIView>(frame: CGRect = .zero, hidden: Bool = false) -> ViewType {
+            let view = ViewType.init(frame: frame)
+            view.translatesAutoresizingMaskIntoConstraints = false
+            return view
+        }
+}
+
+extension UIView {
+    func embed(in view: UIView) {
+        view.addSubview(self)
+        didMoveToSuperview()
+    }
+}
+
+extension UIView {
+    func pinToEdges(of view: UIView) {
+        NSLayoutConstraint.activate([
+            leadingAnchor.constraint(equalTo: view.leadingAnchor),
+            topAnchor.constraint(equalTo: view.topAnchor),
+            trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        ])
+    }
+}
+
+extension UIView {
+    class func fromNib<T: UIView>() -> T {
+        return Bundle(for: T.self).loadNibNamed(String(describing: T.self), owner: nil, options: nil)![0] as! T
+    }
+}

@@ -10,7 +10,7 @@ import MapboxMaps
 extension PointAnnotation {
     /// Creates an instance of PointAnnotation.
     ///  - Parameter record: The most basic information about an object on the map returned by the Sanisette API.
-    ///  - Returns: An instance of PointAnnotation with defined coordinate, image and user info.
+    ///  - Returns: An instance of PointAnnotation with a defined coordinate, image and user info.
     init(withRecord record: Record) {
         let latitude = record.fields.geoPoint2D.first ?? Double()
         let longitude = record.fields.geoPoint2D.last ?? Double()
@@ -29,5 +29,11 @@ extension PointAnnotation {
 extension PointAnnotation {
     var coordinate: LocationCoordinate2D {
         point.coordinates
+    }
+}
+
+extension PointAnnotation {
+    var destinationInfo: Dictionary<String, Any> {
+        userInfo ?? [:]
     }
 }
