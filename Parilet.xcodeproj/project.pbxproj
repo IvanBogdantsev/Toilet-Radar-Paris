@@ -38,6 +38,8 @@
 		4E90EDA2298AC243004D8E39 /* DestinationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E90EDA1298AC243004D8E39 /* DestinationViewModel.swift */; };
 		4EB27E0B292BBA7500A9938C /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB27E0A292BBA7500A9938C /* MapboxMaps */; };
 		4EC130532938DB7000CF4110 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC130522938DB7000CF4110 /* Map.swift */; };
+		4EC32F6129B0A8060074B954 /* BackgroundMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC32F6029B0A8060074B954 /* BackgroundMap.swift */; };
+		4EC32F6329B0EE780074B954 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC32F6229B0EE780074B954 /* Route.swift */; };
 		4ECD49872933B3510027D763 /* PointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD49862933B3510027D763 /* PointAnnotation.swift */; };
 		4ECD49892933C7190027D763 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD49882933C7190027D763 /* UIImage.swift */; };
 		4EF3524B296AFCAB004ADB83 /* ErrorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF3524A296AFCAB004ADB83 /* ErrorRouter.swift */; };
@@ -72,6 +74,8 @@
 		4E9018F6296843B3000893DD /* RxPolylineAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxPolylineAnnotationManager.swift; sourceTree = "<group>"; };
 		4E90EDA1298AC243004D8E39 /* DestinationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationViewModel.swift; sourceTree = "<group>"; };
 		4EC130522938DB7000CF4110 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		4EC32F6029B0A8060074B954 /* BackgroundMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMap.swift; sourceTree = "<group>"; };
+		4EC32F6229B0EE780074B954 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		4ECD49862933B3510027D763 /* PointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointAnnotation.swift; sourceTree = "<group>"; };
 		4ECD49882933C7190027D763 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
 		4EF3524A296AFCAB004ADB83 /* ErrorRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorRouter.swift; sourceTree = "<group>"; };
@@ -140,19 +144,11 @@
 			path = Network;
 			sourceTree = "<group>";
 		};
-		4E5AE96B2972BAB6006488FF /* LocationProvider */ = {
-			isa = PBXGroup;
-			children = (
-				4E5AE96C2972BAE7006488FF /* LocationProvider.swift */,
-			);
-			path = LocationProvider;
-			sourceTree = "<group>";
-		};
 		4E5ED8C72978B21A0055E000 /* Mapbox */ = {
 			isa = PBXGroup;
 			children = (
+				4E5AE96C2972BAE7006488FF /* LocationProvider.swift */,
 				4E5ED8C82978BF690055E000 /* Extensions */,
-				4E5AE96B2972BAB6006488FF /* LocationProvider */,
 			);
 			path = Mapbox;
 			sourceTree = "<group>";
@@ -217,7 +213,6 @@
 				4E71142E297F40F000D7E462 /* Bottom Sheet */,
 				4E5ED8C72978B21A0055E000 /* Mapbox */,
 				4EF35249296AFC96004ADB83 /* ReactiveUtilities */,
-				4E78498C29310E2000AD17B8 /* ReactiveExtensions */,
 				4ED76F112930A1F200B0F1CA /* Extensions */,
 				4E8DC02D292B9695009A7B25 /* Model */,
 				4E8DC02C292B968B009A7B25 /* View */,
@@ -253,6 +248,7 @@
 			children = (
 				4E4546FA292D730A0068070A /* SanisetteData.swift */,
 				4E37ECB3298BBA7700AB4D91 /* Destination.swift */,
+				4EC32F6229B0EE780074B954 /* Route.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -277,17 +273,27 @@
 		4ED76F112930A1F200B0F1CA /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				4E78498C29310E2000AD17B8 /* ReactiveExtensions */,
+				4EE571CE29B208F50095031A /* UIKit */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		4EE571CE29B208F50095031A /* UIKit */ = {
+			isa = PBXGroup;
+			children = (
 				4ECD49882933C7190027D763 /* UIImage.swift */,
 				4E52EF502983534F0021C9F4 /* UIView.swift */,
 				4E88E68029A581AC00CC7245 /* UIViewController.swift */,
 			);
-			path = Extensions;
+			path = UIKit;
 			sourceTree = "<group>";
 		};
 		4EF35249296AFC96004ADB83 /* ReactiveUtilities */ = {
 			isa = PBXGroup;
 			children = (
 				4EF3524A296AFCAB004ADB83 /* ErrorRouter.swift */,
+				4EC32F6029B0A8060074B954 /* BackgroundMap.swift */,
 			);
 			path = ReactiveUtilities;
 			sourceTree = "<group>";
@@ -382,6 +388,7 @@
 				4ECD49892933C7190027D763 /* UIImage.swift in Sources */,
 				4E5AE96D2972BAE7006488FF /* LocationProvider.swift in Sources */,
 				4E1AC6FA292ECE7400872C5C /* APIClient.swift in Sources */,
+				4EC32F6329B0EE780074B954 /* Route.swift in Sources */,
 				4E3D346B295612360083BF05 /* Mapbox.swift in Sources */,
 				4E78498E29310E3500AD17B8 /* RxPointAnnotationManager.swift in Sources */,
 				4E4546FB292D730A0068070A /* SanisetteData.swift in Sources */,
@@ -389,6 +396,7 @@
 				4E1AC6F8292ECA9B00872C5C /* APIRequest.swift in Sources */,
 				4EF3524B296AFCAB004ADB83 /* ErrorRouter.swift in Sources */,
 				4E52EF512983534F0021C9F4 /* UIView.swift in Sources */,
+				4EC32F6129B0A8060074B954 /* BackgroundMap.swift in Sources */,
 				4E37ECB4298BBA7700AB4D91 /* Destination.swift in Sources */,
 				4E8DC018292B9648009A7B25 /* AppDelegate.swift in Sources */,
 				4E8AD4B5299F725C00941B5E /* PresentationUnderlay.swift in Sources */,
@@ -470,7 +478,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -524,7 +532,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -551,7 +559,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -583,7 +591,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

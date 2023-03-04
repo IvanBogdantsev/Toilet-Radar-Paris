@@ -15,8 +15,8 @@ final class RouteClient {
     
     private var routeOptions: RouteOptions!
     
-    func getRoute(origin: LocationCoordinate2D, destination: LocationCoordinate2D) -> RxObservable<RouteResponse> {
-        routeOptions = RouteOptions(coordinates: [origin, destination], profileIdentifier: .walking)
+    func getRoute(between coordinates: [LocationCoordinate2D]) -> RxObservable<RouteResponse> {
+        routeOptions = RouteOptions(coordinates: coordinates, profileIdentifier: .walking)
         routeOptions.routeShapeResolution = .full
         return calculateRoute(with: routeOptions)
     }

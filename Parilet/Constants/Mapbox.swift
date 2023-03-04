@@ -9,10 +9,10 @@ import MapboxMaps
 import CoreLocation
 
 struct MapBoxConstants {
-    static let accesToken = "pk.eyJ1IjoieXZhbmIiLCJhIjoiY2xhcXl6eTg5MDFrdzQwb3Z6OTAxeG9vcyJ9.f9bFprti9yDDWP1MigBL9Q"
+    static let accessToken = "pk.eyJ1IjoieXZhbmIiLCJhIjoiY2xhcXl6eTg5MDFrdzQwb3Z6OTAxeG9vcyJ9.f9bFprti9yDDWP1MigBL9Q"
     static let imageName = "red_pin"
     static let resourceOptions: ResourceOptions = {
-        ResourceOptions(accessToken: Self.accesToken)
+        ResourceOptions(accessToken: Self.accessToken)
     }()
     static let cameraOptions: CameraOptions = {
         CameraOptions(center: CLLocationCoordinate2D(latitude: 48.8566,

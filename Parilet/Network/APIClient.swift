@@ -10,12 +10,12 @@ import RxSwift
 
 protocol APIClientProtocol {
     associatedtype RequestedType
-    func getData() -> Observable<RequestedType>
+    func getMapPoints() -> Observable<RequestedType>
 }
 
 final class APIClient<RequestedType: Codable>: APIClientProtocol {
 
-    func getData() -> Observable<RequestedType> {
+    func getMapPoints() -> Observable<RequestedType> {
         request(APIRequest.getData)
     }
 

@@ -10,37 +10,32 @@ import MapboxMaps
 import RxSwift
 import RxCocoa
 
-protocol MapViewModelType {
-    associatedtype Input
-    associatedtype Output
-    
-    var input: Input! { get }
-    var output: Output! { get }
+protocol MapViewModelInputs {
+    func didSelectAnnotation(_ annotation: PointAnnotation)
+}
+
+protocol MapViewModelOutputs {
     /// an array of PointAnnotations. Used to populate the map with annotations.
     typealias PointAnnotations = [PointAnnotation]
     /// an array of PolylineAnnotations. Used to construct polyline one the map.
     typealias PolylineAnnotations = [PolylineAnnotation]
     /// Typealias that resolves conflict between 'RxSwift.Observable' and 'Mapbox.Observable'
     typealias RxObservable = RxSwift.Observable
+    
+    var customLocationProvider: Single<LocationProvider>! { get }
+    var mapAnnotations: RxObservable<PointAnnotations>! { get }
+    var destinationHighlights: RxObservable<Destination>! { get }
+    var routeHighlights: RxObservable<Route>! { get }
+    var polyline: RxObservable<PolylineAnnotations>! { get }
+    var error: RxObservable<String>! { get }
 }
 
-final class MapViewModel: MapViewModelType {
-    
-    struct Input {
-        let annotationPickedByUser: PublishRelay<PointAnnotation>
-    }
-    
-    struct Output {
-        let customLocationProvider: Single<LocationProvider>
-        let mapAnnotations: RxObservable<PointAnnotations>
-        let route: RxObservable<PolylineAnnotations>
-        let error: RxObservable<String>
-    }
-    
-    var input: Input!
-    var output: Output!
-        
-    private let annotationPickedByUser = PublishRelay<PointAnnotation>()
+protocol MapViewModelType {
+    var inputs: MapViewModelInputs { get }
+    var outputs: MapViewModelOutputs { get }
+}
+
+final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutputs {
     
     private let sanisetteApiClient = APIClient<SanisetteData>()
     private let routeClient = RouteClient()
@@ -53,39 +48,50 @@ final class MapViewModel: MapViewModelType {
                                               activityType: .fitness)
         locationProvider.locationProviderOptions = locationOptions
         
-        let customLocationProvider = locationProvider.observableSelf
+        self.customLocationProvider = locationProvider.observableSelf
         
-        let mapAnnotations = sanisetteApiClient.getData()
+        self.mapAnnotations = sanisetteApiClient.getMapPoints()
             .rerouteError(errorRouter)
-            .observe(on: ConcurrentDispatchQueueScheduler(qos: .userInteractive)) // backgroundmap
-            .map { data in
+            .backgroundMap(qos: .userInteractive) { data in
                 data.records.map { PointAnnotation(withRecord: $0) }
             }
         
-        let route = annotationPickedByUser
-            .distinctUntilChanged { $0.id == $1.id }
-            .withLatestFrom(locationProvider.didUpdateLatestLocation) { ($0, $1) }
-            .flatMap { annotation, location in // weak в замыканиях
-                self.routeClient.getRoute(origin: annotation.coordinate, destination: location.coordinate)
-                    .rerouteError(errorRouter)
-                    .observe(on: ConcurrentDispatchQueueScheduler(qos: .userInteractive))
-                    .map { routeResponse in
-                        PolylineAnnotation(withRouteResponse: routeResponse)
-                    }
-                    .compactMap { $0 }
-                    .map { [$0] }
-            }
+        let distinctAnnotation = selectedAnnotation
+            .distinctUntilChanged { $0.coordinate == $1.coordinate }
         
-        let error = errorRouter.error
+        self.destinationHighlights = distinctAnnotation
+            .map { Destination(destinationInfo: $0.userInfoUnwrapped) }
+        
+        let routeResponse = distinctAnnotation
+            .withLatestFrom(locationProvider.didUpdateLatestLocation) { ($0, $1) }
+            .flatMap { self.routeClient.getRoute(between: [$0.coordinate, $1.coordinate])
+                .rerouteError(errorRouter) }
+        
+        self.routeHighlights = routeResponse.compactMap { Route(withRouteResponse: $0) }
+        
+        self.polyline = routeResponse
+            .backgroundCompactMap(qos: .userInteractive) { PolylineAnnotation(withRouteResponse: $0) }
+            .map { [$0] }
+        
+        self.error = errorRouter.error
             .map { error in
                 error.localizedDescription
             }
-        
-        input = Input(annotationPickedByUser: annotationPickedByUser)
-        output = Output(customLocationProvider: customLocationProvider,
-                        mapAnnotations: mapAnnotations,
-                        route: route,
-                        error: error)
     }
+    
+    private let selectedAnnotation = PublishRelay<PointAnnotation>()
+    func didSelectAnnotation(_ annotation: PointAnnotation) {
+        selectedAnnotation.accept(annotation)
+    }
+    
+    var customLocationProvider: RxSwift.Single<MapboxMaps.LocationProvider>!
+    var mapAnnotations: RxSwift.Observable<PointAnnotations>!
+    var destinationHighlights: RxObservable<Destination>!
+    var routeHighlights: RxObservable<Route>!
+    var polyline: RxObservable<PolylineAnnotations>!
+    var error: RxObservable<String>!
+    
+    var inputs: MapViewModelInputs { self }
+    var outputs: MapViewModelOutputs { self }
     
 }

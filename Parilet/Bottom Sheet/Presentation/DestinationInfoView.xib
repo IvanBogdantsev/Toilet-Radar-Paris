@@ -21,9 +21,13 @@
                         <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="OLD-19-KKE">
                             <rect key="frame" x="336.33333333333331" y="28.333333333333336" width="67.666666666666686" height="20.333333333333336"/>
                             <subviews>
-                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="751" image="figure.walk" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="4eX-bU-Epr">
-                                    <rect key="frame" x="0.0" y="-0.33333333333333215" width="15.666666666666666" height="21"/>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalCompressionResistancePriority="751" image="figure_walk" translatesAutoresizingMaskIntoConstraints="NO" id="4eX-bU-Epr">
+                                    <rect key="frame" x="0.0" y="0.0" width="15.666666666666666" height="20.333333333333332"/>
                                     <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="15.67" id="CDm-7T-ixF"/>
+                                        <constraint firstAttribute="height" constant="20.329999999999998" id="Oen-ae-SvO"/>
+                                    </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="751" text="6 min." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mhg-sq-aj1">
                                     <rect key="frame" x="20.666666666666686" y="0.0" width="47" height="20.333333333333332"/>
@@ -170,11 +174,20 @@
                 </userDefinedRuntimeAttribute>
                 <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
             </userDefinedRuntimeAttributes>
+            <connections>
+                <outlet property="address" destination="EoA-qs-5Si" id="bDr-tP-Boj"/>
+                <outlet property="distance" destination="R2W-WX-qPz" id="nvP-fM-I8w"/>
+                <outlet property="district" destination="AVl-SE-AYb" id="0sx-Lu-FnQ"/>
+                <outlet property="prmAccess" destination="cr8-x2-Hdy" id="vAX-pu-Rxg"/>
+                <outlet property="schedule" destination="g1l-Hw-HrJ" id="BNh-Dp-YkR"/>
+                <outlet property="travelTime" destination="Mhg-sq-aj1" id="0d1-Do-tCc"/>
+                <outlet property="type" destination="sn1-TG-D2g" id="S4P-fg-pXd"/>
+            </connections>
             <point key="canvasLocation" x="79.710144927536234" y="20.380434782608699"/>
         </view>
     </objects>
     <resources>
-        <image name="figure.walk" catalog="system" width="95" height="128"/>
+        <image name="figure_walk" width="28" height="45.333332061767578"/>
         <systemColor name="systemGreenColor">
             <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

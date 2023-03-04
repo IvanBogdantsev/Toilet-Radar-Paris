@@ -13,9 +13,9 @@ import UIKit
 final class MapViewController: UIViewController {
     
     private var mapView: MapViewType!
-    private var viewModel = MapViewModel()
+    private var viewModel: MapViewModelType = MapViewModel()
+    private let bottomBanner = BottomBannerViewController()
     private let disposeBag = DisposeBag()
-    private let destinationBanner = BottomBannerViewController()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +26,7 @@ final class MapViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        embed(destinationBanner, in: view)
+        embed(bottomBanner, in: view)
     }
     
     private func setUpMapView() {
@@ -36,30 +36,38 @@ final class MapViewController: UIViewController {
     
     private func bindViewModelInputs() {
         mapView.didDetectTappedAnnotation
-            .subscribe(onNext: { annotationPickedByUser in
-                self.viewModel.input.annotationPickedByUser.accept(annotationPickedByUser)
+            .subscribe(onNext: { selectedAnnotation in
+                self.viewModel.inputs.didSelectAnnotation(selectedAnnotation)
             })
             .disposed(by: disposeBag)
     }
     
     private func bindViewModelOutputs() {
-        viewModel.output.customLocationProvider
+        viewModel.outputs.customLocationProvider
             .subscribe(onSuccess: { locationProvider in
                 self.mapView.overrideLocationProvider(withCustomLocationProvider: locationProvider)
             })
             .disposed(by: disposeBag)
         
-        viewModel.output.mapAnnotations
+        viewModel.outputs.mapAnnotations
             .asDriver(onErrorDriveWith: .empty())
             .drive(mapView.bindablePointAnnotations)
             .disposed(by: disposeBag)
         
-        viewModel.output.route
+        viewModel.outputs.destinationHighlights
+            .subscribe { self.bottomBanner.refreshDestination(with: $0) }
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.routeHighlights
+            .subscribe { self.bottomBanner.refreshRoute(with: $0) }
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.polyline
             .asDriver(onErrorDriveWith: .empty())
             .drive(mapView.bindablePolylineAnnotations)
             .disposed(by: disposeBag)
         
-        viewModel.output.error
+        viewModel.outputs.error
             .asDriver(onErrorDriveWith: .empty())
             .drive { print($0) }
             .disposed(by: disposeBag)

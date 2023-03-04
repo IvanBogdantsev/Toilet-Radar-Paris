@@ -15,7 +15,8 @@ extension PolylineAnnotation {
     init?(withRouteResponse routeResponse: RouteResponse) {
         guard let lineString = routeResponse.routes?.first?.shape else { return nil }
         self.init(lineString: lineString)
-        self.lineColor = StyleColor(UIColor.darkGray) 
+        self.lineColor = StyleColor(UIColor.blue)
+        self.lineOpacity = 0.5
         self.lineWidth = 5
         self.lineJoin = .round
     }

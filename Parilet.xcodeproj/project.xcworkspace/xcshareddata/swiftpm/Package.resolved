@@ -6,7 +6,7 @@
       "location" : "https://github.com/Alamofire/Alamofire.git",
       "state" : {
         "branch" : "master",
-        "revision" : "78424be314842833c04bc3bef5b72e85fff99204"
+        "revision" : "81a29729e7dbfe7b976723843d0280926587a532"
       }
     },
     {
@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mapbox/mapbox-common-ios.git",
       "state" : {
-        "revision" : "9c387749d705972ffadb5ed60376cc3688f9d61b",
-        "version" : "23.2.0-rc.3"
+        "revision" : "185d791e7478cc5da7cc2b4756ecd0d0bd387eac",
+        "version" : "23.4.0-beta.1"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mapbox/mapbox-core-maps-ios.git",
       "state" : {
-        "revision" : "120770014441b34327c6edda9f3be56183f7dc25",
-        "version" : "10.10.0-rc.1"
+        "revision" : "81b929488b5bbc467df4cf294ceffa0ae98ef0e0",
+        "version" : "10.12.0-beta.1"
       }
     },
     {
@@ -33,7 +33,7 @@
       "location" : "https://github.com/mapbox/mapbox-directions-swift.git",
       "state" : {
         "branch" : "main",
-        "revision" : "bb9fe9811f1f931e043dde50c8105d5e8eff0666"
+        "revision" : "9714ec6451bec68ce7a753b8070a0b5664019a1c"
       }
     },
     {
@@ -42,7 +42,7 @@
       "location" : "https://github.com/mapbox/mapbox-maps-ios.git",
       "state" : {
         "branch" : "main",
-        "revision" : "35a93f5148f7451f9813e9b12de38fa77c694d71"
+        "revision" : "6f01f9eac27f949cbf69a4021dac141e9cdfd6cd"
       }
     },
     {
@@ -60,7 +60,7 @@
       "location" : "https://github.com/ReactiveX/RxSwift.git",
       "state" : {
         "branch" : "main",
-        "revision" : "8ec08deca8271516f673706e78fb954797cd6627"
+        "revision" : "91a36920b1ec069004fef9dc41b7c5dbcaa5fffe"
       }
     },
     {
@@ -68,8 +68,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/apple/swift-argument-parser",
       "state" : {
-        "revision" : "fddd1c00396eed152c45a46bea9f47b98e59301d",
-        "version" : "1.2.0"
+        "revision" : "fee6933f37fde9a5e12a1e4aeaa93fe60116ff2a",
+        "version" : "1.2.2"
       }
     },
     {

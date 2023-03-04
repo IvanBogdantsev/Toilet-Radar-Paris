@@ -33,7 +33,7 @@ extension PointAnnotation {
 }
 
 extension PointAnnotation {
-    var destinationInfo: Dictionary<String, Any> {
+    var userInfoUnwrapped: Dictionary<String, Any> {
         userInfo ?? [:]
     }
 }

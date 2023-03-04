@@ -9,6 +9,12 @@ import UIKit
 
 class DestinationInfoView: UIView {
 
-    
+    @IBOutlet weak var prmAccess: UILabel!
+    @IBOutlet weak var schedule: UILabel!
+    @IBOutlet weak var district: UILabel!
+    @IBOutlet weak var type: UILabel!
+    @IBOutlet weak var address: UILabel!
+    @IBOutlet weak var distance: UILabel!
+    @IBOutlet weak var travelTime: UILabel!
     
 }
