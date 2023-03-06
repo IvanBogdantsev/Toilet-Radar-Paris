@@ -45,10 +45,15 @@ final class ThisAppLocationProvider: NSObject, LocationProviderType {
         .asSingle()
     }()
 
-    override init() {
+    init(locationOptions: LocationOptions = LocationOptions(distanceFilter: kCLDistanceFilterNone,                                                                     desiredAccuracy: kCLLocationAccuracyBest,
+                                                            activityType: .fitness))
+    {
         locationProvider = CLLocationManager()
-        privateLocationProviderOptions = LocationOptions()
+        locationProvider.distanceFilter = locationOptions.distanceFilter
+        locationProvider.desiredAccuracy = locationOptions.desiredAccuracy
+        locationProvider.activityType = locationOptions.activityType
         headingOrientation = locationProvider.headingOrientation
+        privateLocationProviderOptions = locationOptions
         super.init()
         locationProvider.delegate = self
     }

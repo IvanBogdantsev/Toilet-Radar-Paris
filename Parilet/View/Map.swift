@@ -9,7 +9,7 @@ import MapboxMaps
 import RxSwift
 import RxCocoa
 
-protocol MapViewType: MapView {// изменить на UIView по завершению настройки
+protocol MapViewType: UIView {
     var bindablePointAnnotations: Binder<PointAnnotations> { get }
     var bindablePolylineAnnotations: Binder<PolylineAnnotations> { get }
     var didDetectTappedAnnotation: ControlEvent<PointAnnotation> { get }

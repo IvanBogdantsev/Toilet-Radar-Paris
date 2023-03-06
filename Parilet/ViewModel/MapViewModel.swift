@@ -40,14 +40,10 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
     private let sanisetteApiClient = APIClient<SanisetteData>()
     private let routeClient = RouteClient()
     private var locationProvider: LocationProviderType = ThisAppLocationProvider()
+    private let errorRouter = ErrorRouter()
+
     
     init() {
-        let errorRouter = ErrorRouter()
-        let locationOptions = LocationOptions(distanceFilter: kCLHeadingFilterNone,
-                                              desiredAccuracy: kCLLocationAccuracyBest,
-                                              activityType: .fitness)
-        locationProvider.locationProviderOptions = locationOptions
-        
         self.customLocationProvider = locationProvider.observableSelf
         
         self.mapAnnotations = sanisetteApiClient.getMapPoints()
@@ -65,7 +61,7 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
         let routeResponse = distinctAnnotation
             .withLatestFrom(locationProvider.didUpdateLatestLocation) { ($0, $1) }
             .flatMap { self.routeClient.getRoute(between: [$0.coordinate, $1.coordinate])
-                .rerouteError(errorRouter) }
+                .rerouteError(self.errorRouter) }
         
         self.routeHighlights = routeResponse.compactMap { Route(withRouteResponse: $0) }
         
