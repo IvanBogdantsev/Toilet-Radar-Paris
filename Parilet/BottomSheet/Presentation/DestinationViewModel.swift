@@ -8,6 +8,7 @@
 import RxSwift
 import RxCocoa
 import Foundation
+import UIKit
 
 protocol DestinationViewModelInputs {
     func refreshDestination(with destination: Destination)
@@ -15,7 +16,7 @@ protocol DestinationViewModelInputs {
 }
 
 protocol DestinationViewModelOutputs {
-    var prmAccess: Observable<String>! { get }
+    var prmAccess: Observable<NSAttributedString>! { get }
     var schedule: Observable<String>! { get }
     var district: Observable<String>! { get }
     var type: Observable<String>! { get }
@@ -31,15 +32,16 @@ protocol DestinationViewModelType {
 
 final class DestinationViewModel: DestinationViewModelType, DestinationViewModelInputs, DestinationViewModelOutputs {
     
-    private let timeFormatter = TimeFormatter()
+    private let timeFormatter: TimeFormatterProtocol = TimeFormatter()
+    private let distanceFormatter: DistanceFormatterProtocol = DistanceFormatter()
     
     init() {
-        self.prmAccess = rawDestination.compactMap { $0.prmAccess }
+        self.prmAccess = rawDestination.compactMap { $0.prmAccess?.frTickCross() }
         self.schedule = rawDestination.compactMap { $0.schedule }
         self.district = rawDestination.compactMap { $0.district }
         self.type = rawDestination.compactMap { $0.type }
         self.address = rawDestination.compactMap { $0.address }
-        self.distance = rawRoute.compactMap { $0.distance.description }
+        self.distance = rawRoute.compactMap { self.distanceFormatter.string(from: $0.distance) }
         self.travelTime = rawRoute.compactMap { self.timeFormatter.string(from: $0.travelTime) }
     }
     
@@ -53,7 +55,7 @@ final class DestinationViewModel: DestinationViewModelType, DestinationViewModel
         rawRoute.accept(route)
     }
     
-    let prmAccess: Observable<String>!
+    let prmAccess: Observable<NSAttributedString>!
     let schedule: Observable<String>!
     let district: Observable<String>!
     let type: Observable<String>!

@@ -20,11 +20,11 @@ final class ThisAppLocationProvider: NSObject, LocationProviderType {
     
     private var locationProvider: CLLocationManager
     
-    private var privateLocationProviderOptions: LocationOptions {
+    private var options: LocationOptions {
         didSet {
-            locationProvider.distanceFilter = privateLocationProviderOptions.distanceFilter
-            locationProvider.desiredAccuracy = privateLocationProviderOptions.desiredAccuracy
-            locationProvider.activityType = privateLocationProviderOptions.activityType
+            locationProvider.distanceFilter = options.distanceFilter
+            locationProvider.desiredAccuracy = options.desiredAccuracy
+            locationProvider.activityType = options.activityType
         }
     }
     
@@ -53,7 +53,7 @@ final class ThisAppLocationProvider: NSObject, LocationProviderType {
         locationProvider.desiredAccuracy = locationOptions.desiredAccuracy
         locationProvider.activityType = locationOptions.activityType
         headingOrientation = locationProvider.headingOrientation
-        privateLocationProviderOptions = locationOptions
+        options = locationOptions
         super.init()
         locationProvider.delegate = self
     }
@@ -63,8 +63,8 @@ final class ThisAppLocationProvider: NSObject, LocationProviderType {
 extension ThisAppLocationProvider {
 
     var locationProviderOptions: LocationOptions {
-        get { privateLocationProviderOptions }
-        set { privateLocationProviderOptions = newValue }
+        get { options }
+        set { options = newValue }
     }
 
     var authorizationStatus: CLAuthorizationStatus {

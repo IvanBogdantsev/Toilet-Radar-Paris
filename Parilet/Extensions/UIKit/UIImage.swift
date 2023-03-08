@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIImage {
-    static let pin = {
-        return UIImage(named: "red_pin") ?? UIImage()
-    }()
+    static var pin: UIImage {
+        UIImage(named: "red_pin") ?? UIImage()
+    }
 }

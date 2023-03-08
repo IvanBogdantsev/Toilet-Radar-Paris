@@ -28,7 +28,7 @@ final class BottomBannerViewController: UIViewController { //подписать 
     
     private func bindViewModelOutputs() {
         viewModel.outputs.prmAccess.asDriver(onErrorDriveWith: .empty())
-            .drive(destinationInfoView.prmAccess.rx.text)
+            .drive(destinationInfoView.prmAccess.rx.attributedText)
             .disposed(by: disposeBag)
         
         viewModel.outputs.schedule.asDriver(onErrorDriveWith: .empty())

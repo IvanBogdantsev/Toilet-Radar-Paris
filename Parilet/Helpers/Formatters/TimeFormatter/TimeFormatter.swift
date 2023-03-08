@@ -7,46 +7,40 @@
 
 import Foundation
 
-final class TimeFormatter {
+final class TimeFormatter: TimeFormatterProtocol {
     
     private let formatter: DateComponentsFormatter
     
-    private var privateTimeFormatterOptions: TimeFormatterOptions {
+    private var options: TimeFormatterOptions {
         didSet {
-            formatter.allowedUnits = privateTimeFormatterOptions.allowedUnits
-            formatter.unitsStyle = privateTimeFormatterOptions.unitsStyle
-            formatter.includesTimeRemainingPhrase = privateTimeFormatterOptions.includesTimeRemainingPhrase
-            formatter.includesApproximationPhrase = privateTimeFormatterOptions.includesApproximationPhrase
+            formatter.allowedUnits = options.allowedUnits
+            formatter.unitsStyle = options.unitsStyle
+            formatter.includesTimeRemainingPhrase = options.includesTimeRemainingPhrase
+            formatter.includesApproximationPhrase = options.includesApproximationPhrase
         }
     }
     
-    private var divider: Double { privateTimeFormatterOptions.roundingStrategy.rawValue }
+    private var increment: Double { options.roundingIncrement.rawValue }
     
-    private var shouldShowExact: Bool { privateTimeFormatterOptions.exactSecsBelowMinute }
+    private var roundingThreshold: Double { options.showsExactBelow.rawValue }
     
-    var timeFormatterOptions : TimeFormatterOptions {
-        get { privateTimeFormatterOptions }
-        set { privateTimeFormatterOptions = newValue }
+    var timeFormatterOptions: TimeFormatterOptions {
+        get { options }
+        set { options = newValue }
     }
     
-    init(timeFormatterOptions: TimeFormatterOptions = TimeFormatterOptions(allowedUnits: [.hour, .minute, .second],
-                                                                           unitsStyle: .short,
-                                                                           includesTimeRemainingPhrase: false,
-                                                                           includesApproximationPhrase: false,
-                                                                           exactSecsBelowMinute: true,
-                                                                           roundingStrategy: .halfUpToWholeMinute))
-    {
+    init(timeFormatterOptions: TimeFormatterOptions = TimeFormatterOptions()) {
         formatter = DateComponentsFormatter()
         formatter.allowedUnits = timeFormatterOptions.allowedUnits
         formatter.unitsStyle = timeFormatterOptions.unitsStyle
         formatter.includesTimeRemainingPhrase = timeFormatterOptions.includesTimeRemainingPhrase
         formatter.includesApproximationPhrase = timeFormatterOptions.includesApproximationPhrase
-        privateTimeFormatterOptions = timeFormatterOptions
+        options = timeFormatterOptions
     }
     
     func string(from timeInterval: TimeInterval) -> String? {
-        let seconds = timeInterval < 60 && shouldShowExact ? timeInterval.rounded(.down) :
-        (timeInterval / divider).rounded() * divider
+        let seconds = timeInterval < roundingThreshold ? timeInterval :
+        timeInterval.roundedToClosestDivider(of: increment)
         return formatter.string(from: seconds)
     }
     

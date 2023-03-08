@@ -9,14 +9,14 @@ import UIKit
 
 extension UIView {
     /// animates changes to the view with reasonable duration and delay.
-    class func animateDetent(animations: @escaping () -> Void) {
+    static func animateDetent(animations: @escaping () -> Void) {
         self.animate(withDuration: 0.3, delay: .nan, options: [.curveEaseOut], animations: animations)
     }
 }
 
 extension UIView {
     /// prepares view for layout 
-    class func forAutoLayout<ViewType: UIView>(frame: CGRect = .zero, hidden: Bool = false) -> ViewType {
+    static func forAutoLayout<ViewType: UIView>(frame: CGRect = .zero, hidden: Bool = false) -> ViewType {
             let view = ViewType.init(frame: frame)
             view.translatesAutoresizingMaskIntoConstraints = false
             return view
@@ -42,7 +42,7 @@ extension UIView {
 }
 
 extension UIView {
-    class func fromNibForAutolayout<T: UIView>() -> T {
+    static func fromNibForAutolayout<T: UIView>() -> T {
         let view = Bundle(for: T.self).loadNibNamed(String(describing: T.self), owner: self, options: nil)![0] as! T
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
