@@ -17,7 +17,7 @@ protocol DestinationViewModelInputs {
 
 protocol DestinationViewModelOutputs {
     var prmAccess: Observable<NSAttributedString>! { get }
-    var schedule: Observable<String>! { get }
+    var schedule: Observable<NSAttributedString>! { get }
     var district: Observable<String>! { get }
     var type: Observable<String>! { get }
     var address: Observable<String>! { get }
@@ -32,15 +32,18 @@ protocol DestinationViewModelType {
 
 final class DestinationViewModel: DestinationViewModelType, DestinationViewModelInputs, DestinationViewModelOutputs {
     
-    private let timeFormatter: TimeFormatterProtocol = TimeFormatter()
-    private let distanceFormatter: DistanceFormatterProtocol = DistanceFormatter()
+    private let timeFormatter = TimeFormatter()
+    private let distanceFormatter = DistanceFormatter()
+    private let scheduleFormatter = ScheduleFormatter()
     
     init() {
         self.prmAccess = rawDestination.compactMap { $0.prmAccess?.frTickCross() }
-        self.schedule = rawDestination.compactMap { $0.schedule }
+        self.schedule = rawDestination.distinctUntilChanged { $0.schedule == $1.schedule }
+            .compactMap { $0.schedule }
+            .map { self.scheduleFormatter.schedule(from: $0) }
         self.district = rawDestination.compactMap { $0.district }
-        self.type = rawDestination.compactMap { $0.type }
-        self.address = rawDestination.compactMap { $0.address }
+        self.type = rawDestination.compactMap { $0.type?.lowercased().capitalized }
+        self.address = rawDestination.compactMap { $0.address?.lowercased().capitalized }
         self.distance = rawRoute.compactMap { self.distanceFormatter.string(from: $0.distance) }
         self.travelTime = rawRoute.compactMap { self.timeFormatter.string(from: $0.travelTime) }
     }
@@ -55,11 +58,11 @@ final class DestinationViewModel: DestinationViewModelType, DestinationViewModel
         rawRoute.accept(route)
     }
     
-    let prmAccess: Observable<NSAttributedString>!
-    let schedule: Observable<String>!
-    let district: Observable<String>!
-    let type: Observable<String>!
-    let address: Observable<String>!
+    var prmAccess: Observable<NSAttributedString>!
+    var schedule: Observable<NSAttributedString>!
+    var district: Observable<String>!
+    var type: Observable<String>!
+    var address: Observable<String>!
     var distance: Observable<String>!
     var travelTime: Observable<String>!
     

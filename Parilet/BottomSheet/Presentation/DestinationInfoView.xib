@@ -67,7 +67,7 @@
                     <rect key="frame" x="0.0" y="96.666666666666686" width="414" height="111.33333333333331"/>
                     <subviews>
                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="top" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="cpv-ps-64E">
-                            <rect key="frame" x="40" y="0.0" width="234" height="111.33333333333333"/>
+                            <rect key="frame" x="40" y="0.0" width="167.33333333333334" height="111.33333333333333"/>
                             <subviews>
                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="751" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="lWE-P7-tRX">
                                     <rect key="frame" x="0.0" y="0.0" width="118" height="20.333333333333332"/>
@@ -145,21 +145,11 @@
                                 </stackView>
                             </subviews>
                         </stackView>
-                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YCm-gG-kTW">
-                            <rect key="frame" x="294" y="5.6666666666666572" width="100" height="100"/>
-                            <constraints>
-                                <constraint firstAttribute="height" constant="100" id="8lL-uq-El4"/>
-                                <constraint firstAttribute="width" constant="100" id="Ohs-NU-pOB"/>
-                            </constraints>
-                        </imageView>
                     </subviews>
                     <constraints>
                         <constraint firstItem="cpv-ps-64E" firstAttribute="top" secondItem="2Oy-Px-uhI" secondAttribute="top" id="52U-TF-xnT"/>
-                        <constraint firstAttribute="trailing" secondItem="YCm-gG-kTW" secondAttribute="trailing" constant="20" id="B4U-EY-btq"/>
-                        <constraint firstItem="YCm-gG-kTW" firstAttribute="centerY" secondItem="2Oy-Px-uhI" secondAttribute="centerY" id="Ehb-pN-a6h"/>
                         <constraint firstAttribute="bottom" secondItem="cpv-ps-64E" secondAttribute="bottom" id="Lu7-E4-LSU"/>
                         <constraint firstItem="cpv-ps-64E" firstAttribute="leading" secondItem="2Oy-Px-uhI" secondAttribute="leading" constant="40" id="QQT-BE-XGV"/>
-                        <constraint firstItem="YCm-gG-kTW" firstAttribute="leading" secondItem="cpv-ps-64E" secondAttribute="trailing" constant="20" id="hND-ju-eeg"/>
                     </constraints>
                 </view>
             </subviews>

@@ -19,7 +19,6 @@ extension String {
 }
 
 extension String {
-    
     func frTickCross() -> NSAttributedString {
         let string: String
         let color: UIColor
@@ -28,7 +27,19 @@ extension String {
         case "non": string = .cross ; color = .red
         default: string = "?" ; color = .prlYellow
         }
-        return NSAttributedString(string: string,
-                                  attributes: [NSAttributedString.Key.foregroundColor : color])
+        return NSAttributedString(string: string, color: color)
     }
 }
+
+extension String {
+    func extractDigits() -> [Int] {
+        self.components(separatedBy: .decimalDigits.inverted).compactMap { Int($0) }
+    }
+}
+
+extension String {
+    func localized() -> String {
+        NSLocalizedString(self, comment: "")
+    }
+}
+

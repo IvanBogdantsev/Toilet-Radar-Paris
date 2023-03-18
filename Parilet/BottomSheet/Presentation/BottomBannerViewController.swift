@@ -32,7 +32,7 @@ final class BottomBannerViewController: UIViewController { //подписать 
             .disposed(by: disposeBag)
         
         viewModel.outputs.schedule.asDriver(onErrorDriveWith: .empty())
-            .drive(destinationInfoView.schedule.rx.text)
+            .drive(destinationInfoView.schedule.rx.attributedText)
             .disposed(by: disposeBag)
         
         viewModel.outputs.district.asDriver(onErrorDriveWith: .empty())

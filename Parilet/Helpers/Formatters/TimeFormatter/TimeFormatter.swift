@@ -7,10 +7,9 @@
 
 import Foundation
 
-final class TimeFormatter: TimeFormatterProtocol {
+final class TimeFormatter {
     
     private let formatter: DateComponentsFormatter
-    
     private var options: TimeFormatterOptions {
         didSet {
             formatter.allowedUnits = options.allowedUnits
@@ -21,9 +20,7 @@ final class TimeFormatter: TimeFormatterProtocol {
     }
     
     private var increment: Double { options.roundingIncrement.rawValue }
-    
     private var roundingThreshold: Double { options.showsExactBelow.rawValue }
-    
     var timeFormatterOptions: TimeFormatterOptions {
         get { options }
         set { options = newValue }

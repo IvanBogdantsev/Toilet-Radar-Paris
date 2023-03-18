@@ -7,10 +7,9 @@
 
 import MapKit
 
-final class DistanceFormatter: DistanceFormatterProtocol {
+final class DistanceFormatter {
     
     private let formatter: LengthFormatter
-    
     private var options: DistanceFormatterOptions {
         didSet {
             formatter.unitStyle = options.unitStyle
@@ -18,15 +17,12 @@ final class DistanceFormatter: DistanceFormatterProtocol {
     }
     
     private var currentDistace: CLLocationDistance!
-    
     private var unit: LengthFormatter.Unit { currentDistace > 1000 ? .kilometer : .meter }
-    
     private var increment: Double {
         currentDistace > 1000 ? options.roundingAboveKm.rawValue : options.roundingBelowKm.rawValue
     }
     
     private var roundingThreshold: Double { options.shouldShowExactBelow.rawValue }
-    
     var distanceFormatterOptions: DistanceFormatterOptions {
         get { options }
         set { options = newValue }

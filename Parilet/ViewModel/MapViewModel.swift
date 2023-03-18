@@ -80,8 +80,8 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
         selectedAnnotation.accept(annotation)
     }
     
-    var customLocationProvider: RxSwift.Single<MapboxMaps.LocationProvider>!
-    var mapAnnotations: RxSwift.Observable<PointAnnotations>!
+    var customLocationProvider: Single<MapboxMaps.LocationProvider>!
+    var mapAnnotations: RxObservable<PointAnnotations>!
     var destinationHighlights: RxObservable<Destination>!
     var routeHighlights: RxObservable<Route>!
     var polyline: RxObservable<PolylineAnnotations>!
