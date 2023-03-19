@@ -17,9 +17,19 @@ final class MapViewController: UIViewController {
     private let bottomBanner = BottomBannerViewController()
     private let disposeBag = DisposeBag()
     
+    private let label: UILabel = {
+       let label = UILabel()
+        label.textColor = .black
+        label.font = UIFont.systemFont(ofSize: 25)
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.text = "FFF"
+        return label
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpMapView()
+        setLabel()
         bindViewModelInputs()
         bindViewModelOutputs()
     }
@@ -71,6 +81,21 @@ final class MapViewController: UIViewController {
             .asDriver(onErrorDriveWith: .empty())
             .drive { print($0) }
             .disposed(by: disposeBag)
+        
+        viewModel.outputs.distanceTraveld
+            .subscribe { self.label.text = String($0) }
+    }
+    
+}
+
+extension MapViewController {
+    
+    func setLabel() {
+        view.addSubview(label)
+        NSLayoutConstraint.activate([
+            label.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            label.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
     }
     
 }

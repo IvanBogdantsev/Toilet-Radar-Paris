@@ -28,6 +28,7 @@ protocol MapViewModelOutputs {
     var routeHighlights: RxObservable<Route>! { get }
     var polyline: RxObservable<PolylineAnnotations>! { get }
     var error: RxObservable<String>! { get }
+    var distanceTraveld: RxObservable<CLLocationDistance>! { get }
 }
 
 protocol MapViewModelType {
@@ -41,7 +42,7 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
     private let routeClient = RouteClient()
     private var locationProvider: LocationProviderType = ThisAppLocationProvider()
     private let errorRouter = ErrorRouter()
-
+    private var routeProgress: RouteProgress!
     
     init() {
         self.customLocationProvider = locationProvider.observableSelf
@@ -58,10 +59,11 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
         self.destinationHighlights = distinctAnnotation
             .map { Destination(destinationInfo: $0.userInfoUnwrapped) }
         
-        let routeResponse = distinctAnnotation
+        let routeResponse = distinctAnnotation // <- выполняется дважды из-за полилайна. Посмотреть также другие
             .withLatestFrom(locationProvider.didUpdateLatestLocation) { ($0, $1) }
-            .flatMap { self.routeClient.getRoute(between: [$0.coordinate, $1.coordinate])
+            .flatMap { self.routeClient.getRoute(between: [$1.coordinate, $0.coordinate])
                 .rerouteError(self.errorRouter) }
+            .share() // <- выяснить как работает
         
         self.routeHighlights = routeResponse.compactMap { Route(withRouteResponse: $0) }
         
@@ -73,6 +75,21 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
             .map { error in
                 error.localizedDescription
             }
+        
+        let options = distinctAnnotation
+            .withLatestFrom(locationProvider.didUpdateLatestLocation) { ($0, $1) }
+            .map { RouteOptions(coordinates: [$0.1.coordinate, $0.0.coordinate], profileIdentifier: .walking) }
+        
+        let routeProgress = routeResponse
+            .withLatestFrom(options) { ($0, $1) }
+            .map { self.routeProgress = RouteProgress(route: $0.0.routes![0], options: $0.1) }
+            .subscribe()
+        
+        self.distanceTraveld = locationProvider.didUpdateLatestLocation.map { self.routeProgress?.updateDistanceTraveled(with: $0) }.map { _ in
+            return self.routeProgress?.distanceRemaining
+        }
+        .compactMap { $0 }
+        
     }
     
     private let selectedAnnotation = PublishRelay<PointAnnotation>()
@@ -86,6 +103,7 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
     var routeHighlights: RxObservable<Route>!
     var polyline: RxObservable<PolylineAnnotations>!
     var error: RxObservable<String>!
+    var distanceTraveld: RxObservable<CLLocationDistance>! // <- времянка
     
     var inputs: MapViewModelInputs { self }
     var outputs: MapViewModelOutputs { self }

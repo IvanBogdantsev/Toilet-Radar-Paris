@@ -17,6 +17,7 @@ final class RouteClient {
     
     func getRoute(between coordinates: [LocationCoordinate2D]) -> RxObservable<RouteResponse> {
         routeOptions = RouteOptions(coordinates: coordinates, profileIdentifier: .walking)
+        routeOptions.includesSteps = true
         routeOptions.routeShapeResolution = .full
         return calculateRoute(with: routeOptions)
     }
@@ -26,6 +27,7 @@ final class RouteClient {
             let task = Directions.shared.calculate(options) { _, result in
                 switch result {
                 case .success(let response):
+                    print("FFF")
                     observer.onNext(response)
                     observer.onCompleted()
                 case .failure(let error):
