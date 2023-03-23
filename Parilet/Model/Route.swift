@@ -15,9 +15,13 @@ struct Route {
     let distance: LocationDistance
     let travelTime: TimeInterval
     
+    init(distance: LocationDistance, travelTime: TimeInterval) {
+        self.distance = distance
+        self.travelTime = travelTime
+    }
+    
     init?(withRouteResponse routeResponse: RouteResponse) {
         guard let route = routeResponse.routes?.first else { return nil }
-        self.distance = route.distance
-        self.travelTime = route.expectedTravelTime
+        self.init(distance: route.distance, travelTime: route.expectedTravelTime)
     }
 }

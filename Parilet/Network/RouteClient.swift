@@ -14,11 +14,11 @@ final class RouteClient {
     typealias RxObservable = RxSwift.Observable
     
     private var routeOptions: RouteOptions!
-    
-    func getRoute(between coordinates: [LocationCoordinate2D]) -> RxObservable<RouteResponse> {
-        routeOptions = RouteOptions(coordinates: coordinates, profileIdentifier: .walking)
-        routeOptions.includesSteps = true
+    // The order source-destination matters, since route progress is calculated from route steps; inverted may lead to unexpected behaviour
+    func getRoute(from source: LocationCoordinate2D, to destination: LocationCoordinate2D) -> RxObservable<RouteResponse> {
+        routeOptions = RouteOptions(coordinates: [source, destination], profileIdentifier: .walking)
         routeOptions.routeShapeResolution = .full
+        routeOptions.includesSteps = true
         return calculateRoute(with: routeOptions)
     }
     
@@ -27,7 +27,6 @@ final class RouteClient {
             let task = Directions.shared.calculate(options) { _, result in
                 switch result {
                 case .success(let response):
-                    print("FFF")
                     observer.onNext(response)
                     observer.onCompleted()
                 case .failure(let error):

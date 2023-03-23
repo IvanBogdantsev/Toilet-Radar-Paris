@@ -6,6 +6,7 @@
 //
 
 import MapboxMaps
+import MapKit
 
 extension PointAnnotation {
     /// Creates an instance of PointAnnotation.
@@ -35,5 +36,13 @@ extension PointAnnotation {
 extension PointAnnotation {
     var userInfoUnwrapped: Dictionary<String, Any> {
         userInfo ?? [:]
+    }
+}
+
+extension PointAnnotation {
+    init(coordinate: CLLocationCoordinate2D, image: String) {
+        self.init(coordinate: coordinate)
+        self.image = .init(image: UIImage.pin, name: MapBoxConstants.imageName)
+        self.iconImage = MapBoxConstants.imageName
     }
 }
