@@ -8,7 +8,7 @@
 import RxSwift
 import UIKit
 
-final class BottomBannerViewController: UIViewController { //подписать на Banner
+final class BottomBannerViewController: UIViewController {
     
     private let viewModel: DestinationViewModelType = DestinationViewModel()
     private let containerView: BannerContainerView = .forAutoLayout()

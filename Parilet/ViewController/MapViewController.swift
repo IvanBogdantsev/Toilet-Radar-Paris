@@ -13,15 +13,15 @@ import UIKit
 final class MapViewController: UIViewController {
     
     private var mapView: MapViewType!
-    private var viewModel: MapViewModelType = MapViewModel()
+    private let viewModel: MapViewModelType = MapViewModel()
     private let bottomBanner = BottomBannerViewController()
     private let disposeBag = DisposeBag()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setUpMapView()
-        bindViewModelInputs()
-        bindViewModelOutputs()
+        setupMapView()
+        bindInputs()
+        bindOutputs()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -29,18 +29,18 @@ final class MapViewController: UIViewController {
         embed(bottomBanner, in: view)
     }
     
-    private func setUpMapView() {
+    private func setupMapView() {
         mapView = Map(frame: view.bounds)
         view.addSubview(mapView)
     }
     
-    private func bindViewModelInputs() {
+    private func bindInputs() {
         mapView.didDetectTappedAnnotation
             .subscribe(onNext: { self.viewModel.inputs.didSelectAnnotation($0) })
             .disposed(by: disposeBag)
     }
     
-    private func bindViewModelOutputs() {
+    private func bindOutputs() {
         viewModel.outputs.customLocationProvider
             .subscribe(onSuccess: { self.mapView.overrideLocationProvider(withCustomLocationProvider: $0) })
             .disposed(by: disposeBag)
@@ -51,11 +51,11 @@ final class MapViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.outputs.destinationHighlights
-            .subscribe { self.bottomBanner.refreshDestination(with: $0) }
+            .subscribe ( onNext: { self.bottomBanner.refreshDestination(with: $0) })
             .disposed(by: disposeBag)
         
         viewModel.outputs.routeHighlights
-            .subscribe { self.bottomBanner.refreshRoute(with: $0) }
+            .subscribe ( onNext: { self.bottomBanner.refreshRoute(with: $0) })
             .disposed(by: disposeBag)
         
         viewModel.outputs.polyline

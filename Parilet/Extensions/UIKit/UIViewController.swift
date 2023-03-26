@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIViewController {
-    /// adds child UIViewController and adds its view to parent's view hierarchy
+    /// adds child UIViewController and adds its view to the parent's view hierarchy
     func embed(_ viewController: UIViewController, in view: UIView) {
         view.addSubview(viewController.view)
         addChild(viewController)
