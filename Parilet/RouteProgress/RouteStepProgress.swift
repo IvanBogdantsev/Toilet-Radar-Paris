@@ -18,7 +18,7 @@ final class RouteStepProgress {
     let step: RouteStep
     var distanceTraveled: CLLocationDistance = 0
     var distanceRemaining: CLLocationDistance {
-        return max(step.distance - distanceTraveled, 0)
+        max(step.distance - distanceTraveled, 0)
     }
     
     var fractionTraveled: Double {
@@ -27,7 +27,7 @@ final class RouteStepProgress {
     }
     
     var durationRemaining: TimeInterval {
-        return (1 - fractionTraveled) * step.expectedTravelTime
+        (1 - fractionTraveled) * step.expectedTravelTime
     }
     
 }

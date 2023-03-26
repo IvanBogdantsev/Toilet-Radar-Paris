@@ -38,11 +38,3 @@ extension PointAnnotation {
         userInfo ?? [:]
     }
 }
-
-extension PointAnnotation {
-    init(coordinate: CLLocationCoordinate2D, image: String) {
-        self.init(coordinate: coordinate)
-        self.image = .init(image: UIImage.pin, name: MapBoxConstants.imageName)
-        self.iconImage = MapBoxConstants.imageName
-    }
-}

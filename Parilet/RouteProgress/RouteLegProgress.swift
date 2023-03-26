@@ -13,15 +13,15 @@ final class RouteLegProgress {
     
     let leg: RouteLeg
     var distanceTraveled: CLLocationDistance {
-        return leg.steps.prefix(upTo: stepIndex).map { $0.distance }.reduce(0, +) + currentStepProgress.distanceTraveled
+        leg.steps.prefix(upTo: stepIndex).map { $0.distance }.reduce(0, +) + currentStepProgress.distanceTraveled
     }
     
     var durationRemaining: TimeInterval {
-        return remainingSteps.map { $0.expectedTravelTime }.reduce(0, +) + currentStepProgress.durationRemaining
+        remainingSteps.map { $0.expectedTravelTime }.reduce(0, +) + currentStepProgress.durationRemaining
     }
     
     var distanceRemaining: CLLocationDistance {
-        return remainingSteps.map { $0.distance }.reduce(0, +) + currentStepProgress.distanceRemaining
+        remainingSteps.map { $0.distance }.reduce(0, +) + currentStepProgress.distanceRemaining
     }
     
     var fractionTraveled: Double {
@@ -37,11 +37,11 @@ final class RouteLegProgress {
     }
     
     var remainingSteps: [RouteStep] {
-        return Array(leg.steps.suffix(from: stepIndex + 1))
+        Array(leg.steps.suffix(from: stepIndex + 1))
     }
     
     var currentStep: RouteStep {
-        return leg.steps[stepIndex]
+        leg.steps[stepIndex]
     }
     
     var currentStepProgress: RouteStepProgress
@@ -53,25 +53,6 @@ final class RouteLegProgress {
         self.stepIndex = stepIndex
         
         currentStepProgress = RouteStepProgress(step: leg.steps[stepIndex])
-    }
-    /// The waypoints remaining on the current leg
-    func remainingWaypoints(among waypoints: [Waypoint]) -> [Waypoint] {
-        guard waypoints.count > 1 else {
-            return []
-        }
-        let legPolyline = leg.shape
-        guard let userCoordinateIndex = legPolyline.indexedCoordinateFromStart(distance: distanceTraveled)?.index else {
-            // The leg is empty.
-            return []
-        }
-        var slice = legPolyline
-        var accumulatedCoordinates = 0
-        return Array(waypoints.drop { (waypoint) -> Bool in
-            let newSlice = slice.sliced(from: waypoint.coordinate)!
-            accumulatedCoordinates += slice.coordinates.count - newSlice.coordinates.count
-            slice = newSlice
-            return accumulatedCoordinates <= userCoordinateIndex
-        })
-    }
+    }   
     
 }

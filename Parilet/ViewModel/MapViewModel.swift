@@ -48,10 +48,7 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
         
         self.mapAnnotations = sanisetteApiClient.getMapPoints()
             .backgroundMap(qos: .userInteractive) { $0.records.map { PointAnnotation(withRecord: $0) } }
-            .map { $0 + [PointAnnotation(coordinate: CLLocationCoordinate2D(latitude: 50.62, longitude: 3.06), image: ""),
-                         PointAnnotation(coordinate: CLLocationCoordinate2D(latitude: 50.66, longitude: 3.14), image: ""),
-                         PointAnnotation(coordinate: CLLocationCoordinate2D(latitude: 50.59, longitude: 3.07), image: "")] }
-            .rerouteError(errorRouter) // МОК А ТАКЖЕ ФАЙЛ ПОИНАНОТЕЙШН
+            .rerouteError(errorRouter)
         
         let distinctAnnotation = selectedAnnotation
             .distinctUntilChanged { $0.coordinate == $1.coordinate }
@@ -64,7 +61,7 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
             .withLatestFrom(locationProvider.didUpdateLatestLocation) { ($0, $1) }
             .flatMap { self.routeClient.getRoute(from: $1.coordinate, to: $0.coordinate)
                 .rerouteError(self.errorRouter) }
-            .do { self.routeProgress = RouteProgress(route: $0.primaryRouteIfPresent) } // to route
+            .do { self.routeProgress = RouteProgress(route: $0.primaryRouteIfPresent) }
             .share()
         
         let updatedRouteProgress = locationProvider.didUpdateLatestLocation // share, filter, accuracy
@@ -78,7 +75,7 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
         
         let updatedPolyline = updatedRouteProgress
             .backgroundCompactMap(qos: .userInteractive) { $0.remainingShape }
-            .backgroundMap(qos: .userInteractive) { PolylineAnnotation(lineString: $0) }
+            .backgroundMap(qos: .userInteractive) { PolylineAnnotation(withLineString: $0) }
             .map { [$0] }
         
         self.routeHighlights = routeResponse.compactMap { Route(withRouteResponse: $0) }

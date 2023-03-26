@@ -19,12 +19,20 @@ final class RouteProgress {
         self.currentLegProgress = RouteLegProgress(leg: route.legs[legIndex], stepIndex: 0)
     }
     
+    private lazy var shape: LineString? = {
+        route.shape
+    }()
+    
+    private lazy var finalRouteCoordinate: LocationCoordinate2D? = {
+        shape?.coordinates.last
+    }()
+    
     var distanceTraveled: CLLocationDistance {
-        return route.legs.prefix(upTo: legIndex).map { $0.distance }.reduce(0, +) + currentLegProgress.distanceTraveled
+        route.legs.prefix(upTo: legIndex).map { $0.distance }.reduce(0, +) + currentLegProgress.distanceTraveled
     }
     
     var durationRemaining: TimeInterval {
-        return route.legs.suffix(from: legIndex + 1).map { $0.expectedTravelTime }.reduce(0, +) + currentLegProgress.durationRemaining
+        route.legs.suffix(from: legIndex + 1).map { $0.expectedTravelTime }.reduce(0, +) + currentLegProgress.durationRemaining
     }
     
     var fractionTraveled: Double {
@@ -33,15 +41,16 @@ final class RouteProgress {
     }
     
     var distanceRemaining: CLLocationDistance {
-        return max(route.distance - distanceTraveled, 0)
+        max(route.distance - distanceTraveled, 0)
     }
     
     var remainingWaypoints: [Waypoint] {
-        return route.legs.suffix(from: legIndex).compactMap { $0.destination }
+        route.legs.suffix(from: legIndex).compactMap { $0.destination }
     }
     
-    var remainingShape: LineString? { // рефактор: форс и двойной вызов distanceRemaining
-        return route.shape?.trimmed(from: (route.shape?.coordinates.last!)!, distance: -distanceRemaining)
+    var remainingShape: LineString? {
+        guard let finalRouteCoordinate = finalRouteCoordinate else { return nil }
+        return shape?.trimmed(from: finalRouteCoordinate, distance: -distanceRemaining)
     }
     
     var route: MapboxDirections.Route
@@ -52,16 +61,23 @@ final class RouteProgress {
         updateDistanceTraveled(with: location)
     }
     
+    private func refreshStepIndex() {
+        let stepsUpToCurrent = currentLeg.steps.prefix(currentLegProgress.stepIndex + 1)
+        let distanceTraveledUpToCurrentStep = stepsUpToCurrent.map { $0.distance }.reduce(0, +) // index out of..?
+        if distanceTraveled >= distanceTraveledUpToCurrentStep { currentLegProgress.stepIndex += 1 }
+    }
+    
     func updateDistanceTraveled(with location: CLLocation) {
+        refreshStepIndex()
         let stepProgress = currentLegProgress.currentStepProgress
         let step = stepProgress.step
         
-        guard let polyline = step.shape else { fatalError() }
+        guard let polyline = step.shape else { return }
         if let closestCoordinate = polyline.closestCoordinate(to: location.coordinate) {
             let remainingDistance = polyline.distance(from: closestCoordinate.coordinate)!
             let distanceTraveled = step.distance - remainingDistance
             stepProgress.distanceTraveled = distanceTraveled
-        } else {  }
+        }
     }
     
     var currentLegProgress: RouteLegProgress
@@ -73,11 +89,11 @@ final class RouteProgress {
     }
     
     var currentLeg: RouteLeg {
-        return route.legs[legIndex]
+        route.legs[legIndex]
     }
     
     var remainingLegs: [RouteLeg] {
-        return Array(route.legs.suffix(from: legIndex + 1))
+        Array(route.legs.suffix(from: legIndex + 1))
     }
     
 }

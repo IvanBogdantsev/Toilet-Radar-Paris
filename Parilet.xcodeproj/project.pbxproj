@@ -247,8 +247,8 @@
 			isa = PBXGroup;
 			children = (
 				4EC32F6029B0A8060074B954 /* BackgroundMap.swift */,
-				4EA60373295E2E9B00E1499F /* Annotations */,
 				4EDECAF229CBBFBC000D857D /* Race.swift */,
+				4EA60373295E2E9B00E1499F /* Annotations */,
 			);
 			path = ReactiveExtensions;
 			sourceTree = "<group>";

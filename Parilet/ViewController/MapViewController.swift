@@ -17,15 +17,6 @@ final class MapViewController: UIViewController {
     private let bottomBanner = BottomBannerViewController()
     private let disposeBag = DisposeBag()
     
-    private let label: UILabel = {
-        let label = UILabel()
-        label.textColor = .black
-        label.font = UIFont.systemFont(ofSize: 25)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.text = "FFF"
-        return label
-    }()
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpMapView()
@@ -45,17 +36,13 @@ final class MapViewController: UIViewController {
     
     private func bindViewModelInputs() {
         mapView.didDetectTappedAnnotation
-            .subscribe(onNext: { selectedAnnotation in
-                self.viewModel.inputs.didSelectAnnotation(selectedAnnotation)
-            })
+            .subscribe(onNext: { self.viewModel.inputs.didSelectAnnotation($0) })
             .disposed(by: disposeBag)
     }
     
     private func bindViewModelOutputs() {
         viewModel.outputs.customLocationProvider
-            .subscribe(onSuccess: { locationProvider in
-                self.mapView.overrideLocationProvider(withCustomLocationProvider: locationProvider)
-            })
+            .subscribe(onSuccess: { self.mapView.overrideLocationProvider(withCustomLocationProvider: $0) })
             .disposed(by: disposeBag)
         
         viewModel.outputs.mapAnnotations
