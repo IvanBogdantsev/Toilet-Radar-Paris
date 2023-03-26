@@ -13,6 +13,7 @@
 		4E1C3071292BB6FD00F5859D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1C3070292BB6FD00F5859D /* RxCocoa */; };
 		4E1C3073292BB6FD00F5859D /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1C3072292BB6FD00F5859D /* RxRelay */; };
 		4E1C3075292BB6FD00F5859D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1C3074292BB6FD00F5859D /* RxSwift */; };
+		4E28ED1129D0DB380076A7A4 /* ShowMyLocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E28ED1029D0DB380076A7A4 /* ShowMyLocationButton.swift */; };
 		4E2977A52958A79F00FC7965 /* MapboxDirections in Frameworks */ = {isa = PBXBuildFile; productRef = 4E2977A42958A79F00FC7965 /* MapboxDirections */; };
 		4E37ECB4298BBA7700AB4D91 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E37ECB3298BBA7700AB4D91 /* Destination.swift */; };
 		4E3D346B295612360083BF05 /* Mapbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D346A295612360083BF05 /* Mapbox.swift */; };
@@ -46,6 +47,7 @@
 		4E9018F7296843B3000893DD /* RxPolylineAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9018F6296843B3000893DD /* RxPolylineAnnotationManager.swift */; };
 		4E90EDA2298AC243004D8E39 /* DestinationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E90EDA1298AC243004D8E39 /* DestinationViewModel.swift */; };
 		4E912D1029B632D100E719EA /* DistanceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E912D0F29B632D100E719EA /* DistanceFormatter.swift */; };
+		4EA0D90F29D08B2B002238D9 /* MapSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA0D90E29D08B2B002238D9 /* MapSceneView.swift */; };
 		4EB27E0B292BBA7500A9938C /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB27E0A292BBA7500A9938C /* MapboxMaps */; };
 		4EB28E7C29BE5DE400E7A961 /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB28E7B29BE5DE400E7A961 /* NSAttributedString.swift */; };
 		4EB50E3529B396F00099F5A7 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB50E3429B396F00099F5A7 /* TimeFormatter.swift */; };
@@ -74,6 +76,7 @@
 		4E0E971929B6016300B367D4 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		4E1AC6F7292ECA9B00872C5C /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		4E1AC6F9292ECE7400872C5C /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		4E28ED1029D0DB380076A7A4 /* ShowMyLocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMyLocationButton.swift; sourceTree = "<group>"; };
 		4E37ECB3298BBA7700AB4D91 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		4E3D346A295612360083BF05 /* Mapbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapbox.swift; sourceTree = "<group>"; };
 		4E3D346C2956125D0083BF05 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
@@ -107,6 +110,7 @@
 		4E9018F6296843B3000893DD /* RxPolylineAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxPolylineAnnotationManager.swift; sourceTree = "<group>"; };
 		4E90EDA1298AC243004D8E39 /* DestinationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationViewModel.swift; sourceTree = "<group>"; };
 		4E912D0F29B632D100E719EA /* DistanceFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceFormatter.swift; sourceTree = "<group>"; };
+		4EA0D90E29D08B2B002238D9 /* MapSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSceneView.swift; sourceTree = "<group>"; };
 		4EB28E7B29BE5DE400E7A961 /* NSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedString.swift; sourceTree = "<group>"; };
 		4EB50E3429B396F00099F5A7 /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
 		4EC130522938DB7000CF4110 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
@@ -192,6 +196,14 @@
 				4EFFCD6A296264C900FD2BCC /* RouteClient.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		4E28ED0B29D0D5D50076A7A4 /* Elements */ = {
+			isa = PBXGroup;
+			children = (
+				4E28ED1029D0DB380076A7A4 /* ShowMyLocationButton.swift */,
+			);
+			path = Elements;
 			sourceTree = "<group>";
 		};
 		4E57568429BB373600BA8336 /* ScheduleFormatter */ = {
@@ -312,7 +324,9 @@
 		4E8DC02C292B968B009A7B25 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				4E28ED0B29D0D5D50076A7A4 /* Elements */,
 				4EC130522938DB7000CF4110 /* Map.swift */,
+				4EA0D90E29D08B2B002238D9 /* MapSceneView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -558,10 +572,12 @@
 				4E5B749A29B908860035627A /* UIColor.swift in Sources */,
 				4E9018F7296843B3000893DD /* RxPolylineAnnotationManager.swift in Sources */,
 				4E8DC01A292B9648009A7B25 /* SceneDelegate.swift in Sources */,
+				4E28ED1129D0DB380076A7A4 /* ShowMyLocationButton.swift in Sources */,
 				4E5FA03F292F836500FDEFC7 /* MapViewModel.swift in Sources */,
 				4E5D9F6429C4F7DF00394B26 /* RouteLegProgress.swift in Sources */,
 				4E9018F529683C73000893DD /* PolylineAnnotation.swift in Sources */,
 				4EC130532938DB7000CF4110 /* Map.swift in Sources */,
+				4EA0D90F29D08B2B002238D9 /* MapSceneView.swift in Sources */,
 				4E88E68129A581AC00CC7245 /* UIViewController.swift in Sources */,
 				4E3D346D2956125D0083BF05 /* Network.swift in Sources */,
 				4E5B749829B8E5710035627A /* String.swift in Sources */,

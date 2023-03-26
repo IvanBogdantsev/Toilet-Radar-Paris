@@ -16,7 +16,7 @@ extension UIView {
 
 extension UIView {
     /// prepares view for layout 
-    static func forAutoLayout<ViewType: UIView>(frame: CGRect = .zero, hidden: Bool = false) -> ViewType {
+    static func forAutoLayout<ViewType: UIView>(frame: CGRect = .zero) -> ViewType {
             let view = ViewType.init(frame: frame)
             view.translatesAutoresizingMaskIntoConstraints = false
             return view
@@ -24,9 +24,16 @@ extension UIView {
 }
 
 extension UIView {
+    static func fromNibForAutolayout<T: UIView>() -> T {
+        let view = Bundle(for: T.self).loadNibNamed(String(describing: T.self), owner: self, options: nil)![0] as! T
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
+    }
+}
+
+extension UIView {
     func embed(in view: UIView) {
         view.addSubview(self)
-        didMoveToSuperview()
     }
 }
 
@@ -42,9 +49,7 @@ extension UIView {
 }
 
 extension UIView {
-    static func fromNibForAutolayout<T: UIView>() -> T {
-        let view = Bundle(for: T.self).loadNibNamed(String(describing: T.self), owner: self, options: nil)![0] as! T
-        view.translatesAutoresizingMaskIntoConstraints = false
-        return view
+    func scalexyBy(_ scale: CGFloat) {
+        transform = CGAffineTransform(scaleX: scale, y: scale)
     }
 }

@@ -11,4 +11,8 @@ extension UIImage {
     static var pin: UIImage {
         UIImage(named: "red_pin") ?? UIImage()
     }
+    
+    static var locationArrow: UIImage {
+        UIImage(named: "location_fill") ?? UIImage()
+    }
 }

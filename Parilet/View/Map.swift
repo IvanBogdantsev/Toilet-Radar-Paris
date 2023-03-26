@@ -9,48 +9,11 @@ import MapboxMaps
 import RxSwift
 import RxCocoa
 
-protocol MapViewType: UIView {
-    var bindablePointAnnotations: Binder<PointAnnotations> { get }
-    var bindablePolylineAnnotations: Binder<PolylineAnnotations> { get }
-    var didDetectTappedAnnotation: ControlEvent<PointAnnotation> { get }
-    func overrideLocationProvider(withCustomLocationProvider provider: LocationProvider)
-    /// an array of PointAnnotations
-    typealias PointAnnotations = [PointAnnotation]
-    /// an array of PolylineAnnotations
-    typealias PolylineAnnotations = [PolylineAnnotation]
-}
-
-final class Map: MapView, MapViewType {
-        
-    private lazy var pointAnnotationManager: PointAnnotationManager = {
-        annotations.makePointAnnotationManager()
-    }()
-    
-    private lazy var polylineAnnotationManager: PolylineAnnotationManager = {
-        let polylineAnnotationManager = annotations.makePolylineAnnotationManager()
-        polylineAnnotationManager.lineCap = .round
-        return polylineAnnotationManager
-    }()
-    
-    var bindablePointAnnotations: Binder<PointAnnotations> {
-        pointAnnotationManager.rx.annotations
-    }
-    
-    var bindablePolylineAnnotations: Binder<PolylineAnnotations> {
-        polylineAnnotationManager.rx.annotations
-    }
-    
-    var didDetectTappedAnnotation: ControlEvent<PointAnnotation> {
-        pointAnnotationManager.rx.didDetectTappedAnnotation
-    }
-    
-    func overrideLocationProvider(withCustomLocationProvider provider: LocationProvider) {
-        location.overrideLocationProvider(with: provider)
-    }
+final class Map: MapView {
     
     init(frame: CGRect) {
         let initOptions = MapInitOptions(resourceOptions: MapBoxConstants.resourceOptions,
-                                          cameraOptions: MapBoxConstants.cameraOptions)
+                                         cameraOptions: MapBoxConstants.cameraOptions)
         super.init(frame: frame, mapInitOptions: initOptions)
         self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         // configuring a 2-dimensional puck with heading indicator
