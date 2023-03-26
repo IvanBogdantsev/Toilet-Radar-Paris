@@ -6,6 +6,7 @@
 //
 
 import MapboxMaps
+import MapKit
 
 extension PointAnnotation {
     /// Creates an instance of PointAnnotation.

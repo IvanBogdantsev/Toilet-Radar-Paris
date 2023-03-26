@@ -28,11 +28,15 @@ final class ScheduleFormatter {
                            color: UIColor.lightGray)
     }()
     
+    private var today: Date {
+        Date()
+    }
+    
     private func attributeStatusColor(open: Hour, closed: Hour) -> UIColor {
-        guard let openDate = calendar.date(bySettingHour: open, minute: 0, second: 0, of: Date()),
-              var closeDate = calendar.date(bySettingHour: closed, minute: 0, second: 0, of: Date()),
-              let now = calendar.date(bySetting: .second, value: 0, of: Date()) else { return .lightGray }
-        
+        guard let openDate = calendar.date(bySettingHour: open, minute: 0, second: 0, of: today),
+              var closeDate = calendar.date(bySettingHour: closed, minute: 0, second: 0, of: today),
+              let now = calendar.date(bySetting: .second, value: 0, of: today) else { return .lightGray }
+        print(openDate, closeDate, now)
         if openDate.compare(closeDate) == .orderedDescending { closeDate.addTimeInterval(86400) }
         if now.compare(openDate) == .orderedAscending { return .red }
         if now.compare(closeDate) == .orderedDescending { return .red }

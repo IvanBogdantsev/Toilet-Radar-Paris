@@ -41,33 +41,50 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
     private let routeClient = RouteClient()
     private var locationProvider: LocationProviderType = ThisAppLocationProvider()
     private let errorRouter = ErrorRouter()
-
+    private var routeProgress: RouteProgress?
     
     init() {
         self.customLocationProvider = locationProvider.observableSelf
         
         self.mapAnnotations = sanisetteApiClient.getMapPoints()
+            .backgroundMap(qos: .userInteractive) { $0.records.map { PointAnnotation(withRecord: $0) } }
             .rerouteError(errorRouter)
-            .backgroundMap(qos: .userInteractive) { data in
-                data.records.map { PointAnnotation(withRecord: $0) }
-            }
         
         let distinctAnnotation = selectedAnnotation
             .distinctUntilChanged { $0.coordinate == $1.coordinate }
+            .share()
         
         self.destinationHighlights = distinctAnnotation
             .map { Destination(destinationInfo: $0.userInfoUnwrapped) }
         
         let routeResponse = distinctAnnotation
             .withLatestFrom(locationProvider.didUpdateLatestLocation) { ($0, $1) }
-            .flatMap { self.routeClient.getRoute(between: [$0.coordinate, $1.coordinate])
+            .flatMap { self.routeClient.getRoute(from: $1.coordinate, to: $0.coordinate)
                 .rerouteError(self.errorRouter) }
+            .do { self.routeProgress = RouteProgress(route: $0.primaryRouteIfPresent) }
+            .share()
+        
+        let updatedRouteProgress = locationProvider.didUpdateLatestLocation // share, filter, accuracy
+            .backgroundMap(qos: .userInteractive) { self.routeProgress?.updateDistanceTraveled(with: $0) }
+            .compactMap { self.routeProgress }
+            .share()
+        
+        let updatedRoute = updatedRouteProgress
+            .backgroundMap(qos: .userInteractive) { Route(distance: $0.distanceRemaining,
+                                                          travelTime: $0.durationRemaining) }
+        
+        let updatedPolyline = updatedRouteProgress
+            .backgroundCompactMap(qos: .userInteractive) { $0.remainingShape }
+            .backgroundMap(qos: .userInteractive) { PolylineAnnotation(withLineString: $0) }
+            .map { [$0] }
         
         self.routeHighlights = routeResponse.compactMap { Route(withRouteResponse: $0) }
+            .race(updatedRoute)
         
         self.polyline = routeResponse
             .backgroundCompactMap(qos: .userInteractive) { PolylineAnnotation(withRouteResponse: $0) }
             .map { [$0] }
+            .race(updatedPolyline)
         
         self.error = errorRouter.error
             .map { error in

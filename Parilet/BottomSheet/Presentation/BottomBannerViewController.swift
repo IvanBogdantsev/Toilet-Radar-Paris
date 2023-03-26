@@ -18,7 +18,7 @@ final class BottomBannerViewController: UIViewController { //подписать 
     override func loadView() {
         view = containerView
     }
-                
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         destinationInfoView.embed(in: containerView)
@@ -59,7 +59,7 @@ final class BottomBannerViewController: UIViewController { //подписать 
     func refreshDestination(with destination: Destination) {
         viewModel.inputs.refreshDestination(with: destination)
     }
-
+    
     func refreshRoute(with route: Route) {
         viewModel.inputs.refreshRoute(with: route)
     }

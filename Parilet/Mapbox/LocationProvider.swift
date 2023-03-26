@@ -128,6 +128,7 @@ extension ThisAppLocationProvider {
 }
 
 extension ThisAppLocationProvider: CLLocationManagerDelegate {
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         delegate?.locationProvider(self, didUpdateLocations: locations)
         guard let latestLocation = locations.first else { return }
@@ -146,4 +147,5 @@ extension ThisAppLocationProvider: CLLocationManagerDelegate {
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         delegate?.locationProviderDidChangeAuthorization(self)
     }
+    
 }
