@@ -24,4 +24,7 @@ extension UIColor {
     static var prlGreen: UIColor {
         UIColor.hex(0x0BCE17)
     }
+    static var prlBlue: UIColor {
+        UIColor.hex(0x3478F6)
+    }
 }

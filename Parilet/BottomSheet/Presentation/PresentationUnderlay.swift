@@ -39,7 +39,6 @@ final class BannerContainerView: UIView {
         super.didMoveToSuperview()
         
         guard let superview = superview else { return }
-        
         setupConstraints(superview)
     }
     

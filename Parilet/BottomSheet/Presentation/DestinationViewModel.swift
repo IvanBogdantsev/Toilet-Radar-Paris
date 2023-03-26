@@ -38,13 +38,19 @@ final class DestinationViewModel: DestinationViewModelType, DestinationViewModel
     
     init() {
         self.prmAccess = rawDestination.compactMap { $0.prmAccess?.frTickCross() }
+        
         self.schedule = rawDestination.distinctUntilChanged { $0.schedule == $1.schedule }
             .compactMap { $0.schedule }
             .map { self.scheduleFormatter.schedule(from: $0) }
+        
         self.district = rawDestination.compactMap { $0.district }
+        
         self.type = rawDestination.compactMap { $0.type?.lowercased().capitalized }
+        
         self.address = rawDestination.compactMap { $0.address?.lowercased().capitalized }
+        
         self.distance = rawRoute.compactMap { self.distanceFormatter.string(from: $0.distance) }
+        
         self.travelTime = rawRoute.compactMap { self.timeFormatter.string(from: $0.travelTime) }
     }
     
