@@ -6,7 +6,7 @@
       "location" : "https://github.com/Alamofire/Alamofire.git",
       "state" : {
         "branch" : "master",
-        "revision" : "81a29729e7dbfe7b976723843d0280926587a532"
+        "revision" : "fd87f7ce7461197ea5af6e4a865168b8fc913ee0"
       }
     },
     {
@@ -14,8 +14,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mapbox/mapbox-common-ios.git",
       "state" : {
-        "revision" : "185d791e7478cc5da7cc2b4756ecd0d0bd387eac",
-        "version" : "23.4.0-beta.1"
+        "revision" : "49f0c56ce7a113b4474e08837a1985cf1a8590b5",
+        "version" : "23.4.0"
       }
     },
     {
@@ -23,8 +23,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/mapbox/mapbox-core-maps-ios.git",
       "state" : {
-        "revision" : "81b929488b5bbc467df4cf294ceffa0ae98ef0e0",
-        "version" : "10.12.0-beta.1"
+        "revision" : "d0826b92cb5094fb26ce6f8f6a09bc4734751baf",
+        "version" : "10.12.0"
       }
     },
     {
@@ -42,7 +42,7 @@
       "location" : "https://github.com/mapbox/mapbox-maps-ios.git",
       "state" : {
         "branch" : "main",
-        "revision" : "6f01f9eac27f949cbf69a4021dac141e9cdfd6cd"
+        "revision" : "2f528b67ef785b46817b58ccc1511aaaf5b1b5e0"
       }
     },
     {
@@ -60,7 +60,7 @@
       "location" : "https://github.com/ReactiveX/RxSwift.git",
       "state" : {
         "branch" : "main",
-        "revision" : "91a36920b1ec069004fef9dc41b7c5dbcaa5fffe"
+        "revision" : "04c8d2b491b54e46a3534254bed8807b4a954fad"
       }
     },
     {
