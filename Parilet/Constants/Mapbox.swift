@@ -14,11 +14,12 @@ struct MapBoxConstants {
     static let resourceOptions: ResourceOptions = {
         ResourceOptions(accessToken: Self.accessToken)
     }()
-    static let cameraOptions: CameraOptions = {
-        CameraOptions(center: CLLocationCoordinate2D(latitude: 48.8566,
-                                                     longitude: 2.3522),
-                                                     zoom: 10)
+    static let paris: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 48.8566,
+                                                                      longitude: 2.3522)
+    static let cameraLaunchOptions: CameraOptions = {
+        CameraOptions(center: Self.paris, zoom: 10)
     }()
+    
 
     init() {
         fatalError("\(String(describing: type(of: self))) cannot be constructed")

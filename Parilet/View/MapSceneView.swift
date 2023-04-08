@@ -14,8 +14,12 @@ protocol MapViewSceneType: UIView {
     var bindablePointAnnotations: Binder<PointAnnotations> { get }
     var bindablePolylineAnnotations: Binder<PolylineAnnotations> { get }
     var didDetectTappedAnnotation: ControlEvent<PointAnnotation> { get }
+    var rxTapShowLocationButton: ControlEvent<Void> { get }
+    var rxMapGestures: Reactive<GestureManager> { get }
+    var isLocationButtonInTrackingMode: Binder<Bool> { get }
     func overrideMapLocationProvider(withCustom provider: LocationProvider)
     func didReceiveBottomBannerView(_ view: UIView)
+    func setCameraPosition(to coordinate: CLLocationCoordinate2D)
     /// an array of PointAnnotations
     typealias PointAnnotations = [PointAnnotation]
     /// an array of PolylineAnnotations
@@ -47,7 +51,7 @@ final class MapSceneView: UIView {
         addSubview(mapView)
         mapView.pinToEdges(of: self)
     }
-    
+        
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -67,8 +71,24 @@ extension MapSceneView: MapViewSceneType {
         pointAnnotationManager.rx.didDetectTappedAnnotation
     }
     
+    var rxTapShowLocationButton: ControlEvent<Void> {
+        showMyLocationButton.rx.tap
+    }
+    
+    var rxMapGestures: Reactive<GestureManager> {
+        mapView.gestures.rx
+    }
+    
+    var isLocationButtonInTrackingMode: Binder<Bool> {
+        showMyLocationButton.rx.isInLocationTrackingMode
+    }
+    
     func overrideMapLocationProvider(withCustom provider: LocationProvider) {
         mapView.location.overrideLocationProvider(with: provider)
+    }
+    
+    func setCameraPosition(to coordinate: CLLocationCoordinate2D) {
+        mapView.camera.ease(to: CameraOptions(center: coordinate, zoom: 15), duration: 1)
     }
     
     func didReceiveBottomBannerView(_ view: UIView) {

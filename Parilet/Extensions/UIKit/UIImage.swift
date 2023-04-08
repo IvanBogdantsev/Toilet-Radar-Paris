@@ -12,7 +12,11 @@ extension UIImage {
         UIImage(named: "red_pin") ?? UIImage()
     }
     
-    static var locationArrow: UIImage {
+    static var location_fill: UIImage {
         UIImage(named: "location_fill") ?? UIImage()
+    }
+    
+    static var location_hollow: UIImage {
+        UIImage(named: "location") ?? UIImage()
     }
 }

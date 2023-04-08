@@ -23,8 +23,8 @@ final class MapViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        bindInputs()
-        bindOutputs()
+        bindViewModelInputs()
+        bindViewModelOutputs()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -33,13 +33,21 @@ final class MapViewController: UIViewController {
         mapSceneView.didReceiveBottomBannerView(bottomBanner.view)
     }
     
-    private func bindInputs() {
+    private func bindViewModelInputs() {
         mapSceneView.didDetectTappedAnnotation
             .subscribe(onNext: { self.viewModel.inputs.didSelectAnnotation($0) })
             .disposed(by: disposeBag)
+        
+        mapSceneView.rxTapShowLocationButton
+            .subscribe(onNext: { self.viewModel.inputs.shouldTrackUserLocation(true) })
+            .disposed(by: disposeBag)
+        
+        mapSceneView.rxMapGestures.mapViewDidBeginPanning
+            .subscribe(onNext: { self.viewModel.inputs.shouldTrackUserLocation(false) })
+            .disposed(by: disposeBag)
     }
     
-    private func bindOutputs() {
+    private func bindViewModelOutputs() {
         viewModel.outputs.customLocationProvider
             .subscribe(onSuccess: { self.mapSceneView.overrideMapLocationProvider(withCustom: $0) })
             .disposed(by: disposeBag)
@@ -60,6 +68,14 @@ final class MapViewController: UIViewController {
         viewModel.outputs.polyline
             .asDriver(onErrorDriveWith: .empty())
             .drive(mapSceneView.bindablePolylineAnnotations)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.updatedCameraPosition
+            .subscribe(onNext: { self.mapSceneView.setCameraPosition(to: $0) })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.isTrackingLocation
+            .bind(to: mapSceneView.isLocationButtonInTrackingMode)
             .disposed(by: disposeBag)
         
         viewModel.outputs.error

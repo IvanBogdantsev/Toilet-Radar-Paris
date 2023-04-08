@@ -13,7 +13,7 @@ final class Map: MapView {
     
     init(frame: CGRect) {
         let initOptions = MapInitOptions(resourceOptions: MapBoxConstants.resourceOptions,
-                                         cameraOptions: MapBoxConstants.cameraOptions)
+                                         cameraOptions: MapBoxConstants.cameraLaunchOptions)
         super.init(frame: frame, mapInitOptions: initOptions)
         self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         // configuring a 2-dimensional puck with heading indicator
