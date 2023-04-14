@@ -16,6 +16,8 @@ protocol DestinationViewModelInputs {
 }
 
 protocol DestinationViewModelOutputs {
+    typealias Empty = ()
+    
     var prmAccess: Observable<NSAttributedString>! { get }
     var schedule: Observable<NSAttributedString>! { get }
     var district: Observable<String>! { get }
@@ -23,6 +25,7 @@ protocol DestinationViewModelOutputs {
     var address: Observable<String>! { get }
     var distance: Observable<String>! { get }
     var travelTime: Observable<String>! { get }
+    var contentRefreshed: Observable<Empty>! { get }
 }
 
 protocol DestinationViewModelType {
@@ -52,11 +55,15 @@ final class DestinationViewModel: DestinationViewModelType, DestinationViewModel
         self.distance = rawRoute.compactMap { self.distanceFormatter.string(from: $0.distance) }
         
         self.travelTime = rawRoute.compactMap { self.timeFormatter.string(from: $0.travelTime) }
+        
+        self.contentRefreshed = didRefreshContent.asObservable()
     }
     
-    private let rawDestination = PublishRelay<Destination>()
+    private let rawDestination = PublishRelay<Destination>()// share?
+    private let didRefreshContent = PublishRelay<Empty>()
     func refreshDestination(with destination: Destination) {
         rawDestination.accept(destination)
+        didRefreshContent.accept(Empty())
     }
     
     private let rawRoute = PublishRelay<Route>()
@@ -71,6 +78,7 @@ final class DestinationViewModel: DestinationViewModelType, DestinationViewModel
     var address: Observable<String>!
     var distance: Observable<String>!
     var travelTime: Observable<String>!
+    var contentRefreshed: Observable<Empty>!
     
     var inputs: DestinationViewModelInputs { self }
     var outputs: DestinationViewModelOutputs { self }

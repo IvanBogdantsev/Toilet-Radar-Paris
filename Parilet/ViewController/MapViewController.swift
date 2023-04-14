@@ -25,6 +25,7 @@ final class MapViewController: UIViewController {
         super.viewDidLoad()
         bindViewModelInputs()
         bindViewModelOutputs()
+        viewModel.inputs.viewDidLoad()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -33,17 +34,17 @@ final class MapViewController: UIViewController {
         mapSceneView.didReceiveBottomBannerView(bottomBanner.view)
     }
     
-    private func bindViewModelInputs() {
+    private func bindViewModelInputs() {        
         mapSceneView.didDetectTappedAnnotation
             .subscribe(onNext: { self.viewModel.inputs.didSelectAnnotation($0) })
             .disposed(by: disposeBag)
         
         mapSceneView.rxTapShowLocationButton
-            .subscribe(onNext: { self.viewModel.inputs.shouldTrackUserLocation(true) })
+            .subscribe(onNext: { self.viewModel.inputs.shouldTrackLocation(true) })
             .disposed(by: disposeBag)
         
         mapSceneView.rxMapGestures.mapViewDidBeginPanning
-            .subscribe(onNext: { self.viewModel.inputs.shouldTrackUserLocation(false) })
+            .subscribe(onNext: { self.viewModel.inputs.shouldTrackLocation(false) })
             .disposed(by: disposeBag)
     }
     
@@ -52,9 +53,18 @@ final class MapViewController: UIViewController {
             .subscribe(onSuccess: { self.mapSceneView.overrideMapLocationProvider(withCustom: $0) })
             .disposed(by: disposeBag)
         
+        viewModel.outputs.initialCameraOptions
+            .subscribe(onNext: { self.mapSceneView.setCameraOptions($0, duration: 0) })
+            .disposed(by: disposeBag)
+        
         viewModel.outputs.mapAnnotations
             .asDriver(onErrorDriveWith: .empty())
             .drive(mapSceneView.bindablePointAnnotations)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.routeHighlightsRefreshing
+            .asDriver(onErrorDriveWith: .empty())
+            .drive(bottomBanner.rx.routeHighlightsRefreshing)
             .disposed(by: disposeBag)
         
         viewModel.outputs.destinationHighlights
@@ -70,8 +80,8 @@ final class MapViewController: UIViewController {
             .drive(mapSceneView.bindablePolylineAnnotations)
             .disposed(by: disposeBag)
         
-        viewModel.outputs.updatedCameraPosition
-            .subscribe(onNext: { self.mapSceneView.setCameraPosition(to: $0) })
+        viewModel.outputs.updatedCameraOptions
+            .subscribe(onNext: { self.mapSceneView.setCameraOptions($0, duration: 1) })
             .disposed(by: disposeBag)
         
         viewModel.outputs.isTrackingLocation

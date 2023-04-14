@@ -15,6 +15,15 @@ final class BottomBannerViewController: UIViewController {
     private let destinationInfoView: DestinationInfoView = .fromNibForAutolayout()
     private let disposeBag = DisposeBag()
     
+    var routeHighlightsRefreshing = false {
+        didSet {
+            destinationInfoView.timeActivityIndicator.shouldAnimate(routeHighlightsRefreshing)
+            destinationInfoView.distanceActivityIndicator.shouldAnimate(routeHighlightsRefreshing)
+            destinationInfoView.travelTime.isHidden = routeHighlightsRefreshing
+            destinationInfoView.distance.isHidden = routeHighlightsRefreshing
+        }
+    }
+    
     override func loadView() {
         view = containerView
     }
@@ -54,6 +63,16 @@ final class BottomBannerViewController: UIViewController {
         viewModel.outputs.travelTime.asDriver(onErrorDriveWith: .empty())
             .drive(destinationInfoView.travelTime.rx.text)
             .disposed(by: disposeBag)
+        
+        viewModel.outputs.contentRefreshed
+            .subscribe(onNext: { self.refreshContentHeights() })
+            .disposed(by: disposeBag)
+    }
+    
+    private func refreshContentHeights() {
+        destinationInfoView.layoutIfNeeded()
+        containerView.collapsedOffset = destinationInfoView.upperViewHeight
+        containerView.expandedOffset = destinationInfoView.totalHeight
     }
     
     func refreshDestination(with destination: Destination) {

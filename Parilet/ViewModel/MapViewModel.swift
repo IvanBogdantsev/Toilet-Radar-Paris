@@ -11,8 +11,9 @@ import RxSwift
 import RxCocoa
 
 protocol MapViewModelInputs {
+    func viewDidLoad()
     func didSelectAnnotation(_ annotation: PointAnnotation)
-    func shouldTrackUserLocation(_ shouldTrackLocation: Bool)
+    func shouldTrackLocation(_ shouldTrackLocation: Bool)
 }
 
 protocol MapViewModelOutputs {
@@ -22,13 +23,16 @@ protocol MapViewModelOutputs {
     typealias PolylineAnnotations = [PolylineAnnotation]
     /// Typealias that resolves conflict between 'RxSwift.Observable' and 'Mapbox.Observable'
     typealias RxObservable = RxSwift.Observable
+    typealias Empty = ()
     
     var customLocationProvider: Single<LocationProvider>! { get }
+    var initialCameraOptions: RxObservable<CameraOptions>! { get }
     var mapAnnotations: RxObservable<PointAnnotations>! { get }
     var destinationHighlights: RxObservable<Destination>! { get }
     var routeHighlights: RxObservable<Route>! { get }
+    var routeHighlightsRefreshing: RxObservable<Bool>! { get }
     var polyline: RxObservable<PolylineAnnotations>! { get }
-    var updatedCameraPosition: RxObservable<CLLocationCoordinate2D>! { get }
+    var updatedCameraOptions: RxObservable<CameraOptions>! { get }
     var isTrackingLocation: RxObservable<Bool>! { get }
     var error: RxObservable<String>! { get }
 }
@@ -71,7 +75,7 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
             .do { self.routeProgress = RouteProgress(route: $0.primaryRouteIfPresent) }
             .share()
         
-        let updatedRouteProgress = distinctLocation // filter, accuracy
+        let updatedRouteProgress = distinctLocation
             .backgroundMap(qos: .userInteractive) { self.routeProgress?.updateDistanceTraveled(with: $0) }
             .compactMap { self.routeProgress }
             .share()
@@ -88,16 +92,23 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
         self.routeHighlights = routeResponse.compactMap { Route(withRouteResponse: $0) }
             .race(updatedRoute)
         
+        self.routeHighlightsRefreshing = RxObservable
+            .merge(distinctAnnotation.map { _ in true }, routeResponse.map { _ in false}
+            .delay(.milliseconds(500), scheduler: MainScheduler.instance)) // makes UI smoother
+        
         self.polyline = routeResponse
             .backgroundCompactMap(qos: .userInteractive) { PolylineAnnotation(withRouteResponse: $0) }
             .map { [$0] }
             .race(updatedPolyline)
-                
-        self.updatedCameraPosition = distinctLocation.combineWithLatest(shouldTrackLocation)
-            .filter { $0.1 }
-            .map { $0.0.coordinate }
         
-        self.isTrackingLocation = shouldTrackLocation.distinctUntilChanged { $0 == $1 }
+        self.initialCameraOptions = RxSwift.Observable.zip(distinctLocation, viewDidLoadProperty)
+            .map { CameraOptions(center: $0.0.coordinate, zoom: 15) }
+                
+        self.updatedCameraOptions = distinctLocation.combineWithLatest(shouldTrackLocationProperty)
+            .filter { $0.1 }
+            .map { CameraOptions(center: $0.0.coordinate, zoom: 15) }
+        
+        self.isTrackingLocation = shouldTrackLocationProperty.distinctUntilChanged { $0 == $1 }
         
         self.error = errorRouter.error
             .map { error in
@@ -105,22 +116,29 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
             }
     }
     
+    private let viewDidLoadProperty = PublishRelay<Empty>()
+    func viewDidLoad() {
+        viewDidLoadProperty.accept(Empty())
+    }
+    
     private let selectedAnnotation = PublishRelay<PointAnnotation>()
     func didSelectAnnotation(_ annotation: PointAnnotation) {
         selectedAnnotation.accept(annotation)
     }
     
-    private let shouldTrackLocation = PublishRelay<Bool>()
-    func shouldTrackUserLocation(_ trackingEnabled: Bool) {
-        shouldTrackLocation.accept(trackingEnabled)
+    private let shouldTrackLocationProperty = PublishRelay<Bool>()
+    func shouldTrackLocation(_ trackingEnabled: Bool) {
+        shouldTrackLocationProperty.accept(trackingEnabled)
     }
     
     var customLocationProvider: Single<MapboxMaps.LocationProvider>!
+    var initialCameraOptions: RxObservable<CameraOptions>!
     var mapAnnotations: RxObservable<PointAnnotations>!
     var destinationHighlights: RxObservable<Destination>!
     var routeHighlights: RxObservable<Route>!
+    var routeHighlightsRefreshing: RxObservable<Bool>!
     var polyline: RxObservable<PolylineAnnotations>!
-    var updatedCameraPosition: RxObservable<CLLocationCoordinate2D>!
+    var updatedCameraOptions: RxObservable<CameraOptions>!
     var isTrackingLocation: RxObservable<Bool>!
     var error: RxObservable<String>!
     

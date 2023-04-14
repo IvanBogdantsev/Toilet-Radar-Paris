@@ -22,6 +22,7 @@
 		4E430FCB29B3F0CF00AB50E2 /* TimeFormatterOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E430FCA29B3F0CF00AB50E2 /* TimeFormatterOptions.swift */; };
 		4E4546FB292D730A0068070A /* SanisetteData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E4546FA292D730A0068070A /* SanisetteData.swift */; };
 		4E4896EA292D464000E1C6AE /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 4E4896E9292D464000E1C6AE /* Alamofire */; };
+		4E51A0F029E74C1200366453 /* AsEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E51A0EF29E74C1200366453 /* AsEmpty.swift */; };
 		4E52EF512983534F0021C9F4 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E52EF502983534F0021C9F4 /* UIView.swift */; };
 		4E57568629BB375A00BA8336 /* ScheduleFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E57568529BB375A00BA8336 /* ScheduleFormatter.swift */; };
 		4E58E7F72982E4CA005050CD /* BottomBannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E58E7F52982E4CA005050CD /* BottomBannerViewController.swift */; };
@@ -50,6 +51,7 @@
 		4E912D1029B632D100E719EA /* DistanceFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E912D0F29B632D100E719EA /* DistanceFormatter.swift */; };
 		4E91CA3129D34A5D00C4A87C /* RxGestureManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E91CA3029D34A5D00C4A87C /* RxGestureManager.swift */; };
 		4EA0D90F29D08B2B002238D9 /* MapSceneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA0D90E29D08B2B002238D9 /* MapSceneView.swift */; };
+		4EA61BA829E9597800685DE1 /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EA61BA729E9597800685DE1 /* ActivityIndicator.swift */; };
 		4EB27E0B292BBA7500A9938C /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 4EB27E0A292BBA7500A9938C /* MapboxMaps */; };
 		4EB28E7C29BE5DE400E7A961 /* NSAttributedString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB28E7B29BE5DE400E7A961 /* NSAttributedString.swift */; };
 		4EB50E3529B396F00099F5A7 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB50E3429B396F00099F5A7 /* TimeFormatter.swift */; };
@@ -85,6 +87,7 @@
 		4E3D346C2956125D0083BF05 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		4E430FCA29B3F0CF00AB50E2 /* TimeFormatterOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatterOptions.swift; sourceTree = "<group>"; };
 		4E4546FA292D730A0068070A /* SanisetteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanisetteData.swift; sourceTree = "<group>"; };
+		4E51A0EF29E74C1200366453 /* AsEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsEmpty.swift; sourceTree = "<group>"; };
 		4E52EF502983534F0021C9F4 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		4E57568529BB375A00BA8336 /* ScheduleFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleFormatter.swift; sourceTree = "<group>"; };
 		4E58E7F52982E4CA005050CD /* BottomBannerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomBannerViewController.swift; sourceTree = "<group>"; tabWidth = 5; };
@@ -115,6 +118,7 @@
 		4E912D0F29B632D100E719EA /* DistanceFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DistanceFormatter.swift; sourceTree = "<group>"; };
 		4E91CA3029D34A5D00C4A87C /* RxGestureManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxGestureManager.swift; sourceTree = "<group>"; };
 		4EA0D90E29D08B2B002238D9 /* MapSceneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapSceneView.swift; sourceTree = "<group>"; };
+		4EA61BA729E9597800685DE1 /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		4EB28E7B29BE5DE400E7A961 /* NSAttributedString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSAttributedString.swift; sourceTree = "<group>"; };
 		4EB50E3429B396F00099F5A7 /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
 		4EC130522938DB7000CF4110 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
@@ -266,6 +270,7 @@
 				4E21EB9129D326CC0007B8DB /* CombineWithLatest.swift */,
 				4EC32F6029B0A8060074B954 /* BackgroundMap.swift */,
 				4EDECAF229CBBFBC000D857D /* Race.swift */,
+				4E51A0EF29E74C1200366453 /* AsEmpty.swift */,
 			);
 			path = ReactiveExtensions;
 			sourceTree = "<group>";
@@ -433,6 +438,7 @@
 				4E52EF502983534F0021C9F4 /* UIView.swift */,
 				4E88E68029A581AC00CC7245 /* UIViewController.swift */,
 				4E5B749929B908860035627A /* UIColor.swift */,
+				4EA61BA729E9597800685DE1 /* ActivityIndicator.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -549,6 +555,7 @@
 				4E8DC01C292B9648009A7B25 /* MapViewController.swift in Sources */,
 				4EDECAF329CBBFBC000D857D /* Race.swift in Sources */,
 				4E58E7F72982E4CA005050CD /* BottomBannerViewController.swift in Sources */,
+				4EA61BA829E9597800685DE1 /* ActivityIndicator.swift in Sources */,
 				4ECD49892933C7190027D763 /* UIImage.swift in Sources */,
 				4E5AE96D2972BAE7006488FF /* LocationProvider.swift in Sources */,
 				4E1AC6FA292ECE7400872C5C /* APIClient.swift in Sources */,
@@ -577,6 +584,7 @@
 				4EDAEC5B29BD01BB00AA8259 /* Sequence.swift in Sources */,
 				4EF6264B29C7B46C0058C339 /* RouteLeg.swift in Sources */,
 				4E5B749A29B908860035627A /* UIColor.swift in Sources */,
+				4E51A0F029E74C1200366453 /* AsEmpty.swift in Sources */,
 				4E9018F7296843B3000893DD /* RxPolylineAnnotationManager.swift in Sources */,
 				4E8DC01A292B9648009A7B25 /* SceneDelegate.swift in Sources */,
 				4E28ED1129D0DB380076A7A4 /* ShowMyLocationButton.swift in Sources */,

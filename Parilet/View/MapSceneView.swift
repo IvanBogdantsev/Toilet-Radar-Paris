@@ -19,7 +19,7 @@ protocol MapViewSceneType: UIView {
     var isLocationButtonInTrackingMode: Binder<Bool> { get }
     func overrideMapLocationProvider(withCustom provider: LocationProvider)
     func didReceiveBottomBannerView(_ view: UIView)
-    func setCameraPosition(to coordinate: CLLocationCoordinate2D)
+    func setCameraOptions(_ options: CameraOptions, duration: CGFloat)
     /// an array of PointAnnotations
     typealias PointAnnotations = [PointAnnotation]
     /// an array of PolylineAnnotations
@@ -87,8 +87,8 @@ extension MapSceneView: MapViewSceneType {
         mapView.location.overrideLocationProvider(with: provider)
     }
     
-    func setCameraPosition(to coordinate: CLLocationCoordinate2D) {
-        mapView.camera.ease(to: CameraOptions(center: coordinate, zoom: 15), duration: 1)
+    func setCameraOptions(_ options: CameraOptions, duration: CGFloat) {
+        mapView.camera.ease(to: options, duration: duration)
     }
     
     func didReceiveBottomBannerView(_ view: UIView) {

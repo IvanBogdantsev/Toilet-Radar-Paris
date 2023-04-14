@@ -37,6 +37,7 @@ final class ShowMyLocationButton: UIButton {
         super.init(frame: .zero)
         translatesAutoresizingMaskIntoConstraints = false
         setupAppearance()
+        setupShadow()
         setupIcon()
     }
     
@@ -45,6 +46,16 @@ final class ShowMyLocationButton: UIButton {
         heightAnchor.constraint(equalToConstant: dimensionAnchor).isActive = true
         widthAnchor.constraint(equalToConstant: dimensionAnchor).isActive = true
         layer.cornerRadius = cornerRadius
+    }
+    
+    private func setupShadow() {
+        let shadowPath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: dimensionAnchor, height: dimensionAnchor))
+        layer.shadowPath = shadowPath.cgPath
+        layer.shadowColor = UIColor.black.cgColor
+        layer.shadowOpacity = 0.2
+        layer.shadowRadius = 1
+        layer.shadowOffset = CGSize(width: 0, height: 3)
+        layer.masksToBounds = false
     }
     
     private func setupIcon() {
