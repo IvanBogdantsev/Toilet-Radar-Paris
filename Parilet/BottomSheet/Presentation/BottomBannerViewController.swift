@@ -65,6 +65,7 @@ final class BottomBannerViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.outputs.contentRefreshed
+            .observe(on: MainScheduler.instance)
             .subscribe(onNext: { self.refreshContentHeights() })
             .disposed(by: disposeBag)
     }

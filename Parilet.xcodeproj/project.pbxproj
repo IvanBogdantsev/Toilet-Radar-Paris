@@ -30,8 +30,6 @@
 		4E5AE96D2972BAE7006488FF /* LocationProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5AE96C2972BAE7006488FF /* LocationProvider.swift */; };
 		4E5B749829B8E5710035627A /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B749729B8E5710035627A /* String.swift */; };
 		4E5B749A29B908860035627A /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5B749929B908860035627A /* UIColor.swift */; };
-		4E5D9F6429C4F7DF00394B26 /* RouteLegProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5D9F6329C4F7DF00394B26 /* RouteLegProgress.swift */; };
-		4E5D9F6629C4F86C00394B26 /* RouteStepProgress.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5D9F6529C4F86C00394B26 /* RouteStepProgress.swift */; };
 		4E5FA03F292F836500FDEFC7 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E5FA03E292F836500FDEFC7 /* MapViewModel.swift */; };
 		4E644F3329C925AB000C9DFE /* RouteResponse .swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E644F3229C925AB000C9DFE /* RouteResponse .swift */; };
 		4E78498E29310E3500AD17B8 /* RxPointAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E78498D29310E3500AD17B8 /* RxPointAnnotationManager.swift */; };
@@ -95,8 +93,6 @@
 		4E5AE96C2972BAE7006488FF /* LocationProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationProvider.swift; sourceTree = "<group>"; };
 		4E5B749729B8E5710035627A /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		4E5B749929B908860035627A /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		4E5D9F6329C4F7DF00394B26 /* RouteLegProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteLegProgress.swift; sourceTree = "<group>"; };
-		4E5D9F6529C4F86C00394B26 /* RouteStepProgress.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStepProgress.swift; sourceTree = "<group>"; };
 		4E5FA03E292F836500FDEFC7 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		4E644F3229C925AB000C9DFE /* RouteResponse .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RouteResponse .swift"; sourceTree = "<group>"; };
 		4E78498D29310E3500AD17B8 /* RxPointAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxPointAnnotationManager.swift; sourceTree = "<group>"; };
@@ -279,8 +275,6 @@
 			isa = PBXGroup;
 			children = (
 				4E83C34829C4D8200007DD10 /* RouteProgress.swift */,
-				4E5D9F6329C4F7DF00394B26 /* RouteLegProgress.swift */,
-				4E5D9F6529C4F86C00394B26 /* RouteStepProgress.swift */,
 			);
 			path = RouteProgress;
 			sourceTree = "<group>";
@@ -567,7 +561,6 @@
 				4E57568629BB375A00BA8336 /* ScheduleFormatter.swift in Sources */,
 				4E4546FB292D730A0068070A /* SanisetteData.swift in Sources */,
 				4E88E67F29A57E8900CC7245 /* DestinationInfoView.swift in Sources */,
-				4E5D9F6629C4F86C00394B26 /* RouteStepProgress.swift in Sources */,
 				4E1AC6F8292ECA9B00872C5C /* APIRequest.swift in Sources */,
 				4E83C34929C4D8200007DD10 /* RouteProgress.swift in Sources */,
 				4EF6264F29C7B5180058C339 /* Array.swift in Sources */,
@@ -589,7 +582,6 @@
 				4E8DC01A292B9648009A7B25 /* SceneDelegate.swift in Sources */,
 				4E28ED1129D0DB380076A7A4 /* ShowMyLocationButton.swift in Sources */,
 				4E5FA03F292F836500FDEFC7 /* MapViewModel.swift in Sources */,
-				4E5D9F6429C4F7DF00394B26 /* RouteLegProgress.swift in Sources */,
 				4E9018F529683C73000893DD /* PolylineAnnotation.swift in Sources */,
 				4EC130532938DB7000CF4110 /* Map.swift in Sources */,
 				4EA0D90F29D08B2B002238D9 /* MapSceneView.swift in Sources */,
