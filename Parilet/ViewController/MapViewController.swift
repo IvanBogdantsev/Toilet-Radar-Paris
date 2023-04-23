@@ -69,6 +69,10 @@ final class MapViewController: UIViewController {
             .drive(mapSceneView.locationButtonLocationDisabled)
             .disposed(by: disposeBag)
         
+        viewModel.outputs.didDisableLocationServices
+            .subscribe(onNext: { self.mapSceneView.clearPolylines() })
+            .disposed(by: disposeBag)
+        
         viewModel.outputs.promptToEnableLocation
             .observe(on: MainScheduler.instance) // observe for ui
             .subscribe(onNext: { self.present($0, animated: true) })
@@ -78,7 +82,7 @@ final class MapViewController: UIViewController {
             .drive(bottomBanner.rx.isExpandable)
             .disposed(by: disposeBag)
         
-        viewModel.outputs.isOnboarding.asDriver(onErrorDriveWith: .empty())
+        viewModel.outputs.routeHighlightsViewIsVisible.asDriver(onErrorDriveWith: .empty())
             .drive(bottomBanner.rx.isOnboarding)
             .disposed(by: disposeBag)
         

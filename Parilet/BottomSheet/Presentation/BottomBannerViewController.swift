@@ -33,7 +33,7 @@ final class BottomBannerViewController: UIViewController {
     
     var isOnboarding: Bool! {
         didSet {
-            destinationInfoView.routeHighlightsView.isHidden = isOnboarding
+            destinationInfoView.routeHighlightsView.isHidden = !isOnboarding
         }
     }
     

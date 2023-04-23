@@ -29,9 +29,10 @@ protocol MapViewModelOutputs {
     var initialCameraOptions: RxObservable<CameraOptions>! { get }
     var mapAnnotations: RxObservable<PointAnnotations>! { get }
     var isAuthorisedToUseLocation: RxObservable<Bool>! { get }
+    var didDisableLocationServices: RxObservable<Empty>! { get }
     var promptToEnableLocation: RxObservable<UIAlertController>! { get }
     var isEnRoute: RxObservable<Bool>! { get }
-    var isOnboarding: RxObservable<Bool>! { get }
+    var routeHighlightsViewIsVisible: RxObservable<Bool>! { get }
     var onboardingMessage: RxObservable<OnboardingMessageAndComment>! { get }
     var destinationHighlights: RxObservable<Destination>! { get }
     var routeHighlights: RxObservable<Route>! { get }
@@ -66,9 +67,9 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
             .distinctUntilChanged { $0.coordinate == $1.coordinate }
             .share()
         // TODO: route cancelling
-        self.isEnRoute = distinctAnnotation.map { _ in true }.distinctUntilChanged().startWith(false)
-        
-        self.isOnboarding = isEnRoute.map { !$0 }
+        self.isEnRoute = distinctAnnotation.map { _ in true }
+            .startWith(false)
+            .share()
         
         self.onboardingMessage = BehaviorRelay(value: Messages.howToStartYourRoute).asObservable()
         
@@ -80,6 +81,14 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
             .share()
         
         self.isAuthorisedToUseLocation = isAuthorisedToUseLocation
+        
+        self.didDisableLocationServices = isAuthorisedToUseLocation.filter { !$0 }.asEmpty()
+            .do(onNext: { self.routeProgress = nil })
+        
+        self.routeHighlightsViewIsVisible = isEnRoute.withLatestFrom(isAuthorisedToUseLocation) { ($0, $1) }
+            .map { $0.0 && $0.1 }
+            .distinctUntilChanged()
+            .startWith(false)// поменять имя свойства в мапвью
         
         let shouldPromptToEnableLocation = shouldTrackLocationProperty.filter { $0 }
             .withLatestFrom(isAuthorisedToUseLocation) { $1 }
@@ -93,6 +102,9 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
             .share()
         
         let routeResponse = distinctAnnotation
+            .withLatestFrom(isAuthorisedToUseLocation) { ($0, $1) }
+            .filter { $0.1 }
+            .map { $0.0 }
             .withLatestFrom(distinctLocation) { ($0, $1) }
             .flatMap { self.routeClient.getRoute(from: $1.coordinate, to: $0.coordinate)
                 .rerouteError(self.errorRouter) }
@@ -117,8 +129,10 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
             .race(updatedRoute)
         
         self.routeHighlightsRefreshing = RxObservable
-            .merge(distinctAnnotation.map { _ in true }, routeResponse.map { _ in false}
+            .merge(distinctAnnotation.map { _ in true }, routeResponse.map { _ in false }
             .delay(.milliseconds(500), scheduler: MainScheduler.instance)) // makes UI smoother
+            .withLatestFrom(isAuthorisedToUseLocation) { ($0, $1) }
+            .map { $0.0 && $0.1 }
         // to merge
         self.polyline = routeResponse
             .backgroundCompactMap(qos: .userInteractive) { PolylineAnnotation(withRouteResponse: $0) }
@@ -165,9 +179,10 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
     var initialCameraOptions: RxObservable<CameraOptions>!
     var mapAnnotations: RxObservable<PointAnnotations>!
     var isAuthorisedToUseLocation: RxObservable<Bool>!
+    var didDisableLocationServices: RxObservable<Empty>!
     var promptToEnableLocation: RxObservable<UIAlertController>!
     var isEnRoute: RxObservable<Bool>!
-    var isOnboarding: RxObservable<Bool>!
+    var routeHighlightsViewIsVisible: RxObservable<Bool>!
     var onboardingMessage: RxObservable<OnboardingMessageAndComment>!
     var destinationHighlights: RxObservable<Destination>!
     var routeHighlights: RxObservable<Route>!

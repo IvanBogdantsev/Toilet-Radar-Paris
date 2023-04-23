@@ -21,6 +21,7 @@ protocol MapViewSceneType: UIView {
     func overrideMapLocationProvider(withCustom provider: LocationProvider)
     func didReceiveBottomBannerView(_ view: UIView)
     func setCameraOptions(_ options: CameraOptions, duration: CGFloat)
+    func clearPolylines()
     /// an array of PointAnnotations
     typealias PointAnnotations = [PointAnnotation]
     /// an array of PolylineAnnotations
@@ -100,5 +101,9 @@ extension MapSceneView: MapViewSceneType {
         addSubview(showMyLocationButton)
         showMyLocationButton.rightAnchor.constraint(equalTo: rightAnchor, constant: -20).isActive = true
         showMyLocationButton.bottomAnchor.constraint(equalTo: view.topAnchor, constant: -20).isActive = true
+    }
+    
+    func clearPolylines() {
+        polylineAnnotationManager.annotations = []
     }
 }
