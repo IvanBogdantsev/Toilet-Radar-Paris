@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  Parilet
+
+  Created by Vanya Bogdantsev on 19.04.2023.
+  
+*/
+"no_selection" = "未选择";
+
+"choose_a_point_on_the_map_to_see_details_and_plan_your_route" = "选择地图上的一个点以查看详细信息并规划路线";
+
+"open_24_7" = "全天候开放";
+
+"undefined" = "未定义";
+
+"turn_on_location_services_to_allow_to_determine_your_location" = "请打开位置服务以允许确定您的位置";
+
+"your_location_will_only_be_used_for_navigation_purposes" = "您的位置仅用于导航目的";
+
+"go_to_settings" = "前往设置";
+
+"cancel" = "取消";

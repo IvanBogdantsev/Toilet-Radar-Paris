@@ -46,6 +46,10 @@ final class MapViewController: UIViewController {
         mapSceneView.rxMapGestures.mapViewDidBeginPanning
             .subscribe(onNext: { self.viewModel.inputs.shouldTrackLocation(false) })
             .disposed(by: disposeBag)
+        
+        mapSceneView.rxMapGestures.mapViewDidBeginPinching
+            .subscribe(onNext: { self.viewModel.inputs.shouldTrackLocation(false) })
+            .disposed(by: disposeBag)
     }
     
     private func bindViewModelOutputs() {
@@ -57,13 +61,32 @@ final class MapViewController: UIViewController {
             .subscribe(onNext: { self.mapSceneView.setCameraOptions($0, duration: 0) })
             .disposed(by: disposeBag)
         
-        viewModel.outputs.mapAnnotations
-            .asDriver(onErrorDriveWith: .empty())
+        viewModel.outputs.mapAnnotations.asDriver(onErrorDriveWith: .empty())
             .drive(mapSceneView.bindablePointAnnotations)
             .disposed(by: disposeBag)
         
-        viewModel.outputs.routeHighlightsRefreshing
-            .asDriver(onErrorDriveWith: .empty())
+        viewModel.outputs.isAuthorisedToUseLocation.asDriver(onErrorDriveWith: .empty())
+            .drive(mapSceneView.locationButtonLocationDisabled)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.promptToEnableLocation
+            .observe(on: MainScheduler.instance) // observe for ui
+            .subscribe(onNext: { self.present($0, animated: true) })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.isEnRoute.asDriver(onErrorDriveWith: .empty())
+            .drive(bottomBanner.rx.isExpandable)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.isOnboarding.asDriver(onErrorDriveWith: .empty())
+            .drive(bottomBanner.rx.isOnboarding)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.onboardingMessage
+            .subscribe(onNext: { self.bottomBanner.setOnboardingMessage(message: $0) })
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.routeHighlightsRefreshing.asDriver(onErrorDriveWith: .empty())
             .drive(bottomBanner.rx.routeHighlightsRefreshing)
             .disposed(by: disposeBag)
         
@@ -75,8 +98,7 @@ final class MapViewController: UIViewController {
             .subscribe ( onNext: { self.bottomBanner.refreshRoute(with: $0) })
             .disposed(by: disposeBag)
         
-        viewModel.outputs.polyline
-            .asDriver(onErrorDriveWith: .empty())
+        viewModel.outputs.polyline.asDriver(onErrorDriveWith: .empty())
             .drive(mapSceneView.bindablePolylineAnnotations)
             .disposed(by: disposeBag)
         
@@ -88,8 +110,7 @@ final class MapViewController: UIViewController {
             .bind(to: mapSceneView.isLocationButtonInTrackingMode)
             .disposed(by: disposeBag)
         
-        viewModel.outputs.error
-            .asDriver(onErrorDriveWith: .empty())
+        viewModel.outputs.error.asDriver(onErrorDriveWith: .empty())
             .drive { print($0) }
             .disposed(by: disposeBag)
     }

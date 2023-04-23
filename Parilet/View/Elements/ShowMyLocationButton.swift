@@ -27,6 +27,12 @@ final class ShowMyLocationButton: UIButton {
         dimensionAnchor / 1.414 
     }
     
+    var shouldShowUnknownLocationIcon = false {
+        didSet {
+            icon.image = shouldShowUnknownLocationIcon ? .location_hollow : .location_not_permitted
+        }
+    }
+        
     var isInLocationTrackingMode = false {
         didSet {
             icon.image = isInLocationTrackingMode ? .location_fill : .location_hollow

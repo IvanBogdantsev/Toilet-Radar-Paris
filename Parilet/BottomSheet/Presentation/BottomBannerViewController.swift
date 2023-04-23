@@ -15,12 +15,25 @@ final class BottomBannerViewController: UIViewController {
     private let destinationInfoView: DestinationInfoView = .fromNibForAutolayout()
     private let disposeBag = DisposeBag()
     
-    var routeHighlightsRefreshing = false {
+    var routeHighlightsRefreshing: Bool! {
         didSet {
             destinationInfoView.timeActivityIndicator.shouldAnimate(routeHighlightsRefreshing)
             destinationInfoView.distanceActivityIndicator.shouldAnimate(routeHighlightsRefreshing)
             destinationInfoView.travelTime.isHidden = routeHighlightsRefreshing
             destinationInfoView.distance.isHidden = routeHighlightsRefreshing
+        }
+    }
+    
+    var isExpandable: Bool! {
+        didSet {
+            containerView.isExpandable = isExpandable
+            destinationInfoView.grabber.isHidden = !isExpandable
+        }
+    }
+    
+    var isOnboarding: Bool! {
+        didSet {
+            destinationInfoView.routeHighlightsView.isHidden = isOnboarding
         }
     }
     
@@ -35,7 +48,19 @@ final class BottomBannerViewController: UIViewController {
         bindViewModelOutputs()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        refreshContentHeights()
+    }
+    
     private func bindViewModelOutputs() {
+        viewModel.outputs.onboardingMessage.asDriver(onErrorDriveWith: .empty())
+            .drive(destinationInfoView.mainLabel.rx.text)
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.onboardingComment.asDriver(onErrorDriveWith: .empty())
+            .drive(destinationInfoView.secondaryLabel.rx.text)
+            .disposed(by: disposeBag)
+        
         viewModel.outputs.prmAccess.asDriver(onErrorDriveWith: .empty())
             .drive(destinationInfoView.prmAccess.rx.attributedText)
             .disposed(by: disposeBag)
@@ -45,7 +70,7 @@ final class BottomBannerViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.outputs.district.asDriver(onErrorDriveWith: .empty())
-            .drive(destinationInfoView.district.rx.text)
+            .drive(destinationInfoView.secondaryLabel.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.outputs.type.asDriver(onErrorDriveWith: .empty())
@@ -53,7 +78,7 @@ final class BottomBannerViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.outputs.address.asDriver(onErrorDriveWith: .empty())
-            .drive(destinationInfoView.address.rx.text)
+            .drive(destinationInfoView.mainLabel.rx.text)
             .disposed(by: disposeBag)
         
         viewModel.outputs.distance.asDriver(onErrorDriveWith: .empty())
@@ -74,6 +99,10 @@ final class BottomBannerViewController: UIViewController {
         destinationInfoView.layoutIfNeeded()
         containerView.collapsedOffset = destinationInfoView.upperViewHeight
         containerView.expandedOffset = destinationInfoView.totalHeight
+    }
+    
+    func setOnboardingMessage(message: OnboardingMessageAndComment) {
+        viewModel.inputs.setOnboardingMessage(message: message)
     }
     
     func refreshDestination(with destination: Destination) {

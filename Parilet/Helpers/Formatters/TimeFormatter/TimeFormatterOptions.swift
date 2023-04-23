@@ -12,7 +12,7 @@ enum TimeRoundingIncrement: Double {
     case toNearestHalfMinute = 30
     case none = 1
 }
-// MARK: todo enum with associated value
+// TODO: enum with associated value
 enum TimeMeasure: Double {
     case hour = 3600
     case halfHour = 1800

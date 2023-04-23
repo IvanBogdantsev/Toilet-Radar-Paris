@@ -12,6 +12,7 @@ import RxSwift
 protocol LocationProviderType: LocationProvider {
     var observableSelf: Single<LocationProvider> { get }
     var didUpdateLatestLocation: PublishSubject<CLLocation> { get }
+    var isAuthorisedToUseLocation: PublishSubject<Bool> { get }
     /// Typealias that resolves conflict between 'RxSwift.Observable' and 'Mapbox.Observable'
     typealias RxObservable = RxSwift.Observable
 }
@@ -29,6 +30,7 @@ final class ThisAppLocationProvider: NSObject, LocationProviderType {
     }
     
     let didUpdateLatestLocation = PublishSubject<CLLocation>()
+    let isAuthorisedToUseLocation = PublishSubject<Bool>()
     
     private weak var delegate: LocationProviderDelegate?
 
@@ -146,6 +148,9 @@ extension ThisAppLocationProvider: CLLocationManagerDelegate {
     @available(iOS 14.0, *)
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         delegate?.locationProviderDidChangeAuthorization(self)
+        let status = manager.authorizationStatus
+        let isAuthorised = status == .authorizedAlways || status == .authorizedWhenInUse
+        isAuthorisedToUseLocation.onNext(isAuthorised)
     }
     
 }

@@ -19,4 +19,8 @@ extension UIImage {
     static var location_hollow: UIImage {
         UIImage(named: "location") ?? UIImage()
     }
+    
+    static var location_not_permitted: UIImage {
+        UIImage(named: "location_not_permitted") ?? UIImage()
+    }
 }

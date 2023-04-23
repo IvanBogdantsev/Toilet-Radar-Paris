@@ -11,6 +11,7 @@ import Foundation
 import UIKit
 
 protocol DestinationViewModelInputs {
+    func setOnboardingMessage(message: OnboardingMessageAndComment)
     func refreshDestination(with destination: Destination)
     func refreshRoute(with route: Route)
 }
@@ -18,6 +19,8 @@ protocol DestinationViewModelInputs {
 protocol DestinationViewModelOutputs {
     typealias Empty = ()
     
+    var onboardingMessage: Observable<String>! { get }
+    var onboardingComment: Observable<String>! { get }
     var prmAccess: Observable<NSAttributedString>! { get }
     var schedule: Observable<NSAttributedString>! { get }
     var district: Observable<String>! { get }
@@ -40,6 +43,10 @@ final class DestinationViewModel: DestinationViewModelType, DestinationViewModel
     private let scheduleFormatter = ScheduleFormatter()
     
     init() {
+        self.onboardingMessage = onboarding.map { $0.message }
+        
+        self.onboardingComment = onboarding.map { $0.comment }
+        
         self.prmAccess = rawDestination.compactMap { $0.prmAccess?.frTickCross() }
         
         self.schedule = rawDestination.distinctUntilChanged { $0.schedule == $1.schedule }
@@ -59,8 +66,13 @@ final class DestinationViewModel: DestinationViewModelType, DestinationViewModel
         self.contentRefreshed = didRefreshContent.asObservable()
     }
     
-    private let rawDestination = PublishRelay<Destination>()// share?
     private let didRefreshContent = PublishRelay<Empty>()
+    private let onboarding = ReplayRelay<OnboardingMessageAndComment>.create(bufferSize: 1)
+    func setOnboardingMessage(message: OnboardingMessageAndComment) {
+        onboarding.accept(message)
+    }
+    
+    private let rawDestination = PublishRelay<Destination>()// share?
     func refreshDestination(with destination: Destination) {
         rawDestination.accept(destination)
         didRefreshContent.accept(Empty())
@@ -71,6 +83,8 @@ final class DestinationViewModel: DestinationViewModelType, DestinationViewModel
         rawRoute.accept(route)
     }
     
+    var onboardingMessage: Observable<String>!
+    var onboardingComment: Observable<String>!
     var prmAccess: Observable<NSAttributedString>!
     var schedule: Observable<NSAttributedString>!
     var district: Observable<String>!

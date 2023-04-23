@@ -14,9 +14,9 @@ final class BannerContainerView: UIView {
         case collapsed
     }
     
-    var isExpandable: Bool = false {
+    var isExpandable: Bool! {
         didSet {
-            
+            setupRecognizer(isExpandable: isExpandable)
         }
     }
     
@@ -50,13 +50,7 @@ final class BannerContainerView: UIView {
     }
     
     private func setupConstraints(_ superview: UIView) {
-        
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(didPan))
-        addGestureRecognizer(panGestureRecognizer)
-        
         expansionConstraint = topAnchor.constraint(equalTo: superview.bottomAnchor)
-        expansionConstraint.constant = -100 // под замену
-        
         expansionConstraint.isActive = true
         
         NSLayoutConstraint.activate([
@@ -66,6 +60,12 @@ final class BannerContainerView: UIView {
         ])
     }
     
+    private func setupRecognizer(isExpandable: Bool) {
+        let panGestureRecognizer = isExpandable ?
+        UIPanGestureRecognizer(target: self, action: #selector(didPan)) : UIGestureRecognizer() // idle recognizer
+        gestureRecognizers = [panGestureRecognizer]
+    }
+        
     private func animate() {
         UIView.animate(withDuration: 0.1,
                        delay: 0.0,
@@ -75,7 +75,7 @@ final class BannerContainerView: UIView {
         }, completion: nil)
     }
     
-    @objc func didPan(_ recognizer: UIPanGestureRecognizer) {
+    @objc private func didPan(_ recognizer: UIPanGestureRecognizer) {
         guard let view = recognizer.view else { return }
         let translation = recognizer.translation(in: view)
         

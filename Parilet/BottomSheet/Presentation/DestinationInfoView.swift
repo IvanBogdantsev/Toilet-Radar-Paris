@@ -9,16 +9,21 @@ import UIKit
 
 class DestinationInfoView: UIView {
     
+    @IBOutlet weak var grabber: UIView!
+    
     @IBOutlet weak var upperView: UIView!
     @IBOutlet weak var lowerView: UIView!
     
+    @IBOutlet weak var routeHighlightsView: UIStackView!
+    
     @IBOutlet weak var timeActivityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var distanceActivityIndicator: UIActivityIndicatorView!
+    
+    @IBOutlet weak var mainLabel: UILabel!
+    @IBOutlet weak var secondaryLabel: UILabel!
     @IBOutlet weak var prmAccess: UILabel!
     @IBOutlet weak var schedule: UILabel!
-    @IBOutlet weak var district: UILabel!
     @IBOutlet weak var type: UILabel!
-    @IBOutlet weak var address: UILabel!
     @IBOutlet weak var distance: UILabel!
     @IBOutlet weak var travelTime: UILabel!
     
@@ -32,12 +37,13 @@ class DestinationInfoView: UIView {
         layer.shadowOffset = .zero
         layer.masksToBounds = false
     }
+    
     var upperViewHeight: CGFloat {
         upperView.frame.height
     }
     
     var totalHeight: CGFloat {
-        upperView.frame.height + lowerView.frame.height
+        upperView.frame.height + lowerView.frame.height + safeAreaInsets.bottom
     }
     
 }

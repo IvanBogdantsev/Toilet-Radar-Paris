@@ -14,7 +14,7 @@ enum DistanceRoundingIncrement: Double {
     case toEveryFive = 5
     case none = 1
 }
-// MARK: todo enum with associated value
+// TODO: enum with associated value
 enum DistanceMeasure: Double {
     case kilometer = 1000
     case halfKilometer = 500

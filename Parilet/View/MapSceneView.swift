@@ -17,6 +17,7 @@ protocol MapViewSceneType: UIView {
     var rxTapShowLocationButton: ControlEvent<Void> { get }
     var rxMapGestures: Reactive<GestureManager> { get }
     var isLocationButtonInTrackingMode: Binder<Bool> { get }
+    var locationButtonLocationDisabled: Binder<Bool> { get }
     func overrideMapLocationProvider(withCustom provider: LocationProvider)
     func didReceiveBottomBannerView(_ view: UIView)
     func setCameraOptions(_ options: CameraOptions, duration: CGFloat)
@@ -81,6 +82,10 @@ extension MapSceneView: MapViewSceneType {
     
     var isLocationButtonInTrackingMode: Binder<Bool> {
         showMyLocationButton.rx.isInLocationTrackingMode
+    }
+    
+    var locationButtonLocationDisabled: Binder<Bool> {
+        showMyLocationButton.rx.shouldShowUnknownLocationIcon
     }
     
     func overrideMapLocationProvider(withCustom provider: LocationProvider) {

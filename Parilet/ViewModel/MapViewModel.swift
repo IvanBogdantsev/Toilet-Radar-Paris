@@ -28,6 +28,11 @@ protocol MapViewModelOutputs {
     var customLocationProvider: Single<LocationProvider>! { get }
     var initialCameraOptions: RxObservable<CameraOptions>! { get }
     var mapAnnotations: RxObservable<PointAnnotations>! { get }
+    var isAuthorisedToUseLocation: RxObservable<Bool>! { get }
+    var promptToEnableLocation: RxObservable<UIAlertController>! { get }
+    var isEnRoute: RxObservable<Bool>! { get }
+    var isOnboarding: RxObservable<Bool>! { get }
+    var onboardingMessage: RxObservable<OnboardingMessageAndComment>! { get }
     var destinationHighlights: RxObservable<Destination>! { get }
     var routeHighlights: RxObservable<Route>! { get }
     var routeHighlightsRefreshing: RxObservable<Bool>! { get }
@@ -49,7 +54,7 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
     private var locationProvider: LocationProviderType = ThisAppLocationProvider()
     private let errorRouter = ErrorRouter()
     private var routeProgress: RouteProgress?
-    
+    // ПОСМОТРЕТЬ ШЕЙР, ВИК СЕЛФ В КОНТРОЛЛЕРЕ, ВЕСЬ ЛИ UI В МЕЙНЕ, разобраться с withLatest и флетмап
     init() {
         self.customLocationProvider = locationProvider.observableSelf
         
@@ -60,9 +65,28 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
         let distinctAnnotation = selectedAnnotation
             .distinctUntilChanged { $0.coordinate == $1.coordinate }
             .share()
+        // TODO: route cancelling
+        self.isEnRoute = distinctAnnotation.map { _ in true }.distinctUntilChanged().startWith(false)
+        
+        self.isOnboarding = isEnRoute.map { !$0 }
+        
+        self.onboardingMessage = BehaviorRelay(value: Messages.howToStartYourRoute).asObservable()
         
         self.destinationHighlights = distinctAnnotation
             .map { Destination(destinationInfo: $0.userInfoUnwrapped) }
+        
+        let isAuthorisedToUseLocation = locationProvider.isAuthorisedToUseLocation
+            .distinctUntilChanged()
+            .share()
+        
+        self.isAuthorisedToUseLocation = isAuthorisedToUseLocation
+        
+        let shouldPromptToEnableLocation = shouldTrackLocationProperty.filter { $0 }
+            .withLatestFrom(isAuthorisedToUseLocation) { $1 }
+            .map { !$0 }
+        
+        self.promptToEnableLocation = shouldPromptToEnableLocation.filter { $0 }
+            .map { _ in UIAlertController.promptToEnableLocation() }
         
         let distinctLocation = locationProvider.didUpdateLatestLocation
             .distinctUntilChanged { $0 == $1 }
@@ -95,20 +119,26 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
         self.routeHighlightsRefreshing = RxObservable
             .merge(distinctAnnotation.map { _ in true }, routeResponse.map { _ in false}
             .delay(.milliseconds(500), scheduler: MainScheduler.instance)) // makes UI smoother
-        
+        // to merge
         self.polyline = routeResponse
             .backgroundCompactMap(qos: .userInteractive) { PolylineAnnotation(withRouteResponse: $0) }
             .map { [$0] }
             .race(updatedPolyline)
         
-        self.initialCameraOptions = RxSwift.Observable.zip(distinctLocation, viewDidLoadProperty)
+        self.initialCameraOptions = RxObservable.zip(distinctLocation, viewDidLoadProperty)
             .map { CameraOptions(center: $0.0.coordinate, zoom: 15) }
-                
-        self.updatedCameraOptions = distinctLocation.combineWithLatest(shouldTrackLocationProperty)
+        
+        let canTrackLocation = shouldTrackLocationProperty.distinctUntilChanged()
+            .combineWithLatest(isAuthorisedToUseLocation)
+            .map { $0.0 && $0.1 }
+        
+        self.updatedCameraOptions = distinctLocation.combineWithLatest(canTrackLocation)
             .filter { $0.1 }
             .map { CameraOptions(center: $0.0.coordinate, zoom: 15) }
         
-        self.isTrackingLocation = shouldTrackLocationProperty.distinctUntilChanged { $0 == $1 }
+        self.isTrackingLocation = shouldTrackLocationProperty.combineWithLatest(isAuthorisedToUseLocation)
+            .filter { $0.1 }
+            .map { $0.0 }
         
         self.error = errorRouter.error
             .map { error in
@@ -134,6 +164,11 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
     var customLocationProvider: Single<MapboxMaps.LocationProvider>!
     var initialCameraOptions: RxObservable<CameraOptions>!
     var mapAnnotations: RxObservable<PointAnnotations>!
+    var isAuthorisedToUseLocation: RxObservable<Bool>!
+    var promptToEnableLocation: RxObservable<UIAlertController>!
+    var isEnRoute: RxObservable<Bool>!
+    var isOnboarding: RxObservable<Bool>!
+    var onboardingMessage: RxObservable<OnboardingMessageAndComment>!
     var destinationHighlights: RxObservable<Destination>!
     var routeHighlights: RxObservable<Route>!
     var routeHighlightsRefreshing: RxObservable<Bool>!

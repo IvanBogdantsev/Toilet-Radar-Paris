@@ -17,7 +17,8 @@ extension GestureManager: HasDelegate {
 
 final class RxGestureManagerDelegateProxy: DelegateProxy<GestureManager, GestureManagerDelegate>, DelegateProxyType, GestureManagerDelegate {
     
-    fileprivate let mapViewDidBegingPanning = PublishSubject<()>()
+    fileprivate let mapViewDidBeginPanning = PublishSubject<()>()
+    fileprivate let mapViewDidBeginPinching = PublishSubject<()>()
     
     init(parentObject: GestureManager) {
         super.init(parentObject: parentObject,
@@ -30,17 +31,18 @@ final class RxGestureManagerDelegateProxy: DelegateProxy<GestureManager, Gesture
     
     func gestureManager(_ gestureManager: MapboxMaps.GestureManager, didBegin gestureType: MapboxMaps.GestureType) {
         switch gestureType {
-        case .pan: mapViewDidBegingPanning.onNext(())
+        case .pan: mapViewDidBeginPanning.onNext(())
+        case .pinch: mapViewDidBeginPinching.onNext(())
         default: return
         }
     }
     
     func gestureManager(_ gestureManager: MapboxMaps.GestureManager, didEnd gestureType: MapboxMaps.GestureType, willAnimate: Bool) {
-        // empty implementation
+        // empty
     }
     
     func gestureManager(_ gestureManager: MapboxMaps.GestureManager, didEndAnimatingFor gestureType: MapboxMaps.GestureType) {
-        // empty implementation
+        // empty
     }
     
 }
@@ -50,6 +52,9 @@ extension Reactive where Base: GestureManager {
         RxGestureManagerDelegateProxy.proxy(for: base)
     }
     var mapViewDidBeginPanning: ControlEvent<()> {
-        ControlEvent(events: delegate.mapViewDidBegingPanning)
+        ControlEvent(events: delegate.mapViewDidBeginPanning)
+    }
+    var mapViewDidBeginPinching: ControlEvent<()> {
+        ControlEvent(events: delegate.mapViewDidBeginPinching)
     }
 }

@@ -1,0 +1,22 @@
+/* 
+  Localizable.strings
+  Parilet
+
+  Created by Vanya Bogdantsev on 19.04.2023.
+  
+*/
+"no_selection" = "Pas de selection";
+
+"choose_a_point_on_the_map_to_see_details_and_plan_your_route" = "Choisissez un point sur la carte pour voir les détails et planifier votre itinéraire";
+
+"open_24_7" = "Ouvert 24h/24";
+
+"undefined" = "Indéfini";
+
+"turn_on_location_services_to_allow_to_determine_your_location" = "Activez les services de localisation pour permettre de déterminer votre position";
+
+"your_location_will_only_be_used_for_navigation_purposes" = "Votre position sera uniquement utilisée à des fins de navigation";
+
+"go_to_settings" = "Aller aux paramètres";
+
+"cancel" = "Annuler";
