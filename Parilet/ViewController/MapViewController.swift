@@ -17,6 +17,10 @@ final class MapViewController: UIViewController {
     private let bottomBanner = BottomBannerViewController()
     private let disposeBag = DisposeBag()
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        .darkContent
+    }
+    
     override func loadView() {
         view = mapSceneView
     }
@@ -36,29 +40,41 @@ final class MapViewController: UIViewController {
     
     private func bindViewModelInputs() {        
         mapSceneView.didDetectTappedAnnotation
-            .subscribe(onNext: { self.viewModel.inputs.didSelectAnnotation($0) })
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.viewModel.inputs.didSelectAnnotation($0) })
             .disposed(by: disposeBag)
         
         mapSceneView.rxTapShowLocationButton
-            .subscribe(onNext: { self.viewModel.inputs.shouldTrackLocation(true) })
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.viewModel.inputs.shouldTrackLocation(true) })
             .disposed(by: disposeBag)
         
         mapSceneView.rxMapGestures.mapViewDidBeginPanning
-            .subscribe(onNext: { self.viewModel.inputs.shouldTrackLocation(false) })
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.viewModel.inputs.shouldTrackLocation(false) })
             .disposed(by: disposeBag)
         
         mapSceneView.rxMapGestures.mapViewDidBeginPinching
-            .subscribe(onNext: { self.viewModel.inputs.shouldTrackLocation(false) })
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.viewModel.inputs.shouldTrackLocation(false) })
             .disposed(by: disposeBag)
     }
     
     private func bindViewModelOutputs() {
         viewModel.outputs.customLocationProvider
-            .subscribe(onSuccess: { self.mapSceneView.overrideMapLocationProvider(withCustom: $0) })
+            .subscribe(onSuccess: { [weak self] in
+                guard let self = self else { return }
+                self.mapSceneView.overrideMapLocationProvider(withCustom: $0) })
             .disposed(by: disposeBag)
         
         viewModel.outputs.initialCameraOptions
-            .subscribe(onNext: { self.mapSceneView.setCameraOptions($0, duration: 0) })
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.mapSceneView.setCameraOptions($0, duration: 0) })
             .disposed(by: disposeBag)
         
         viewModel.outputs.mapAnnotations.asDriver(onErrorDriveWith: .empty())
@@ -70,12 +86,16 @@ final class MapViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.outputs.didDisableLocationServices
-            .subscribe(onNext: { self.mapSceneView.clearPolylines() })
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.mapSceneView.clearPolylines() })
             .disposed(by: disposeBag)
         
         viewModel.outputs.promptToEnableLocation
             .observe(on: MainScheduler.instance) // observe for ui
-            .subscribe(onNext: { self.present($0, animated: true) })
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.present($0, animated: true) })
             .disposed(by: disposeBag)
         
         viewModel.outputs.isEnRoute.asDriver(onErrorDriveWith: .empty())
@@ -87,7 +107,9 @@ final class MapViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.outputs.onboardingMessage
-            .subscribe(onNext: { self.bottomBanner.setOnboardingMessage(message: $0) })
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.bottomBanner.setOnboardingMessage(message: $0) })
             .disposed(by: disposeBag)
         
         viewModel.outputs.routeHighlightsRefreshing.asDriver(onErrorDriveWith: .empty())
@@ -95,11 +117,15 @@ final class MapViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.outputs.destinationHighlights
-            .subscribe ( onNext: { self.bottomBanner.refreshDestination(with: $0) })
+            .subscribe ( onNext: { [weak self] in
+                guard let self = self else { return }
+                self.bottomBanner.refreshDestination(with: $0) })
             .disposed(by: disposeBag)
         
         viewModel.outputs.routeHighlights
-            .subscribe ( onNext: { self.bottomBanner.refreshRoute(with: $0) })
+            .subscribe ( onNext: { [weak self] in
+                guard let self = self else { return }
+                self.bottomBanner.refreshRoute(with: $0) })
             .disposed(by: disposeBag)
         
         viewModel.outputs.polyline.asDriver(onErrorDriveWith: .empty())
@@ -107,7 +133,9 @@ final class MapViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.outputs.updatedCameraOptions
-            .subscribe(onNext: { self.mapSceneView.setCameraOptions($0, duration: 1) })
+            .subscribe(onNext: { [weak self] in
+                guard let self = self else { return }
+                self.mapSceneView.setCameraOptions($0, duration: 1) })
             .disposed(by: disposeBag)
         
         viewModel.outputs.isTrackingLocation

@@ -252,24 +252,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		4E71142E297F40F000D7E462 /* BottomSheet */ = {
+		4E71142F297F41A700D7E462 /* DestinationInfoView */ = {
 			isa = PBXGroup;
 			children = (
-				4E71142F297F41A700D7E462 /* Presentation */,
-			);
-			path = BottomSheet;
-			sourceTree = "<group>";
-		};
-		4E71142F297F41A700D7E462 /* Presentation */ = {
-			isa = PBXGroup;
-			children = (
-				4E58E7F52982E4CA005050CD /* BottomBannerViewController.swift */,
-				4E90EDA1298AC243004D8E39 /* DestinationViewModel.swift */,
-				4E8AD4B4299F725C00941B5E /* PresentationUnderlay.swift */,
 				4E88E67E29A57E8900CC7245 /* DestinationInfoView.swift */,
 				4EB30C0329F5DF3200C2C646 /* DestinationInfoView.xib */,
 			);
-			path = Presentation;
+			path = DestinationInfoView;
 			sourceTree = "<group>";
 		};
 		4E78498C29310E2000AD17B8 /* ReactiveExtensions */ = {
@@ -312,7 +301,6 @@
 			children = (
 				4E83C34729C4D7CD0007DD10 /* RouteProgress */,
 				4EB50E3229B396890099F5A7 /* Helpers */,
-				4E71142E297F40F000D7E462 /* BottomSheet */,
 				4E5ED8C72978B21A0055E000 /* Mapbox */,
 				4EF35249296AFC96004ADB83 /* ReactiveUtilities */,
 				4ED76F112930A1F200B0F1CA /* Extensions */,
@@ -333,6 +321,7 @@
 			isa = PBXGroup;
 			children = (
 				4E8DC01B292B9648009A7B25 /* MapViewController.swift */,
+				4E58E7F52982E4CA005050CD /* BottomBannerViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -341,8 +330,9 @@
 			isa = PBXGroup;
 			children = (
 				4E28ED0B29D0D5D50076A7A4 /* Elements */,
-				4EC130522938DB7000CF4110 /* Map.swift */,
-				4EA0D90E29D08B2B002238D9 /* MapSceneView.swift */,
+				4E71142F297F41A700D7E462 /* DestinationInfoView */,
+				4E91210B29F739F7004AA71C /* MapView */,
+				4E8AD4B4299F725C00941B5E /* PresentationUnderlay.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -361,8 +351,18 @@
 			isa = PBXGroup;
 			children = (
 				4E5FA03E292F836500FDEFC7 /* MapViewModel.swift */,
+				4E90EDA1298AC243004D8E39 /* DestinationViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4E91210B29F739F7004AA71C /* MapView */ = {
+			isa = PBXGroup;
+			children = (
+				4EC130522938DB7000CF4110 /* Map.swift */,
+				4EA0D90E29D08B2B002238D9 /* MapSceneView.swift */,
+			);
+			path = MapView;
 			sourceTree = "<group>";
 		};
 		4E912D0E29B6300500E719EA /* Fundamentals */ = {
