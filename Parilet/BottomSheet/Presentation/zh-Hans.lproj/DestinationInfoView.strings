@@ -6,7 +6,7 @@
 "EoA-qs-5Si.text" = "Rue Saint-Jacques";
 
 /* Class = "UILabel"; text = "Type:"; ObjectID = "Hsf-B6-KdW"; */
-"Hsf-B6-KdW.text" = "Type:";
+"Hsf-B6-KdW.text" = "类型:";
 
 /* Class = "UILabel"; text = "6 min."; ObjectID = "Mhg-sq-aj1"; */
 "Mhg-sq-aj1.text" = "6 min.";
@@ -15,7 +15,7 @@
 "R2W-WX-qPz.text" = "350 m";
 
 /* Class = "UILabel"; text = "Accessibility for PWD:"; ObjectID = "SyK-S2-Kgy"; */
-"SyK-S2-Kgy.text" = "Accessibility for PWD:";
+"SyK-S2-Kgy.text" = "残障人士的无障碍设施:";
 
 /* Class = "UILabel"; text = "12:00-19:00"; ObjectID = "g1l-Hw-HrJ"; */
 "g1l-Hw-HrJ.text" = "12:00-19:00";
@@ -24,4 +24,4 @@
 "sn1-TG-D2g.text" = "Sanisette";
 
 /* Class = "UILabel"; text = "Schedule:"; ObjectID = "yy2-Ho-ZXs"; */
-"yy2-Ho-ZXs.text" = "Schedule:";
+"yy2-Ho-ZXs.text" = "日程安排:";

@@ -92,9 +92,9 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
         
         let shouldPromptToEnableLocation = shouldTrackLocationProperty.filter { $0 }
             .withLatestFrom(isAuthorisedToUseLocation) { $1 }
-            .map { !$0 }
+            .filter { !$0 }
         
-        self.promptToEnableLocation = shouldPromptToEnableLocation.filter { $0 }
+        self.promptToEnableLocation = shouldPromptToEnableLocation
             .map { _ in UIAlertController.promptToEnableLocation() }
         
         let distinctLocation = locationProvider.didUpdateLatestLocation
@@ -130,10 +130,10 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
         
         self.routeHighlightsRefreshing = RxObservable
             .merge(distinctAnnotation.map { _ in true }, routeResponse.map { _ in false }
-            .delay(.milliseconds(500), scheduler: MainScheduler.instance)) // makes UI smoother
+                .delay(.milliseconds(500), scheduler: MainScheduler.instance)) // makes UI smoother
             .withLatestFrom(isAuthorisedToUseLocation) { ($0, $1) }
             .map { $0.0 && $0.1 }
-        // to merge
+        
         self.polyline = routeResponse
             .backgroundCompactMap(qos: .userInteractive) { PolylineAnnotation(withRouteResponse: $0) }
             .map { [$0] }
@@ -153,11 +153,9 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
         self.isTrackingLocation = shouldTrackLocationProperty.combineWithLatest(isAuthorisedToUseLocation)
             .filter { $0.1 }
             .map { $0.0 }
-        
+        //TODO: error handling
         self.error = errorRouter.error
-            .map { error in
-                error.localizedDescription
-            }
+            .map { $0.localizedDescription }
     }
     
     private let viewDidLoadProperty = PublishRelay<Empty>()
