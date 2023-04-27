@@ -72,6 +72,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4E04D93029FAE3E1002849E5 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4E0E971929B6016300B367D4 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		4E1AC6F7292ECA9B00872C5C /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		4E1AC6F9292ECE7400872C5C /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
@@ -98,12 +99,11 @@
 		4E88E67E29A57E8900CC7245 /* DestinationInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationInfoView.swift; sourceTree = "<group>"; };
 		4E88E68029A581AC00CC7245 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		4E8AD4B4299F725C00941B5E /* PresentationUnderlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentationUnderlay.swift; sourceTree = "<group>"; };
-		4E8DC014292B9648009A7B25 /* Parilet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Parilet.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4E8DC014292B9648009A7B25 /* Toilet Radar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Toilet Radar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4E8DC017292B9648009A7B25 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4E8DC019292B9648009A7B25 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4E8DC01B292B9648009A7B25 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4E8DC020292B9648009A7B25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4E8DC025292B9648009A7B25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = Parilet/SupportingFiles/Info.plist; sourceTree = SOURCE_ROOT; };
 		4E9018F429683C73000893DD /* PolylineAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolylineAnnotation.swift; sourceTree = "<group>"; };
 		4E9018F6296843B3000893DD /* RxPolylineAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxPolylineAnnotationManager.swift; sourceTree = "<group>"; };
 		4E90EDA1298AC243004D8E39 /* DestinationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationViewModel.swift; sourceTree = "<group>"; };
@@ -189,8 +189,8 @@
 		4E089831292BDC7300451846 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
+				4E04D93029FAE3E1002849E5 /* Info.plist */,
 				4EF6599429FABAEB00C94AB2 /* Launch Screen.storyboard */,
-				4E8DC025292B9648009A7B25 /* Info.plist */,
 			);
 			path = SupportingFiles;
 			sourceTree = "<group>";
@@ -283,7 +283,7 @@
 		4E8DC00B292B9648009A7B25 = {
 			isa = PBXGroup;
 			children = (
-				4E8DC016292B9648009A7B25 /* Parilet */,
+				4E8DC016292B9648009A7B25 /* Toilet Radar */,
 				4E8DC015292B9648009A7B25 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -291,12 +291,12 @@
 		4E8DC015292B9648009A7B25 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4E8DC014292B9648009A7B25 /* Parilet.app */,
+				4E8DC014292B9648009A7B25 /* Toilet Radar.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		4E8DC016292B9648009A7B25 /* Parilet */ = {
+		4E8DC016292B9648009A7B25 /* Toilet Radar */ = {
 			isa = PBXGroup;
 			children = (
 				4E83C34729C4D7CD0007DD10 /* RouteProgress */,
@@ -314,7 +314,7 @@
 				4E089832292BDCF900451846 /* Resources */,
 				4E089831292BDC7300451846 /* SupportingFiles */,
 			);
-			path = Parilet;
+			path = "Toilet Radar";
 			sourceTree = "<group>";
 		};
 		4E8DC02B292B967C009A7B25 /* ViewController */ = {
@@ -457,9 +457,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		4E8DC013292B9648009A7B25 /* Parilet */ = {
+		4E8DC013292B9648009A7B25 /* Toilet Radar */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 4E8DC028292B9648009A7B25 /* Build configuration list for PBXNativeTarget "Parilet" */;
+			buildConfigurationList = 4E8DC028292B9648009A7B25 /* Build configuration list for PBXNativeTarget "Toilet Radar" */;
 			buildPhases = (
 				4E8DC010292B9648009A7B25 /* Sources */,
 				4E8DC011292B9648009A7B25 /* Frameworks */,
@@ -469,7 +469,7 @@
 			);
 			dependencies = (
 			);
-			name = Parilet;
+			name = "Toilet Radar";
 			packageProductDependencies = (
 				4E1C3070292BB6FD00F5859D /* RxCocoa */,
 				4E1C3072292BB6FD00F5859D /* RxRelay */,
@@ -479,7 +479,7 @@
 				4E2977A42958A79F00FC7965 /* MapboxDirections */,
 			);
 			productName = Parilet;
-			productReference = 4E8DC014292B9648009A7B25 /* Parilet.app */;
+			productReference = 4E8DC014292B9648009A7B25 /* Toilet Radar.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -524,7 +524,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				4E8DC013292B9648009A7B25 /* Parilet */,
+				4E8DC013292B9648009A7B25 /* Toilet Radar */,
 			);
 		};
 /* End PBXProject section */
@@ -769,7 +769,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5ZYV4X786K;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Parilet/SupportingFiles/Info.plist;
+				INFOPLIST_FILE = "Toilet Radar/SupportingFiles/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Toilet Radar";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Enable location?";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -783,7 +785,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-.Parilet";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.ToiletRadar";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -806,7 +808,9 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 5ZYV4X786K;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Parilet/SupportingFiles/Info.plist;
+				INFOPLIST_FILE = "Toilet Radar/SupportingFiles/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "Toilet Radar";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Enable location?";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -820,7 +824,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "-.Parilet";
+				PRODUCT_BUNDLE_IDENTIFIER = "-.ToiletRadar";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
@@ -844,7 +848,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		4E8DC028292B9648009A7B25 /* Build configuration list for PBXNativeTarget "Parilet" */ = {
+		4E8DC028292B9648009A7B25 /* Build configuration list for PBXNativeTarget "Toilet Radar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4E8DC029292B9648009A7B25 /* Debug */,

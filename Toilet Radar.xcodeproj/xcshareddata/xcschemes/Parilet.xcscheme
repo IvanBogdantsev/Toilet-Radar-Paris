@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "4E8DC013292B9648009A7B25"
-               BuildableName = "Parilet.app"
-               BlueprintName = "Parilet"
+               BuildableName = "Toilet Radar.app"
+               BlueprintName = "Toilet Radar"
                ReferencedContainer = "container:Toilet Radar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,8 +45,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4E8DC013292B9648009A7B25"
-            BuildableName = "Parilet.app"
-            BlueprintName = "Parilet"
+            BuildableName = "Toilet Radar.app"
+            BlueprintName = "Toilet Radar"
             ReferencedContainer = "container:Toilet Radar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -62,8 +62,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "4E8DC013292B9648009A7B25"
-            BuildableName = "Parilet.app"
-            BlueprintName = "Parilet"
+            BuildableName = "Toilet Radar.app"
+            BlueprintName = "Toilet Radar"
             ReferencedContainer = "container:Toilet Radar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
