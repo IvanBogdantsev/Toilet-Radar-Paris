@@ -17,7 +17,7 @@
                BlueprintIdentifier = "4E8DC013292B9648009A7B25"
                BuildableName = "Parilet.app"
                BlueprintName = "Parilet"
-               ReferencedContainer = "container:Parilet.xcodeproj">
+               ReferencedContainer = "container:Toilet Radar.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -47,7 +47,7 @@
             BlueprintIdentifier = "4E8DC013292B9648009A7B25"
             BuildableName = "Parilet.app"
             BlueprintName = "Parilet"
-            ReferencedContainer = "container:Parilet.xcodeproj">
+            ReferencedContainer = "container:Toilet Radar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -64,7 +64,7 @@
             BlueprintIdentifier = "4E8DC013292B9648009A7B25"
             BuildableName = "Parilet.app"
             BlueprintName = "Parilet"
-            ReferencedContainer = "container:Parilet.xcodeproj">
+            ReferencedContainer = "container:Toilet Radar.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

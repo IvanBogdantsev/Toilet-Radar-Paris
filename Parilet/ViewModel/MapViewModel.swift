@@ -55,7 +55,7 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
     private var locationProvider: LocationProviderType = ThisAppLocationProvider()
     private let errorRouter = ErrorRouter()
     private var routeProgress: RouteProgress?
-    // ПОСМОТРЕТЬ ШЕЙР, ВИК СЕЛФ В КОНТРОЛЛЕРЕ, ВЕСЬ ЛИ UI В МЕЙНЕ, разобраться с withLatest и флетмап
+    // ВЕСЬ ЛИ UI В МЕЙНЕ, аноунед?
     init() {
         self.customLocationProvider = locationProvider.observableSelf
         

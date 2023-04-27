@@ -42,7 +42,6 @@
 		4E8DC01A292B9648009A7B25 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8DC019292B9648009A7B25 /* SceneDelegate.swift */; };
 		4E8DC01C292B9648009A7B25 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E8DC01B292B9648009A7B25 /* MapViewController.swift */; };
 		4E8DC021292B9648009A7B25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4E8DC020292B9648009A7B25 /* Assets.xcassets */; };
-		4E8DC024292B9648009A7B25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4E8DC022292B9648009A7B25 /* LaunchScreen.storyboard */; };
 		4E9018F529683C73000893DD /* PolylineAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9018F429683C73000893DD /* PolylineAnnotation.swift */; };
 		4E9018F7296843B3000893DD /* RxPolylineAnnotationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E9018F6296843B3000893DD /* RxPolylineAnnotationManager.swift */; };
 		4E90EDA2298AC243004D8E39 /* DestinationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E90EDA1298AC243004D8E39 /* DestinationViewModel.swift */; };
@@ -68,6 +67,7 @@
 		4EF6264B29C7B46C0058C339 /* RouteLeg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6264A29C7B46C0058C339 /* RouteLeg.swift */; };
 		4EF6264D29C7B48C0058C339 /* RouteOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6264C29C7B48C0058C339 /* RouteOptions.swift */; };
 		4EF6264F29C7B5180058C339 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6264E29C7B5180058C339 /* Array.swift */; };
+		4EF6599529FABAEB00C94AB2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EF6599429FABAEB00C94AB2 /* Launch Screen.storyboard */; };
 		4EFFCD6B296264C900FD2BCC /* RouteClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFFCD6A296264C900FD2BCC /* RouteClient.swift */; };
 /* End PBXBuildFile section */
 
@@ -103,7 +103,6 @@
 		4E8DC019292B9648009A7B25 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		4E8DC01B292B9648009A7B25 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		4E8DC020292B9648009A7B25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		4E8DC023292B9648009A7B25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		4E8DC025292B9648009A7B25 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = Parilet/SupportingFiles/Info.plist; sourceTree = SOURCE_ROOT; };
 		4E9018F429683C73000893DD /* PolylineAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PolylineAnnotation.swift; sourceTree = "<group>"; };
 		4E9018F6296843B3000893DD /* RxPolylineAnnotationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RxPolylineAnnotationManager.swift; sourceTree = "<group>"; };
@@ -146,6 +145,7 @@
 		4EF6264A29C7B46C0058C339 /* RouteLeg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteLeg.swift; sourceTree = "<group>"; };
 		4EF6264C29C7B48C0058C339 /* RouteOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteOptions.swift; sourceTree = "<group>"; };
 		4EF6264E29C7B5180058C339 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
+		4EF6599429FABAEB00C94AB2 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		4EFFCD6A296264C900FD2BCC /* RouteClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -189,7 +189,7 @@
 		4E089831292BDC7300451846 /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
-				4E8DC022292B9648009A7B25 /* LaunchScreen.storyboard */,
+				4EF6599429FABAEB00C94AB2 /* Launch Screen.storyboard */,
 				4E8DC025292B9648009A7B25 /* Info.plist */,
 			);
 			path = SupportingFiles;
@@ -497,7 +497,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 4E8DC00F292B9648009A7B25 /* Build configuration list for PBXProject "Parilet" */;
+			buildConfigurationList = 4E8DC00F292B9648009A7B25 /* Build configuration list for PBXProject "Toilet Radar" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -534,9 +534,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4E8DC024292B9648009A7B25 /* LaunchScreen.storyboard in Resources */,
 				4EB30C0129F5DF3200C2C646 /* DestinationInfoView.xib in Resources */,
 				4E9D6B5729EF4D92004378B9 /* Localizable.strings in Resources */,
+				4EF6599529FABAEB00C94AB2 /* Launch Screen.storyboard in Resources */,
 				4E8DC021292B9648009A7B25 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -606,14 +606,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		4E8DC022292B9648009A7B25 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4E8DC023292B9648009A7B25 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 		4E9D6B5929EF4D92004378B9 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -771,6 +763,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -780,7 +773,7 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Enable location?";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -807,6 +800,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -816,7 +810,7 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Enable location?";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -841,7 +835,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		4E8DC00F292B9648009A7B25 /* Build configuration list for PBXProject "Parilet" */ = {
+		4E8DC00F292B9648009A7B25 /* Build configuration list for PBXProject "Toilet Radar" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				4E8DC026292B9648009A7B25 /* Debug */,

@@ -7,7 +7,7 @@
 
 import Foundation
 import UIKit
-
+/// 
 final class ScheduleFormatter {
     typealias Hour = Int
     

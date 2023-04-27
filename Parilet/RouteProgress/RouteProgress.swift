@@ -11,12 +11,14 @@ import MapboxMaps
 
 /// `RouteProgress` stores the user’s progress along a route
 final class RouteProgress {
-    
+    /// Creates an instance of RouteProgress.
+    ///  - Parameter route: MapboxDirections.Route.
+    ///  - Returns: An instance of RouteProgress, or nil if route is nil.
     init?(route: MapboxDirections.Route?) {
         guard let route = route else { return nil }
         self.route = route
     }
-    
+    /// Collections of current route positions
     private lazy var shape: LineString? = {
         route.shape
     }()
@@ -38,14 +40,14 @@ final class RouteProgress {
         return distanceTraveled / route.distance
     }
     
-    var distanceRemaining: CLLocationDistance = 0
+    private(set) var distanceRemaining: CLLocationDistance = 0
     
     var remainingShape: LineString? {
         guard let finalRouteCoordinate = finalRouteCoordinate else { return nil }
         return shape?.trimmed(from: finalRouteCoordinate, distance: -distanceRemaining)
     }
-    
-    var route: MapboxDirections.Route
+    /// Current route
+    private(set) var route: MapboxDirections.Route
     
     func updateDistanceTraveled(with location: CLLocation) {
         guard let polyline = shape else { return }
