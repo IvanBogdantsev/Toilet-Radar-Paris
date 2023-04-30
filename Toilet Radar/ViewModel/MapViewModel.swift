@@ -55,7 +55,7 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
     private var locationProvider: LocationProviderType = ThisAppLocationProvider()
     private let errorRouter = ErrorRouter()
     private var routeProgress: RouteProgress?
-    // ВЕСЬ ЛИ UI В МЕЙНЕ, аноунед?
+    
     init() {
         self.customLocationProvider = locationProvider.observableSelf
         
@@ -88,7 +88,7 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
         self.routeHighlightsViewIsVisible = isEnRoute.withLatestFrom(isAuthorisedToUseLocation) { ($0, $1) }
             .map { $0.0 && $0.1 }
             .distinctUntilChanged()
-            .startWith(false)// поменять имя свойства в мапвью
+            .startWith(false)
         
         let shouldPromptToEnableLocation = shouldTrackLocationProperty.filter { $0 }
             .withLatestFrom(isAuthorisedToUseLocation) { $1 }

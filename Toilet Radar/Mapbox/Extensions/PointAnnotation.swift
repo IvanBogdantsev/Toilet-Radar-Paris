@@ -17,11 +17,11 @@ extension PointAnnotation {
         let longitude = record.fields.geoPoint2D.last ?? Double()
         let point = Point(LocationCoordinate2D(latitude: latitude, longitude: longitude))
         self.init(id: record.recordid ?? "", point: point)
-        self.userInfo = [UserInfo.accesPmr.rawValue : record.fields.accesPmr ?? "??",
-                         UserInfo.horaire.rawValue : record.fields.horaire ?? "??",
-                         UserInfo.arrondissement.rawValue : record.fields.arrondissement ?? "??",
-                         UserInfo.type.rawValue : record.fields.type ?? "??",
-                         UserInfo.adresse.rawValue : record.fields.adresse ?? "??"]
+        self.userInfo = [UserInfo.accesPmr : record.fields.accesPmr ?? "??",
+                         UserInfo.horaire : record.fields.horaire ?? "??",
+                         UserInfo.arrondissement : record.fields.arrondissement ?? "??",
+                         UserInfo.type : record.fields.type ?? "??",
+                         UserInfo.adresse : record.fields.adresse ?? "??"]
         self.image = .init(image: UIImage.pin, name: MapBoxConstants.imageName)
         self.iconImage = MapBoxConstants.imageName
     }

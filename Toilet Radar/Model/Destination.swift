@@ -13,10 +13,10 @@ struct Destination {
     let address: String?
     
     init(destinationInfo: Dictionary<String, Any>) {
-        prmAccess = destinationInfo[UserInfo.accesPmr.rawValue] as? String
-        schedule = destinationInfo[UserInfo.horaire.rawValue] as? String
-        district = destinationInfo[UserInfo.arrondissement.rawValue] as? String
-        type = destinationInfo[UserInfo.type.rawValue] as? String
-        address = destinationInfo[UserInfo.adresse.rawValue] as? String
+        prmAccess = destinationInfo[UserInfo.accesPmr] as? String
+        schedule = destinationInfo[UserInfo.horaire] as? String
+        district = destinationInfo[UserInfo.arrondissement] as? String
+        type = destinationInfo[UserInfo.type] as? String
+        address = destinationInfo[UserInfo.adresse] as? String
     }
 }

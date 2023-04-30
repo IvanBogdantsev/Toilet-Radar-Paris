@@ -20,14 +20,6 @@ final class BannerContainerView: UIView {
         }
     }
     
-    private(set) var state: State = .collapsed {
-        didSet {
-            expansionConstraint.constant = state == .collapsed ? -collapsedOffset : -expandedOffset
-        }
-    }
-    
-    private var expansionConstraint: NSLayoutConstraint!
-    /// nodoc
     var expandedOffset: CGFloat = 0 {
         didSet {
             guard state == .expanded else { return }
@@ -35,7 +27,7 @@ final class BannerContainerView: UIView {
             animate()
         }
     }
-    /// nodoc
+    
     var collapsedOffset: CGFloat = 0 {
         didSet {
             guard state == .collapsed else { return }
@@ -43,6 +35,14 @@ final class BannerContainerView: UIView {
             animate()
         }
     }
+    
+    private(set) var state: State = .collapsed {
+        didSet {
+            expansionConstraint.constant = state == .collapsed ? -collapsedOffset : -expandedOffset
+        }
+    }
+    
+    private var expansionConstraint: NSLayoutConstraint!
     
     override func didMoveToSuperview() {
         guard let superview = superview else { return }
@@ -62,7 +62,7 @@ final class BannerContainerView: UIView {
     
     private func setupRecognizer(isExpandable: Bool) {
         let panGestureRecognizer = isExpandable ?
-        UIPanGestureRecognizer(target: self, action: #selector(didPan)) : UIGestureRecognizer() // idle recognizer
+        UIPanGestureRecognizer(target: self, action: #selector(didPan)) : UIGestureRecognizer() // empty recognizer
         gestureRecognizers = [panGestureRecognizer]
     }
         

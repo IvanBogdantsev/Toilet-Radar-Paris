@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DestinationInfoView: UIView {
+final class DestinationInfoView: UIView {
     
     @IBOutlet weak var grabber: UIView!
     
@@ -27,6 +27,14 @@ class DestinationInfoView: UIView {
     @IBOutlet weak var distance: UILabel!
     @IBOutlet weak var travelTime: UILabel!
     
+    var upperViewHeight: CGFloat {
+        upperView.frame.height
+    }
+    
+    var totalHeight: CGFloat {
+        upperView.frame.height + lowerView.frame.height + safeAreaInsets.bottom
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         let shadowPath = UIBezierPath(rect: bounds)
@@ -36,14 +44,6 @@ class DestinationInfoView: UIView {
         layer.shadowRadius = 4
         layer.shadowOffset = .zero
         layer.masksToBounds = false
-    }
-    
-    var upperViewHeight: CGFloat {
-        upperView.frame.height
-    }
-    
-    var totalHeight: CGFloat {
-        upperView.frame.height + lowerView.frame.height + safeAreaInsets.bottom
     }
     
 }

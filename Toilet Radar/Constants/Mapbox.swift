@@ -8,8 +8,8 @@
 import MapboxMaps
 import CoreLocation
 
-struct MapBoxConstants {
-    static let accessToken = "pk.eyJ1IjoieXZhbmIiLCJhIjoiY2xhcXl6eTg5MDFrdzQwb3Z6OTAxeG9vcyJ9.f9bFprti9yDDWP1MigBL9Q"
+enum MapBoxConstants {
+    static let accessToken = ""
     static let imageName = "red_pin"
     static let resourceOptions: ResourceOptions = {
         ResourceOptions(accessToken: Self.accessToken)
@@ -19,13 +19,12 @@ struct MapBoxConstants {
     static let cameraLaunchOptions: CameraOptions = {
         CameraOptions(center: Self.paris, zoom: 10)
     }()
-    
-
-    init() {
-        fatalError("\(String(describing: type(of: self))) cannot be constructed")
-    }
 }
 
-enum UserInfo: String {
-    case accesPmr, type, adresse, arrondissement, horaire
+enum UserInfo {
+    static let accesPmr = "accesPmr"
+    static let type = "type"
+    static let adresse = "adresse"
+    static let arrondissement = "arrondissement"
+    static let horaire = "horaire"
 }

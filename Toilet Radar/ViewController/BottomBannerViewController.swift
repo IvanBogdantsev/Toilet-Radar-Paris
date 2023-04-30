@@ -31,9 +31,9 @@ final class BottomBannerViewController: UIViewController {
         }
     }
     
-    var isOnboarding: Bool! {
+    var routeHighlightsViewIsVisible: Bool! {
         didSet {
-            destinationInfoView.routeHighlightsView.isHidden = !isOnboarding
+            destinationInfoView.routeHighlightsView.isHidden = !routeHighlightsViewIsVisible
         }
     }
     
@@ -49,6 +49,7 @@ final class BottomBannerViewController: UIViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         refreshContentHeights()
     }
     
@@ -95,12 +96,6 @@ final class BottomBannerViewController: UIViewController {
             .disposed(by: disposeBag)
     }
     
-    private func refreshContentHeights() {
-        destinationInfoView.layoutIfNeeded()
-        containerView.collapsedOffset = destinationInfoView.upperViewHeight
-        containerView.expandedOffset = destinationInfoView.totalHeight
-    }
-    
     func setOnboardingMessage(message: OnboardingMessageAndComment) {
         viewModel.inputs.setOnboardingMessage(message: message)
     }
@@ -111,6 +106,12 @@ final class BottomBannerViewController: UIViewController {
     
     func refreshRoute(with route: Route) {
         viewModel.inputs.refreshRoute(with: route)
+    }
+    
+    private func refreshContentHeights() {
+        destinationInfoView.layoutIfNeeded()
+        containerView.collapsedOffset = destinationInfoView.upperViewHeight
+        containerView.expandedOffset = destinationInfoView.totalHeight
     }
     
 }
