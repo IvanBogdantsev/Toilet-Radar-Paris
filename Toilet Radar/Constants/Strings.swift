@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Strings {
+enum Strings {
     static let no_selection: String = {
         "no_selection".localized()
     }()
@@ -39,8 +39,4 @@ struct Strings {
     static let undefined: String = {
         "undefined".localized() 
     }()
-    
-    init() {
-        fatalError("\(String(describing: type(of: self))) cannot be constructed")
-    }
 }

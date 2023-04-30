@@ -8,13 +8,6 @@
 import UIKit
 
 extension UIView {
-    /// animates changes to the view with reasonable duration and delay.
-    static func animateDetent(animations: @escaping () -> Void) {
-        self.animate(withDuration: 0.3, delay: .nan, options: [.curveEaseOut], animations: animations)
-    }
-}
-
-extension UIView {
     /// prepares view for layout 
     static func forAutoLayout<ViewType: UIView>(frame: CGRect = .zero) -> ViewType {
             let view = ViewType.init(frame: frame)

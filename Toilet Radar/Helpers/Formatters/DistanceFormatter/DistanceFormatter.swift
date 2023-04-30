@@ -6,8 +6,13 @@
 //
 
 import MapKit
-
+/// 'DistanceFormatter' localizes and rounds distance in meters.
 final class DistanceFormatter {
+    
+    var distanceFormatterOptions: DistanceFormatterOptions {
+        get { options }
+        set { options = newValue }
+    }
     
     private let formatter: LengthFormatter
     private var options: DistanceFormatterOptions {
@@ -23,10 +28,6 @@ final class DistanceFormatter {
     }
     
     private var roundingThreshold: Double { options.shouldShowExactBelow.rawValue }
-    var distanceFormatterOptions: DistanceFormatterOptions {
-        get { options }
-        set { options = newValue }
-    }
 
     init(distanceFormatterOptions: DistanceFormatterOptions = DistanceFormatterOptions()) {
         formatter = LengthFormatter()

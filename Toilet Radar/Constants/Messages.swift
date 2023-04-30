@@ -7,10 +7,6 @@
 
 typealias OnboardingMessageAndComment = (message: String, comment: String)
 
-struct Messages {
+enum Messages {
     static let howToStartYourRoute: OnboardingMessageAndComment = (message: Strings.no_selection, comment: Strings.choose_a_point_on_the_map_to_see_details_and_plan_your_route)
-    
-    init() {
-        fatalError("\(String(describing: type(of: self))) cannot be constructed")
-    }
 }

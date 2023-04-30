@@ -9,6 +9,18 @@ import UIKit
 
 final class ShowMyLocationButton: UIButton {
     
+    var shouldShowUnknownLocationIcon = false {
+        didSet {
+            icon.image = shouldShowUnknownLocationIcon ? .location_hollow : .location_not_permitted
+        }
+    }
+        
+    var isInLocationTrackingMode = false {
+        didSet {
+            icon.image = isInLocationTrackingMode ? .location_fill : .location_hollow
+        }
+    }
+    
     private let icon: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -25,18 +37,6 @@ final class ShowMyLocationButton: UIButton {
     // ensuring the icon within the button as an incsribed square since the button is basicaly a circle with 'dimensionAnchor' diameter. Won't be going anywhere
     private var iconDimensionAnchor: CGFloat {
         dimensionAnchor / 1.414 
-    }
-    
-    var shouldShowUnknownLocationIcon = false {
-        didSet {
-            icon.image = shouldShowUnknownLocationIcon ? .location_hollow : .location_not_permitted
-        }
-    }
-        
-    var isInLocationTrackingMode = false {
-        didSet {
-            icon.image = isInLocationTrackingMode ? .location_fill : .location_hollow
-        }
     }
     
     init() {

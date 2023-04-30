@@ -103,7 +103,7 @@ final class MapViewController: UIViewController {
             .disposed(by: disposeBag)
         
         viewModel.outputs.routeHighlightsViewIsVisible.asDriver(onErrorDriveWith: .empty())
-            .drive(bottomBanner.rx.isOnboarding)
+            .drive(bottomBanner.rx.routeHighlightsViewIsVisible)
             .disposed(by: disposeBag)
         
         viewModel.outputs.onboardingMessage

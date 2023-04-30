@@ -64,9 +64,6 @@
 		4EDAEC4C29BCF6A400AA8259 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDAEC4B29BCF6A400AA8259 /* Strings.swift */; };
 		4EDAEC5B29BD01BB00AA8259 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDAEC5A29BD01BB00AA8259 /* Sequence.swift */; };
 		4EF3524B296AFCAB004ADB83 /* ErrorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF3524A296AFCAB004ADB83 /* ErrorRouter.swift */; };
-		4EF6264B29C7B46C0058C339 /* RouteLeg.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6264A29C7B46C0058C339 /* RouteLeg.swift */; };
-		4EF6264D29C7B48C0058C339 /* RouteOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6264C29C7B48C0058C339 /* RouteOptions.swift */; };
-		4EF6264F29C7B5180058C339 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF6264E29C7B5180058C339 /* Array.swift */; };
 		4EF6599529FABAEB00C94AB2 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4EF6599429FABAEB00C94AB2 /* Launch Screen.storyboard */; };
 		4EFFCD6B296264C900FD2BCC /* RouteClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EFFCD6A296264C900FD2BCC /* RouteClient.swift */; };
 /* End PBXBuildFile section */
@@ -142,9 +139,6 @@
 		4EDAEC4B29BCF6A400AA8259 /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		4EDAEC5A29BD01BB00AA8259 /* Sequence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sequence.swift; sourceTree = "<group>"; };
 		4EF3524A296AFCAB004ADB83 /* ErrorRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorRouter.swift; sourceTree = "<group>"; };
-		4EF6264A29C7B46C0058C339 /* RouteLeg.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteLeg.swift; sourceTree = "<group>"; };
-		4EF6264C29C7B48C0058C339 /* RouteOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteOptions.swift; sourceTree = "<group>"; };
-		4EF6264E29C7B5180058C339 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		4EF6599429FABAEB00C94AB2 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		4EFFCD6A296264C900FD2BCC /* RouteClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteClient.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -245,8 +239,6 @@
 				4EA60373295E2E9B00E1499F /* Reactive */,
 				4E9018F429683C73000893DD /* PolylineAnnotation.swift */,
 				4ECD49862933B3510027D763 /* PointAnnotation.swift */,
-				4EF6264A29C7B46C0058C339 /* RouteLeg.swift */,
-				4EF6264C29C7B48C0058C339 /* RouteOptions.swift */,
 				4E644F3229C925AB000C9DFE /* RouteResponse .swift */,
 			);
 			path = Extensions;
@@ -372,7 +364,6 @@
 				4E5B749729B8E5710035627A /* String.swift */,
 				4EDAEC5A29BD01BB00AA8259 /* Sequence.swift */,
 				4EB28E7B29BE5DE400E7A961 /* NSAttributedString.swift */,
-				4EF6264E29C7B5180058C339 /* Array.swift */,
 			);
 			path = Fundamentals;
 			sourceTree = "<group>";
@@ -566,7 +557,6 @@
 				4E88E67F29A57E8900CC7245 /* DestinationInfoView.swift in Sources */,
 				4E1AC6F8292ECA9B00872C5C /* APIRequest.swift in Sources */,
 				4E83C34929C4D8200007DD10 /* RouteProgress.swift in Sources */,
-				4EF6264F29C7B5180058C339 /* Array.swift in Sources */,
 				4EF3524B296AFCAB004ADB83 /* ErrorRouter.swift in Sources */,
 				4E430FCB29B3F0CF00AB50E2 /* TimeFormatterOptions.swift in Sources */,
 				4EB28E7C29BE5DE400E7A961 /* NSAttributedString.swift in Sources */,
@@ -579,7 +569,6 @@
 				4E8DC018292B9648009A7B25 /* AppDelegate.swift in Sources */,
 				4E8AD4B5299F725C00941B5E /* PresentationUnderlay.swift in Sources */,
 				4EDAEC5B29BD01BB00AA8259 /* Sequence.swift in Sources */,
-				4EF6264B29C7B46C0058C339 /* RouteLeg.swift in Sources */,
 				4E5B749A29B908860035627A /* UIColor.swift in Sources */,
 				4E51A0F029E74C1200366453 /* AsEmpty.swift in Sources */,
 				4E9018F7296843B3000893DD /* RxPolylineAnnotationManager.swift in Sources */,
@@ -598,7 +587,6 @@
 				4EB50E3529B396F00099F5A7 /* TimeFormatter.swift in Sources */,
 				4E0E971A29B6016300B367D4 /* Double.swift in Sources */,
 				4EFFCD6B296264C900FD2BCC /* RouteClient.swift in Sources */,
-				4EF6264D29C7B48C0058C339 /* RouteOptions.swift in Sources */,
 				4E91CA3129D34A5D00C4A87C /* RxGestureManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

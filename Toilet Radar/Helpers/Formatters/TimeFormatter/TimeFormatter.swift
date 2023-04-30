@@ -6,8 +6,13 @@
 //
 
 import Foundation
-
+/// 'TimeFormatter' localizes and rounds time in seconds.
 final class TimeFormatter {
+    
+    var timeFormatterOptions: TimeFormatterOptions {
+        get { options }
+        set { options = newValue }
+    }
     
     private let formatter: DateComponentsFormatter
     private var options: TimeFormatterOptions {
@@ -21,10 +26,6 @@ final class TimeFormatter {
     
     private var increment: Double { options.roundingIncrement.rawValue }
     private var roundingThreshold: Double { options.showsExactBelow.rawValue }
-    var timeFormatterOptions: TimeFormatterOptions {
-        get { options }
-        set { options = newValue }
-    }
     
     init(timeFormatterOptions: TimeFormatterOptions = TimeFormatterOptions()) {
         formatter = DateComponentsFormatter()

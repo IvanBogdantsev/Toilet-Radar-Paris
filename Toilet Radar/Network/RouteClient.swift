@@ -14,7 +14,7 @@ final class RouteClient {
     typealias RxObservable = RxSwift.Observable
     
     private var routeOptions: RouteOptions!
-    // The order source-destination matters, since route progress is calculated from route steps; inverted may lead to unexpected behaviour
+    
     func getRoute(from source: LocationCoordinate2D, to destination: LocationCoordinate2D) -> RxObservable<RouteResponse> {
         routeOptions = RouteOptions(coordinates: [source, destination], profileIdentifier: .walking)
         routeOptions.routeShapeResolution = .full
