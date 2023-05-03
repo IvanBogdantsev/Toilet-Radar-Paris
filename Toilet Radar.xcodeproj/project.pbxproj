@@ -61,6 +61,7 @@
 		4EC32F6329B0EE780074B954 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC32F6229B0EE780074B954 /* Route.swift */; };
 		4ECD49872933B3510027D763 /* PointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD49862933B3510027D763 /* PointAnnotation.swift */; };
 		4ECD49892933C7190027D763 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD49882933C7190027D763 /* UIImage.swift */; };
+		4ED18BA02A01B3F4000CEBB8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4ED18BA22A01B3F4000CEBB8 /* InfoPlist.strings */; };
 		4EDAEC4C29BCF6A400AA8259 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDAEC4B29BCF6A400AA8259 /* Strings.swift */; };
 		4EDAEC5B29BD01BB00AA8259 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDAEC5A29BD01BB00AA8259 /* Sequence.swift */; };
 		4EF3524B296AFCAB004ADB83 /* ErrorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF3524A296AFCAB004ADB83 /* ErrorRouter.swift */; };
@@ -77,7 +78,7 @@
 		4E28ED1029D0DB380076A7A4 /* ShowMyLocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMyLocationButton.swift; sourceTree = "<group>"; };
 		4E2DA2E829F43D4000214692 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		4E37ECB3298BBA7700AB4D91 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
-		4E3D346A295612360083BF05 /* Mapbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapbox.swift; sourceTree = "<group>"; };
+		4E3D346A295612360083BF05 /* Mapbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapbox.swift; sourceTree = "<group>"; wrapsLines = 0; };
 		4E3D346C2956125D0083BF05 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		4E430FCA29B3F0CF00AB50E2 /* TimeFormatterOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatterOptions.swift; sourceTree = "<group>"; };
 		4E4546FA292D730A0068070A /* SanisetteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanisetteData.swift; sourceTree = "<group>"; };
@@ -130,6 +131,15 @@
 		4EC32F6229B0EE780074B954 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		4ECD49862933B3510027D763 /* PointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointAnnotation.swift; sourceTree = "<group>"; };
 		4ECD49882933C7190027D763 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
+		4ED18BA12A01B3F4000CEBB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4ED18BA32A01B3F8000CEBB8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		4ED18BA42A01B3FA000CEBB8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4ED18BA52A01B3FB000CEBB8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4ED18BA62A01B3FC000CEBB8 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4ED18BA72A01B3FD000CEBB8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4ED18BA82A01B3FE000CEBB8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4ED18BA92A01B3FE000CEBB8 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4ED18BAA2A01B3FF000CEBB8 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4ED47B5229EFFFAA00DAE25E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		4ED47B5429EFFFCB00DAE25E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4ED47B5629EFFFD900DAE25E /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -194,6 +204,7 @@
 			children = (
 				4E8DC020292B9648009A7B25 /* Assets.xcassets */,
 				4E9D6B5929EF4D92004378B9 /* Localizable.strings */,
+				4ED18BA22A01B3F4000CEBB8 /* InfoPlist.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -529,6 +540,7 @@
 				4E9D6B5729EF4D92004378B9 /* Localizable.strings in Resources */,
 				4EF6599529FABAEB00C94AB2 /* Launch Screen.storyboard in Resources */,
 				4E8DC021292B9648009A7B25 /* Assets.xcassets in Resources */,
+				4ED18BA02A01B3F4000CEBB8 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -625,6 +637,22 @@
 				4EB30C1729F5E07200C2C646 /* uk */,
 			);
 			name = DestinationInfoView.xib;
+			sourceTree = "<group>";
+		};
+		4ED18BA22A01B3F4000CEBB8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4ED18BA12A01B3F4000CEBB8 /* en */,
+				4ED18BA32A01B3F8000CEBB8 /* zh-Hans */,
+				4ED18BA42A01B3FA000CEBB8 /* fr */,
+				4ED18BA52A01B3FB000CEBB8 /* de */,
+				4ED18BA62A01B3FC000CEBB8 /* it */,
+				4ED18BA72A01B3FD000CEBB8 /* ja */,
+				4ED18BA82A01B3FE000CEBB8 /* ru */,
+				4ED18BA92A01B3FE000CEBB8 /* es */,
+				4ED18BAA2A01B3FF000CEBB8 /* uk */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -760,8 +788,8 @@
 				INFOPLIST_FILE = "Toilet Radar/SupportingFiles/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Toilet Radar";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Enable location?";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data location?";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data location?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
@@ -772,7 +800,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "-.ToiletRadar";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -799,8 +827,8 @@
 				INFOPLIST_FILE = "Toilet Radar/SupportingFiles/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Toilet Radar";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Enable location?";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data location?";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data location?";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
@@ -811,7 +839,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 1.0.0;
 				PRODUCT_BUNDLE_IDENTIFIER = "-.ToiletRadar";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

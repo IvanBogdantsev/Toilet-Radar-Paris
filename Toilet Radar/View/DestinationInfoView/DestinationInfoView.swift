@@ -32,7 +32,7 @@ final class DestinationInfoView: UIView {
     }
     
     var totalHeight: CGFloat {
-        upperView.frame.height + lowerView.frame.height + safeAreaInsets.bottom
+        (upperView.frame.height + lowerView.frame.height) + max(safeAreaInsets.bottom, 9)
     }
     
     override func awakeFromNib() {
