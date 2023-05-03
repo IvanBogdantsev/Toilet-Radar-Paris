@@ -143,6 +143,14 @@ extension ThisAppLocationProvider: CLLocationManagerDelegate {
         delegate?.locationProvider(self, didFailWithError: error)
     }
     
+    @available(iOS, deprecated: 14.0)
+    func locationManager(_ manager: CLLocationManager,
+                         didChangeAuthorization status: CLAuthorizationStatus) {
+        delegate?.locationProviderDidChangeAuthorization(self)
+        let isAuthorised = status == .authorizedAlways || status == .authorizedWhenInUse
+        isAuthorisedToUseLocation.onNext(isAuthorised)
+    }
+    
     @available(iOS 14.0, *)
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         delegate?.locationProviderDidChangeAuthorization(self)
