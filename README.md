@@ -26,7 +26,7 @@ The application is fully localized to 9 most common languages spoken in Paris in
    
 *Prompting user to enable location services*
 
-<img src="https://user-images.githubusercontent.com/117449167/236677664-3ae21bfc-1957-4f93-b014-e208f7d2690f.jpeg" height="500"/> 
+<img src="https://user-images.githubusercontent.com/117449167/236677664-3ae21bfc-1957-4f93-b014-e208f7d2690f.jpeg" height="499"/> 
 
 *Typical user flow*
 
