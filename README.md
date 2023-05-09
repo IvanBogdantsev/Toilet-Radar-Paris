@@ -1,6 +1,8 @@
 # Toilet Radar Paris  <img src="https://user-images.githubusercontent.com/117449167/236677934-3000cbeb-c384-4f79-8dfb-8d1066c5aac3.png" height="45"/> 
 *iOS 13.0+*
 
+**Like this project? Give it a star!** :star2:
+
 ### Link to App Store
 
 https://apps.apple.com/fr/app/toilet-radar-paris/id6448686615
