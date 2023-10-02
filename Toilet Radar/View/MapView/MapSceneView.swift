@@ -58,21 +58,21 @@ final class MapSceneView: UIView {
         
         addSubview(rateThisAppButton)
         rateThisAppButton.snp.makeConstraints {
-            $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(35)
+            $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(60)
             $0.right.equalToSuperview().inset(8)
             $0.left.greaterThanOrEqualToSuperview()
         }
     }
     
     private func setStyle() {
-        rateThisAppButton.backgroundColor = .white
+        rateThisAppButton.backgroundColor = .secondarySystemBackground
         rateThisAppButton.layer.cornerRadius = 12
         rateThisAppButton.setImage(UIImage.star, for: .normal)
         rateThisAppButton.tintColor = .prlYellow
         
         rateThisAppButton.titleLabel?.numberOfLines = 0
         rateThisAppButton.setTitle(Strings.am_i_a_good_app, for: .normal)
-        rateThisAppButton.setTitleColor(.black, for: .normal)
+        rateThisAppButton.setTitleColor(.label, for: .normal)
         
         var configuration = UIButton.Configuration.plain()
         configuration.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)

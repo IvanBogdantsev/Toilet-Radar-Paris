@@ -9,6 +9,7 @@ import MapboxDirections
 import MapboxMaps
 import RxSwift
 import RxCocoa
+import StoreKit
 
 protocol MapViewModelInputs {
     func viewDidLoad()
@@ -170,6 +171,12 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
     private let viewDidLoadProperty = PublishRelay<Empty>()
     func viewDidLoad() {
         viewDidLoadProperty.accept(Empty())
+            DispatchQueue.main.asyncAfter(deadline: .now() + 45) {
+                guard self.hasRatedApp == nil else { return }
+                guard let scene = UIApplication.shared.connectedScenes.first(
+                    where: { $0.activationState == .foregroundActive }) as? UIWindowScene else { return }
+                SKStoreReviewController.requestReview(in: scene)
+            }
     }
     
     private let selectedAnnotation = PublishRelay<PointAnnotation>()

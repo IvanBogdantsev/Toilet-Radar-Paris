@@ -18,10 +18,6 @@ final class MapViewController: UIViewController {
     private let bottomBanner = BottomBannerViewController()
     private let disposeBag = DisposeBag()
     
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        .darkContent
-    }
-    
     override func loadView() {
         view = mapSceneView
     }
@@ -43,7 +39,8 @@ final class MapViewController: UIViewController {
         mapSceneView.didDetectTappedAnnotation
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
-                self.viewModel.inputs.didSelectAnnotation($0) })
+                self.viewModel.inputs.didSelectAnnotation($0)
+            })
             .disposed(by: disposeBag)
         
         mapSceneView.rxTapShowLocationButton
