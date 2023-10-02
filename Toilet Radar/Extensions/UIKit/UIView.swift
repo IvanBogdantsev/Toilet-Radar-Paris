@@ -53,4 +53,10 @@ extension UIView {
             self.alpha = 0
         }
     }
+    
+    func appear(duration: TimeInterval) {
+        UIView.animate(withDuration: duration) {
+            self.alpha = 1
+        }
+    }
 }

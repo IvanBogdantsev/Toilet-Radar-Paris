@@ -59,7 +59,8 @@ final class MapSceneView: UIView {
         addSubview(rateThisAppButton)
         rateThisAppButton.snp.makeConstraints {
             $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(35)
-            $0.right.equalToSuperview().inset(35)
+            $0.right.equalToSuperview().inset(8)
+            $0.left.greaterThanOrEqualToSuperview()
         }
     }
     
@@ -83,6 +84,12 @@ final class MapSceneView: UIView {
         rateThisAppButton.layer.shadowRadius = 1
         rateThisAppButton.layer.shadowOffset = CGSize(width: 0, height: 3)
         rateThisAppButton.layer.masksToBounds = false
+        
+        rateThisAppButton.alpha = 0
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
+            self.rateThisAppButton.appear(duration: 0.5)
+        }
     }
     
     required init?(coder: NSCoder) {
