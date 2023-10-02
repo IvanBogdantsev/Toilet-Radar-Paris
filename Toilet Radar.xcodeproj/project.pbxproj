@@ -17,6 +17,7 @@
 		4E28ED1129D0DB380076A7A4 /* ShowMyLocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E28ED1029D0DB380076A7A4 /* ShowMyLocationButton.swift */; };
 		4E2977A52958A79F00FC7965 /* MapboxDirections in Frameworks */ = {isa = PBXBuildFile; productRef = 4E2977A42958A79F00FC7965 /* MapboxDirections */; };
 		4E2DA2E929F43D4000214692 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2DA2E829F43D4000214692 /* UIAlertController.swift */; };
+		4E36E8F92AC9FD0D007A8645 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4E36E8F82AC9FD0D007A8645 /* SnapKit */; };
 		4E37ECB4298BBA7700AB4D91 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E37ECB3298BBA7700AB4D91 /* Destination.swift */; };
 		4E3D346B295612360083BF05 /* Mapbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D346A295612360083BF05 /* Mapbox.swift */; };
 		4E3D346D2956125D0083BF05 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D346C2956125D0083BF05 /* Network.swift */; };
@@ -56,6 +57,7 @@
 		4EB2B94229E9C9DF001B891B /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2B94129E9C9DF001B891B /* Messages.swift */; };
 		4EB30C0129F5DF3200C2C646 /* DestinationInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EB30C0329F5DF3200C2C646 /* DestinationInfoView.xib */; };
 		4EB50E3529B396F00099F5A7 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB50E3429B396F00099F5A7 /* TimeFormatter.swift */; };
+		4EBA22D72ACABBCC00EE76B5 /* UserDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA22D62ACABBCC00EE76B5 /* UserDataStorage.swift */; };
 		4EC130532938DB7000CF4110 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC130522938DB7000CF4110 /* Map.swift */; };
 		4EC32F6129B0A8060074B954 /* BackgroundMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC32F6029B0A8060074B954 /* BackgroundMap.swift */; };
 		4EC32F6329B0EE780074B954 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC32F6229B0EE780074B954 /* Route.swift */; };
@@ -125,6 +127,7 @@
 		4EB30C1529F5E07100C2C646 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/DestinationInfoView.strings; sourceTree = "<group>"; };
 		4EB30C1729F5E07200C2C646 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/DestinationInfoView.strings; sourceTree = "<group>"; };
 		4EB50E3429B396F00099F5A7 /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
+		4EBA22D62ACABBCC00EE76B5 /* UserDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStorage.swift; sourceTree = "<group>"; };
 		4EC130522938DB7000CF4110 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		4EC32F6029B0A8060074B954 /* BackgroundMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMap.swift; sourceTree = "<group>"; };
 		4EC32F6229B0EE780074B954 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
@@ -151,6 +154,7 @@
 				4E4896EA292D464000E1C6AE /* Alamofire in Frameworks */,
 				4E2977A52958A79F00FC7965 /* MapboxDirections in Frameworks */,
 				4E1C3075292BB6FD00F5859D /* RxSwift in Frameworks */,
+				4E36E8F92AC9FD0D007A8645 /* SnapKit in Frameworks */,
 				4E1C3073292BB6FD00F5859D /* RxRelay in Frameworks */,
 				4EB27E0B292BBA7500A9938C /* MapboxMaps in Frameworks */,
 				4E1C3071292BB6FD00F5859D /* RxCocoa in Frameworks */,
@@ -216,6 +220,15 @@
 			path = Elements;
 			sourceTree = "<group>";
 		};
+		4E36E8F62AC9F55F007A8645 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4E83C34829C4D8200007DD10 /* RouteProgress.swift */,
+				4EBA22D62ACABBCC00EE76B5 /* UserDataStorage.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		4E57568429BB373600BA8336 /* ScheduleFormatter */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,14 +277,6 @@
 			path = ReactiveExtensions;
 			sourceTree = "<group>";
 		};
-		4E83C34729C4D7CD0007DD10 /* RouteProgress */ = {
-			isa = PBXGroup;
-			children = (
-				4E83C34829C4D8200007DD10 /* RouteProgress.swift */,
-			);
-			path = RouteProgress;
-			sourceTree = "<group>";
-		};
 		4E8DC00B292B9648009A7B25 = {
 			isa = PBXGroup;
 			children = (
@@ -291,7 +296,7 @@
 		4E8DC016292B9648009A7B25 /* Toilet Radar */ = {
 			isa = PBXGroup;
 			children = (
-				4E83C34729C4D7CD0007DD10 /* RouteProgress */,
+				4E36E8F62AC9F55F007A8645 /* Services */,
 				4EB50E3229B396890099F5A7 /* Helpers */,
 				4E5ED8C72978B21A0055E000 /* Mapbox */,
 				4EF35249296AFC96004ADB83 /* ReactiveUtilities */,
@@ -468,6 +473,7 @@
 				4EB27E0A292BBA7500A9938C /* MapboxMaps */,
 				4E4896E9292D464000E1C6AE /* Alamofire */,
 				4E2977A42958A79F00FC7965 /* MapboxDirections */,
+				4E36E8F82AC9FD0D007A8645 /* SnapKit */,
 			);
 			productName = Parilet;
 			productReference = 4E8DC014292B9648009A7B25 /* Toilet Radar.app */;
@@ -510,6 +516,7 @@
 				4EB27E09292BBA7500A9938C /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
 				4E4896E8292D464000E1C6AE /* XCRemoteSwiftPackageReference "Alamofire" */,
 				4E2977A32958A79F00FC7965 /* XCRemoteSwiftPackageReference "mapbox-directions-swift" */,
+				4E36E8F72AC9FD0D007A8645 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 4E8DC015292B9648009A7B25 /* Products */;
 			projectDirPath = "";
@@ -553,6 +560,7 @@
 				4E2DA2E929F43D4000214692 /* UIAlertController.swift in Sources */,
 				4EDAEC4C29BCF6A400AA8259 /* Strings.swift in Sources */,
 				4E57568629BB375A00BA8336 /* ScheduleFormatter.swift in Sources */,
+				4EBA22D72ACABBCC00EE76B5 /* UserDataStorage.swift in Sources */,
 				4E4546FB292D730A0068070A /* SanisetteData.swift in Sources */,
 				4E88E67F29A57E8900CC7245 /* DestinationInfoView.swift in Sources */,
 				4E1AC6F8292ECA9B00872C5C /* APIRequest.swift in Sources */,
@@ -767,7 +775,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -806,7 +814,7 @@
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -864,6 +872,14 @@
 				kind = branch;
 			};
 		};
+		4E36E8F72AC9FD0D007A8645 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		4E4896E8292D464000E1C6AE /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -902,6 +918,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E2977A32958A79F00FC7965 /* XCRemoteSwiftPackageReference "mapbox-directions-swift" */;
 			productName = MapboxDirections;
+		};
+		4E36E8F82AC9FD0D007A8645 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E36E8F72AC9FD0D007A8645 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 		4E4896E9292D464000E1C6AE /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

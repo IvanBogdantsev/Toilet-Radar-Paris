@@ -46,3 +46,11 @@ extension UIView {
         transform = CGAffineTransform(scaleX: scale, y: scale)
     }
 }
+
+extension UIView {
+    func fade(duration: TimeInterval) {
+        UIView.animate(withDuration: duration) {
+            self.alpha = 0
+        }
+    }
+}

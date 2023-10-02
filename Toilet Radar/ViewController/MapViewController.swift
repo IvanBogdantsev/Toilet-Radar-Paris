@@ -9,10 +9,11 @@ import MapboxMaps
 import RxSwift
 import RxCocoa
 import UIKit
+import StoreKit
 
 final class MapViewController: UIViewController {
     
-    private let mapSceneView: MapViewSceneType = MapSceneView()
+    private let mapSceneView = MapSceneView()
     private let viewModel: MapViewModelType = MapViewModel()
     private let bottomBanner = BottomBannerViewController()
     private let disposeBag = DisposeBag()
@@ -61,6 +62,16 @@ final class MapViewController: UIViewController {
             .subscribe(onNext: { [weak self] in
                 guard let self = self else { return }
                 self.viewModel.inputs.shouldTrackLocation(false) })
+            .disposed(by: disposeBag)
+        
+        mapSceneView.rateThisAppButton.rx.tap.asDriver()
+            .drive(onNext: { [weak self] in
+                guard let scene = UIApplication.shared.connectedScenes.first(
+                    where: { $0.activationState == .foregroundActive }) as? UIWindowScene else { return }
+                SKStoreReviewController.requestReview(in: scene)
+                self?.viewModel.inputs.didTapRateThisAppButton()
+                self?.mapSceneView.rateThisAppButton.fade(duration: 0.8)
+            })
             .disposed(by: disposeBag)
     }
     
@@ -144,6 +155,10 @@ final class MapViewController: UIViewController {
         
         viewModel.outputs.error.asDriver(onErrorDriveWith: .empty())
             .drive { print($0) }
+            .disposed(by: disposeBag)
+        
+        viewModel.outputs.rateAppButtonIsHidden.asDriver(onErrorJustReturn: false)
+            .drive(mapSceneView.rateThisAppButton.rx.isHidden)
             .disposed(by: disposeBag)
     }
     

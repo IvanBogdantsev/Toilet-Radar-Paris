@@ -14,6 +14,7 @@ protocol MapViewModelInputs {
     func viewDidLoad()
     func didSelectAnnotation(_ annotation: PointAnnotation)
     func shouldTrackLocation(_ shouldTrackLocation: Bool)
+    func didTapRateThisAppButton()
 }
 
 protocol MapViewModelOutputs {
@@ -41,6 +42,7 @@ protocol MapViewModelOutputs {
     var updatedCameraOptions: RxObservable<CameraOptions>! { get }
     var isTrackingLocation: RxObservable<Bool>! { get }
     var error: RxObservable<String>! { get }
+    var rateAppButtonIsHidden: RxObservable<Bool>! { get }
 }
 
 protocol MapViewModelType {
@@ -50,6 +52,8 @@ protocol MapViewModelType {
 
 final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutputs {
     
+    @UserDataStorage(key: UserDefaultsKey.hasRatedApp)
+    private var hasRatedApp: Bool?
     private let sanisetteApiClient = APIClient<SanisetteData>()
     private let routeClient = RouteClient()
     private var locationProvider: LocationProviderType = ThisAppLocationProvider()
@@ -156,6 +160,11 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
         //TODO: error handling
         self.error = errorRouter.error
             .map { $0.localizedDescription }
+        
+        self.rateAppButtonIsHidden = viewDidLoadProperty
+            .compactMap {
+                self.hasRatedApp
+            }
     }
     
     private let viewDidLoadProperty = PublishRelay<Empty>()
@@ -171,6 +180,10 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
     private let shouldTrackLocationProperty = PublishRelay<Bool>()
     func shouldTrackLocation(_ trackingEnabled: Bool) {
         shouldTrackLocationProperty.accept(trackingEnabled)
+    }
+    
+    func didTapRateThisAppButton() {
+        hasRatedApp = true
     }
     
     var customLocationProvider: Single<MapboxMaps.LocationProvider>!
@@ -189,6 +202,7 @@ final class MapViewModel: MapViewModelType, MapViewModelInputs, MapViewModelOutp
     var updatedCameraOptions: RxObservable<CameraOptions>!
     var isTrackingLocation: RxObservable<Bool>!
     var error: RxObservable<String>!
+    var rateAppButtonIsHidden: RxObservable<Bool>!
     
     var inputs: MapViewModelInputs { self }
     var outputs: MapViewModelOutputs { self }

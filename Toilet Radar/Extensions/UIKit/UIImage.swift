@@ -23,4 +23,8 @@ extension UIImage {
     static var location_not_permitted: UIImage {
         UIImage(named: "location_not_permitted") ?? UIImage()
     }
+    
+    static var star: UIImage {
+        UIImage(systemName: "star.fill") ?? UIImage()
+    }
 }
