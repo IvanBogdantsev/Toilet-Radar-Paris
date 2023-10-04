@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  Toilet Radar
+
+  Created by Vanya Bogdantsev on 02.10.2023.
+  
+*/
+
+"NSLocationAlwaysUsageDescription" = "Pour vous fournir une navigation précise, l'application nécessite l'accès à vos données de localisation";
+
+"NSLocationWhenInUseUsageDescription" = "Pour vous fournir une navigation précise, l'application nécessite l'accès à vos données de localisation";
