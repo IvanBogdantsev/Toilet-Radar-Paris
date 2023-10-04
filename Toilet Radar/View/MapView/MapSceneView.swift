@@ -9,6 +9,7 @@ import UIKit
 import RxSwift
 import RxCocoa
 import MapboxMaps
+import SnapKit
 
 protocol MapViewSceneType: UIView {
     var bindablePointAnnotations: Binder<PointAnnotations> { get }
@@ -32,6 +33,7 @@ final class MapSceneView: UIView {
     
     private let mapView: Map
     private let showMyLocationButton = ShowMyLocationButton()
+    let rateThisAppButton = UIButton()
     private lazy var pointAnnotationManager: PointAnnotationManager = {
         mapView.annotations.makePointAnnotationManager()
     }()
@@ -45,15 +47,51 @@ final class MapSceneView: UIView {
     init() {
         mapView = Map(frame: .zero)
         super.init(frame: .zero)
-        setupMapView()
+        layout()
+        setStyle()
     }
     
-    private func setupMapView() {
+    private func layout() {
         mapView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(mapView)
         mapView.pinToEdges(of: self)
-    }
         
+        addSubview(rateThisAppButton)
+        rateThisAppButton.snp.makeConstraints {
+            $0.top.equalTo(safeAreaLayoutGuide.snp.top).inset(60)
+            $0.right.equalToSuperview().inset(8)
+            $0.left.greaterThanOrEqualToSuperview()
+        }
+    }
+    
+    private func setStyle() {
+        rateThisAppButton.backgroundColor = .secondarySystemBackground
+        rateThisAppButton.layer.cornerRadius = 12
+        rateThisAppButton.setImage(UIImage.star, for: .normal)
+        rateThisAppButton.tintColor = .prlYellow
+        
+        rateThisAppButton.titleLabel?.numberOfLines = 0
+        rateThisAppButton.setTitle(Strings.am_i_a_good_app, for: .normal)
+        rateThisAppButton.setTitleColor(.label, for: .normal)
+        
+        var configuration = UIButton.Configuration.plain()
+        configuration.contentInsets = NSDirectionalEdgeInsets(top: 8, leading: 8, bottom: 8, trailing: 8)
+        configuration.imagePadding = 5
+        rateThisAppButton.configuration = configuration
+
+        rateThisAppButton.layer.shadowColor = UIColor.black.cgColor
+        rateThisAppButton.layer.shadowOpacity = 0.2
+        rateThisAppButton.layer.shadowRadius = 1
+        rateThisAppButton.layer.shadowOffset = CGSize(width: 0, height: 3)
+        rateThisAppButton.layer.masksToBounds = false
+        
+        rateThisAppButton.alpha = 0
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 30) {
+            self.rateThisAppButton.appear(duration: 0.5)
+        }
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

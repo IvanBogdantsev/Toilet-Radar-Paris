@@ -9,7 +9,8 @@ import MapboxMaps
 import CoreLocation
 
 enum MapBoxConstants {
-    static let accessToken = ""
+    static let accessToken = "pk.eyJ1IjoieXZhbmIiLCJhIjoiY2xhcXl6eTg5MDFrdzQwb3Z6OTAxeG9vcyJ9.f9bFprti9yDDWP1MigBL9Q"
+
     static let imageName = "red_pin"
     static let resourceOptions: ResourceOptions = {
         ResourceOptions(accessToken: Self.accessToken)

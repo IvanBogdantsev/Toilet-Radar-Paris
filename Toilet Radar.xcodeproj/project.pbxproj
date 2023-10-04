@@ -13,10 +13,12 @@
 		4E1C3071292BB6FD00F5859D /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1C3070292BB6FD00F5859D /* RxCocoa */; };
 		4E1C3073292BB6FD00F5859D /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1C3072292BB6FD00F5859D /* RxRelay */; };
 		4E1C3075292BB6FD00F5859D /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 4E1C3074292BB6FD00F5859D /* RxSwift */; };
+		4E211F992ACAEB7E00FE9D0F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4E211F9B2ACAEB7E00FE9D0F /* InfoPlist.strings */; };
 		4E21EB9229D326CC0007B8DB /* CombineWithLatest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E21EB9129D326CC0007B8DB /* CombineWithLatest.swift */; };
 		4E28ED1129D0DB380076A7A4 /* ShowMyLocationButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E28ED1029D0DB380076A7A4 /* ShowMyLocationButton.swift */; };
 		4E2977A52958A79F00FC7965 /* MapboxDirections in Frameworks */ = {isa = PBXBuildFile; productRef = 4E2977A42958A79F00FC7965 /* MapboxDirections */; };
 		4E2DA2E929F43D4000214692 /* UIAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E2DA2E829F43D4000214692 /* UIAlertController.swift */; };
+		4E36E8F92AC9FD0D007A8645 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 4E36E8F82AC9FD0D007A8645 /* SnapKit */; };
 		4E37ECB4298BBA7700AB4D91 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E37ECB3298BBA7700AB4D91 /* Destination.swift */; };
 		4E3D346B295612360083BF05 /* Mapbox.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D346A295612360083BF05 /* Mapbox.swift */; };
 		4E3D346D2956125D0083BF05 /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E3D346C2956125D0083BF05 /* Network.swift */; };
@@ -56,12 +58,12 @@
 		4EB2B94229E9C9DF001B891B /* Messages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB2B94129E9C9DF001B891B /* Messages.swift */; };
 		4EB30C0129F5DF3200C2C646 /* DestinationInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4EB30C0329F5DF3200C2C646 /* DestinationInfoView.xib */; };
 		4EB50E3529B396F00099F5A7 /* TimeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EB50E3429B396F00099F5A7 /* TimeFormatter.swift */; };
+		4EBA22D72ACABBCC00EE76B5 /* UserDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EBA22D62ACABBCC00EE76B5 /* UserDataStorage.swift */; };
 		4EC130532938DB7000CF4110 /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC130522938DB7000CF4110 /* Map.swift */; };
 		4EC32F6129B0A8060074B954 /* BackgroundMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC32F6029B0A8060074B954 /* BackgroundMap.swift */; };
 		4EC32F6329B0EE780074B954 /* Route.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EC32F6229B0EE780074B954 /* Route.swift */; };
 		4ECD49872933B3510027D763 /* PointAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD49862933B3510027D763 /* PointAnnotation.swift */; };
 		4ECD49892933C7190027D763 /* UIImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ECD49882933C7190027D763 /* UIImage.swift */; };
-		4ED18BA02A01B3F4000CEBB8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4ED18BA22A01B3F4000CEBB8 /* InfoPlist.strings */; };
 		4EDAEC4C29BCF6A400AA8259 /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDAEC4B29BCF6A400AA8259 /* Strings.swift */; };
 		4EDAEC5B29BD01BB00AA8259 /* Sequence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EDAEC5A29BD01BB00AA8259 /* Sequence.swift */; };
 		4EF3524B296AFCAB004ADB83 /* ErrorRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4EF3524A296AFCAB004ADB83 /* ErrorRouter.swift */; };
@@ -74,11 +76,20 @@
 		4E0E971929B6016300B367D4 /* Double.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Double.swift; sourceTree = "<group>"; };
 		4E1AC6F7292ECA9B00872C5C /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		4E1AC6F9292ECE7400872C5C /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		4E211F9A2ACAEB7E00FE9D0F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4E211F9C2ACAEB8100FE9D0F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		4E211F9D2ACAEB8300FE9D0F /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4E211F9E2ACAEB8400FE9D0F /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4E211F9F2ACAEB8500FE9D0F /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4E211FA02ACAEB8500FE9D0F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4E211FA12ACAEB8600FE9D0F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4E211FA22ACAEB8700FE9D0F /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4E211FA32ACAEB8700FE9D0F /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4E21EB9129D326CC0007B8DB /* CombineWithLatest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CombineWithLatest.swift; sourceTree = "<group>"; };
 		4E28ED1029D0DB380076A7A4 /* ShowMyLocationButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMyLocationButton.swift; sourceTree = "<group>"; };
 		4E2DA2E829F43D4000214692 /* UIAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIAlertController.swift; sourceTree = "<group>"; };
 		4E37ECB3298BBA7700AB4D91 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
-		4E3D346A295612360083BF05 /* Mapbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapbox.swift; sourceTree = "<group>"; wrapsLines = 0; };
+		4E3D346A295612360083BF05 /* Mapbox.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mapbox.swift; sourceTree = "<group>"; };
 		4E3D346C2956125D0083BF05 /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		4E430FCA29B3F0CF00AB50E2 /* TimeFormatterOptions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatterOptions.swift; sourceTree = "<group>"; };
 		4E4546FA292D730A0068070A /* SanisetteData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SanisetteData.swift; sourceTree = "<group>"; };
@@ -126,20 +137,12 @@
 		4EB30C1529F5E07100C2C646 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/DestinationInfoView.strings; sourceTree = "<group>"; };
 		4EB30C1729F5E07200C2C646 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/DestinationInfoView.strings; sourceTree = "<group>"; };
 		4EB50E3429B396F00099F5A7 /* TimeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeFormatter.swift; sourceTree = "<group>"; };
+		4EBA22D62ACABBCC00EE76B5 /* UserDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataStorage.swift; sourceTree = "<group>"; };
 		4EC130522938DB7000CF4110 /* Map.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
 		4EC32F6029B0A8060074B954 /* BackgroundMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundMap.swift; sourceTree = "<group>"; };
 		4EC32F6229B0EE780074B954 /* Route.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Route.swift; sourceTree = "<group>"; };
 		4ECD49862933B3510027D763 /* PointAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointAnnotation.swift; sourceTree = "<group>"; };
 		4ECD49882933C7190027D763 /* UIImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImage.swift; sourceTree = "<group>"; };
-		4ED18BA12A01B3F4000CEBB8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		4ED18BA32A01B3F8000CEBB8 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
-		4ED18BA42A01B3FA000CEBB8 /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		4ED18BA52A01B3FB000CEBB8 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		4ED18BA62A01B3FC000CEBB8 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		4ED18BA72A01B3FD000CEBB8 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		4ED18BA82A01B3FE000CEBB8 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		4ED18BA92A01B3FE000CEBB8 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		4ED18BAA2A01B3FF000CEBB8 /* uk */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = uk; path = uk.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		4ED47B5229EFFFAA00DAE25E /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		4ED47B5429EFFFCB00DAE25E /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		4ED47B5629EFFFD900DAE25E /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -161,6 +164,7 @@
 				4E4896EA292D464000E1C6AE /* Alamofire in Frameworks */,
 				4E2977A52958A79F00FC7965 /* MapboxDirections in Frameworks */,
 				4E1C3075292BB6FD00F5859D /* RxSwift in Frameworks */,
+				4E36E8F92AC9FD0D007A8645 /* SnapKit in Frameworks */,
 				4E1C3073292BB6FD00F5859D /* RxRelay in Frameworks */,
 				4EB27E0B292BBA7500A9938C /* MapboxMaps in Frameworks */,
 				4E1C3071292BB6FD00F5859D /* RxCocoa in Frameworks */,
@@ -204,7 +208,7 @@
 			children = (
 				4E8DC020292B9648009A7B25 /* Assets.xcassets */,
 				4E9D6B5929EF4D92004378B9 /* Localizable.strings */,
-				4ED18BA22A01B3F4000CEBB8 /* InfoPlist.strings */,
+				4E211F9B2ACAEB7E00FE9D0F /* InfoPlist.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -225,6 +229,15 @@
 				4E28ED1029D0DB380076A7A4 /* ShowMyLocationButton.swift */,
 			);
 			path = Elements;
+			sourceTree = "<group>";
+		};
+		4E36E8F62AC9F55F007A8645 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				4E83C34829C4D8200007DD10 /* RouteProgress.swift */,
+				4EBA22D62ACABBCC00EE76B5 /* UserDataStorage.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		4E57568429BB373600BA8336 /* ScheduleFormatter */ = {
@@ -275,14 +288,6 @@
 			path = ReactiveExtensions;
 			sourceTree = "<group>";
 		};
-		4E83C34729C4D7CD0007DD10 /* RouteProgress */ = {
-			isa = PBXGroup;
-			children = (
-				4E83C34829C4D8200007DD10 /* RouteProgress.swift */,
-			);
-			path = RouteProgress;
-			sourceTree = "<group>";
-		};
 		4E8DC00B292B9648009A7B25 = {
 			isa = PBXGroup;
 			children = (
@@ -302,7 +307,7 @@
 		4E8DC016292B9648009A7B25 /* Toilet Radar */ = {
 			isa = PBXGroup;
 			children = (
-				4E83C34729C4D7CD0007DD10 /* RouteProgress */,
+				4E36E8F62AC9F55F007A8645 /* Services */,
 				4EB50E3229B396890099F5A7 /* Helpers */,
 				4E5ED8C72978B21A0055E000 /* Mapbox */,
 				4EF35249296AFC96004ADB83 /* ReactiveUtilities */,
@@ -479,6 +484,7 @@
 				4EB27E0A292BBA7500A9938C /* MapboxMaps */,
 				4E4896E9292D464000E1C6AE /* Alamofire */,
 				4E2977A42958A79F00FC7965 /* MapboxDirections */,
+				4E36E8F82AC9FD0D007A8645 /* SnapKit */,
 			);
 			productName = Parilet;
 			productReference = 4E8DC014292B9648009A7B25 /* Toilet Radar.app */;
@@ -521,6 +527,7 @@
 				4EB27E09292BBA7500A9938C /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
 				4E4896E8292D464000E1C6AE /* XCRemoteSwiftPackageReference "Alamofire" */,
 				4E2977A32958A79F00FC7965 /* XCRemoteSwiftPackageReference "mapbox-directions-swift" */,
+				4E36E8F72AC9FD0D007A8645 /* XCRemoteSwiftPackageReference "SnapKit" */,
 			);
 			productRefGroup = 4E8DC015292B9648009A7B25 /* Products */;
 			projectDirPath = "";
@@ -540,7 +547,7 @@
 				4E9D6B5729EF4D92004378B9 /* Localizable.strings in Resources */,
 				4EF6599529FABAEB00C94AB2 /* Launch Screen.storyboard in Resources */,
 				4E8DC021292B9648009A7B25 /* Assets.xcassets in Resources */,
-				4ED18BA02A01B3F4000CEBB8 /* InfoPlist.strings in Resources */,
+				4E211F992ACAEB7E00FE9D0F /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -565,6 +572,7 @@
 				4E2DA2E929F43D4000214692 /* UIAlertController.swift in Sources */,
 				4EDAEC4C29BCF6A400AA8259 /* Strings.swift in Sources */,
 				4E57568629BB375A00BA8336 /* ScheduleFormatter.swift in Sources */,
+				4EBA22D72ACABBCC00EE76B5 /* UserDataStorage.swift in Sources */,
 				4E4546FB292D730A0068070A /* SanisetteData.swift in Sources */,
 				4E88E67F29A57E8900CC7245 /* DestinationInfoView.swift in Sources */,
 				4E1AC6F8292ECA9B00872C5C /* APIRequest.swift in Sources */,
@@ -606,6 +614,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		4E211F9B2ACAEB7E00FE9D0F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4E211F9A2ACAEB7E00FE9D0F /* en */,
+				4E211F9C2ACAEB8100FE9D0F /* zh-Hans */,
+				4E211F9D2ACAEB8300FE9D0F /* fr */,
+				4E211F9E2ACAEB8400FE9D0F /* de */,
+				4E211F9F2ACAEB8500FE9D0F /* it */,
+				4E211FA02ACAEB8500FE9D0F /* ja */,
+				4E211FA12ACAEB8600FE9D0F /* ru */,
+				4E211FA22ACAEB8700FE9D0F /* es */,
+				4E211FA32ACAEB8700FE9D0F /* uk */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
 		4E9D6B5929EF4D92004378B9 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -637,22 +661,6 @@
 				4EB30C1729F5E07200C2C646 /* uk */,
 			);
 			name = DestinationInfoView.xib;
-			sourceTree = "<group>";
-		};
-		4ED18BA22A01B3F4000CEBB8 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				4ED18BA12A01B3F4000CEBB8 /* en */,
-				4ED18BA32A01B3F8000CEBB8 /* zh-Hans */,
-				4ED18BA42A01B3FA000CEBB8 /* fr */,
-				4ED18BA52A01B3FB000CEBB8 /* de */,
-				4ED18BA62A01B3FC000CEBB8 /* it */,
-				4ED18BA72A01B3FD000CEBB8 /* ja */,
-				4ED18BA82A01B3FE000CEBB8 /* ru */,
-				4ED18BA92A01B3FE000CEBB8 /* es */,
-				4ED18BAA2A01B3FF000CEBB8 /* uk */,
-			);
-			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -709,7 +717,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -764,7 +772,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -788,19 +796,19 @@
 				INFOPLIST_FILE = "Toilet Radar/SupportingFiles/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Toilet Radar";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data location?";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data location?";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "-.ToiletRadar";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -827,19 +835,19 @@
 				INFOPLIST_FILE = "Toilet Radar/SupportingFiles/Info.plist";
 				INFOPLIST_KEY_CFBundleDisplayName = "Toilet Radar";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data location?";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data location?";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To provide you with accurate navigation, the app requires access to your location data";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen.storyboard";
 				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UIStatusBarStyle = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.0;
+				MARKETING_VERSION = 1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = "-.ToiletRadar";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -892,6 +900,14 @@
 				kind = branch;
 			};
 		};
+		4E36E8F72AC9FD0D007A8645 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 		4E4896E8292D464000E1C6AE /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
@@ -930,6 +946,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 4E2977A32958A79F00FC7965 /* XCRemoteSwiftPackageReference "mapbox-directions-swift" */;
 			productName = MapboxDirections;
+		};
+		4E36E8F82AC9FD0D007A8645 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4E36E8F72AC9FD0D007A8645 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
 		};
 		4E4896E9292D464000E1C6AE /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;

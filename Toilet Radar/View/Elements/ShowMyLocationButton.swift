@@ -48,7 +48,7 @@ final class ShowMyLocationButton: UIButton {
     }
     
     private func setupAppearance() {
-        backgroundColor = .white
+        backgroundColor = .secondarySystemBackground
         heightAnchor.constraint(equalToConstant: dimensionAnchor).isActive = true
         widthAnchor.constraint(equalToConstant: dimensionAnchor).isActive = true
         layer.cornerRadius = cornerRadius

@@ -39,4 +39,8 @@ enum Strings {
     static let undefined: String = {
         "undefined".localized() 
     }()
+    
+    static let am_i_a_good_app: String = {
+        "am_i_a_good_app".localized()
+    }()
 }

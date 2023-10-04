@@ -25,7 +25,7 @@ final class ScheduleFormatter {
     // returns if schedule in not in valid form
     private lazy var undefined: NSAttributedString = {
         NSAttributedString(string: Strings.undefined,
-                           color: UIColor.lightGray)
+                           color: UIColor.secondaryLabel)
     }()
     
     private var today: Date {

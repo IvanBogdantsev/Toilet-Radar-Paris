@@ -12,8 +12,10 @@ import RxCocoa
 final class Map: MapView {
     
     init(frame: CGRect) {
+        let style = UIScreen.main.traitCollection.userInterfaceStyle == .light ? StyleURI.outdoors : StyleURI.dark
         let initOptions = MapInitOptions(resourceOptions: MapBoxConstants.resourceOptions,
-                                         cameraOptions: MapBoxConstants.cameraLaunchOptions)
+                                         cameraOptions: MapBoxConstants.cameraLaunchOptions,
+                                         styleURI: style)
         super.init(frame: frame, mapInitOptions: initOptions)
         self.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         // configuring a 2-dimensional puck with heading indicator
